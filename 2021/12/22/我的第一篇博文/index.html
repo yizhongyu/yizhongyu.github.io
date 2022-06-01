@@ -4,14 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hadoop, 备忘录">
-    <meta name="description" content="安装Java确认java安装成功java -version
-rpm -qa | grep jdk
-
-卸载其他版本yum -y remove java...		或者
-rpm -e --nodeps jdk...
-
-上传jdk1.8rpm安装包">
+    <meta name="keywords" content="我的第一篇博文, 备忘录">
+    <meta name="description" content="hexo博客搭建记录1. 安装gitgit官网
+将git-2.34.1.tar.gz放到root目录下解压 tar -zxvf git-2.34.1.tar.gz 
+安装依赖（y）
+yum install curl-devel expat-">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +22,7 @@ rpm -e --nodeps jdk...
 
     
 
-    <title>Hadoop | 备忘录</title>
+    <title>我的第一篇博文 | 备忘录</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -208,12 +205,12 @@ rpm -e --nodeps jdk...
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hadoop</h1>
+                    <h1 class="description center-align post-title">我的第一篇博文</h1>
                 </div>
             </div>
         </div>
@@ -329,12 +326,8 @@ rpm -e --nodeps jdk...
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/centos/">
-                                <span class="chip bg-color">centos</span>
-                            </a>
-                        
-                            <a href="/tags/Hadoop/">
-                                <span class="chip bg-color">Hadoop</span>
+                            <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                                <span class="chip bg-color">博客</span>
                             </a>
                         
                     </div>
@@ -345,8 +338,8 @@ rpm -e --nodeps jdk...
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
-                                集群
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                博客
                             </a>
                         
                     </div>
@@ -358,7 +351,7 @@ rpm -e --nodeps jdk...
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-17
+                    2021-12-22
                 </div>
                 
 
@@ -367,7 +360,7 @@ rpm -e --nodeps jdk...
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    934
+                    433
                 </div>
                 
 
@@ -387,114 +380,60 @@ rpm -e --nodeps jdk...
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h4><h5 id="确认java安装成功"><a href="#确认java安装成功" class="headerlink" title="确认java安装成功"></a>确认java安装成功</h5><pre class="line-numbers language-none"><code class="language-none">java -version
-rpm -qa | grep jdk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                <h2 id="hexo博客搭建记录"><a href="#hexo博客搭建记录" class="headerlink" title="hexo博客搭建记录"></a>hexo博客搭建记录</h2><h4 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1. 安装git"></a>1. 安装git</h4><p><a target="_blank" rel="noopener" href="https://www.kernel.org/pub/software/scm/git/git-2.34.1.tar.gz">git官网</a></p>
+<p>将git-2.34.1.tar.gz放到root目录下解压 <code>tar -zxvf git-2.34.1.tar.gz</code> </p>
+<p>安装依赖（y）</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc-c++ perl-ExtUtils-MakeMaker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="卸载其他版本"><a href="#卸载其他版本" class="headerlink" title="卸载其他版本"></a>卸载其他版本</h5><pre class="line-numbers language-none"><code class="language-none">yum -y remove java...		或者
-rpm -e --nodeps jdk...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>删除已有的git <code>yum remove git</code>  (y) </p>
+<p>进入文件夹 <code>cd git-2.34.1</code> 执行配置</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">make configure
+./configure --prefix=/usr/local/git
+make profix=/usr/local/git
+make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="上传jdk1-8rpm安装包"><a href="#上传jdk1-8rpm安装包" class="headerlink" title="上传jdk1.8rpm安装包"></a>上传jdk1.8rpm安装包</h5><pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\jdk-18_linux-x64_bin.rpm root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>配置环境变量 <code>vim /etc/profile</code> 文件末加上</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">export GIT_HOME=/usr/local/git
+export PATH=$PATH:$GIT_HOME/bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h5 id="执行安装jdk"><a href="#执行安装jdk" class="headerlink" title="执行安装jdk"></a>执行安装jdk</h5><pre class="line-numbers language-none"><code class="language-none">rpm -ivh jdk-8u333-linux-x64.rpm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>刷新环境变量 <code>source /etc/profile</code> 验证 <code>git --version</code> </p>
+<h4 id="2-安装node-js"><a href="#2-安装node-js" class="headerlink" title="2. 安装node.js"></a>2. 安装node.js</h4><p><a target="_blank" rel="noopener" href="https://nodejs.org/dist/v16.13.1/node-v16.13.1-linux-x64.tar.xz">nodejs官网</a></p>
+<p>将node-v16.13.1-linux-x64.tar.xz放到root目录下</p>
+<p>创建node <code>mkdir /usr/local/node</code> 并进入 <code>cd /usr/local/node</code></p>
+<p>将root目录下的压缩文件解压到当前目录</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">tar -xJvf /root/node-v16.13.1-linux-x64.tar.xz -C ./<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>默认home路径：&#x2F;usr&#x2F;java&#x2F;jdk1.8.0_333-amd64</p>
-<h5 id="添加环境变量文件到-x2F-etc-x2F-profile-d-x2F"><a href="#添加环境变量文件到-x2F-etc-x2F-profile-d-x2F" class="headerlink" title="添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;"></a>添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;profile.d&#x2F;java.sh
-export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;jdk1.8.0_333-amd64
-export CLASSPATH&#x3D;$JAVA_HOME&#x2F;lib&#x2F;
-export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>配置环境变量 <code>vim ~/.bash_profile</code> 文件末加上</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">export PATH=/usr/local/node/node-v16.13.1-linux-x64/bin:$PATH<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="安装Hadoop"><a href="#安装Hadoop" class="headerlink" title="安装Hadoop"></a>安装Hadoop</h4><h5 id="上传Hadoop压缩包"><a href="#上传Hadoop压缩包" class="headerlink" title="上传Hadoop压缩包"></a>上传Hadoop压缩包</h5><pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\hadoop-2.10.1.tar.gz root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>刷新环境变量 <code>source ~/.bash_profile</code> 验证 <code>node -v</code> <code>npm version</code> <code>npx -v</code></p>
+<p>全局切换到淘宝的cnpm国内镜像源</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">npm install -g cnpm --registry=https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>解压</p>
-<pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;usr&#x2F;hadoop
-tar -zxvf hadoop-2.10.1.tar.gz -C &#x2F;usr&#x2F;hadoop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>验证 <code>cnpm -v</code> </p>
+<h4 id="3-安装hxeo"><a href="#3-安装hxeo" class="headerlink" title="3. 安装hxeo"></a>3. 安装hxeo</h4><p>利用cnpm全局安装hexo博客框架</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">cnpm install -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>默认home路径：&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1</p>
-<h5 id="添加环境变量文件到-x2F-etc-x2F-profile-d-x2F-1"><a href="#添加环境变量文件到-x2F-etc-x2F-profile-d-x2F-1" class="headerlink" title="添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;"></a>添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;profile.d&#x2F;hadoop.sh
-export HADOOP_HOME&#x3D;&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1
-export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin
-source &#x2F;etc&#x2F;profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>验证 <code>hexo -v</code> </p>
+<p>初始化 <code>hexo init blog</code> (这一步失败换githubDNS 199.232.5.194)</p>
+<p>进入 <code>cd blog</code> </p>
+<p>启动博客 <code>hexo s</code> 浏览 <a target="_blank" rel="noopener" href="http://localhost:4000/">本机博客</a></p>
+<p>新建博客 <code>hexo n &quot;我的第一篇博文&quot;</code> </p>
+<p>编辑博客 <code>vim /source/_posts/我的第一篇博文.md</code> </p>
+<p>安装git部署插件</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">cnpm install --save hexo-deployer-git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>验证</p>
-<pre class="line-numbers language-none"><code class="language-none">hadoop version
-whereis hdfs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>编辑配置文件 <code>vim _config.yml</code> 文末添加配置</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">type: git
+repo: https://github.com/yizhongyu/yizhongyu.github.io.git
+branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="创建HDFS数据目录"><a href="#创建HDFS数据目录" class="headerlink" title="创建HDFS数据目录"></a>创建HDFS数据目录</h5><pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;var&#x2F;HDFSdata<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>配置文件位置：&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;</p>
-<p><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/r2.10.1/hadoop-project-dist/hadoop-common/SingleCluster.html">官方配置说明</a></p>
-<h5 id="为Hadoop提供Java解释器路径信息，主要解决远程访问Hadoop是Javahome无法继承的问题"><a href="#为Hadoop提供Java解释器路径信息，主要解决远程访问Hadoop是Javahome无法继承的问题" class="headerlink" title="为Hadoop提供Java解释器路径信息，主要解决远程访问Hadoop是Javahome无法继承的问题"></a>为Hadoop提供Java解释器路径信息，主要解决远程访问Hadoop是Javahome无法继承的问题</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;hadoop-env.sh
-# The java implementation to use.
-export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;default	（rpm安装路径）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>hexo clean</code> 清除 </p>
+<p><code>hexo g</code> 生成 </p>
+<p><code>hexo d</code> 推上去 (这一步容易鉴权失败,改令牌上传)</p>
+<p>后台管理，md编辑技巧等等待补充~~</p>
 
-<h5 id="为yarn任务，资源管理器提供Java运行环境"><a href="#为yarn任务，资源管理器提供Java运行环境" class="headerlink" title="为yarn任务，资源管理器提供Java运行环境"></a>为yarn任务，资源管理器提供Java运行环境</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;yarn-env.sh
-# export JAVA_HOME&#x3D;&#x2F;home&#x2F;y&#x2F;libexec&#x2F;jdk1.6.0&#x2F;
-if [ &quot;$JAVA_HOME&quot; !&#x3D; &quot;&quot; ]; then
-  #echo &quot;run java in $JAVA_HOME&quot;
-  JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;default		(这一步还是修改Javahome)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="Hadoop核心文件配置-指定文件系统"><a href="#Hadoop核心文件配置-指定文件系统" class="headerlink" title="Hadoop核心文件配置(指定文件系统)"></a>Hadoop核心文件配置(指定文件系统)</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;core-site.xml
-&lt;configuration&gt;
-    &lt;property&gt;
-        &lt;name&gt;fs.defaultFS&lt;&#x2F;name&gt;
-        &lt;value&gt;hdfs:&#x2F;&#x2F;localhost:9000&lt;&#x2F;value&gt;	#修改localhost
-    &lt;&#x2F;property&gt;
-    &lt;property&gt;
-        &lt;name&gt;hadoop.tmp.dir&lt;&#x2F;name&gt;
-        &lt;value&gt;&#x2F;var&#x2F;HDFSdata&lt;&#x2F;value&gt;			#HDFS数据目录
-    &lt;&#x2F;property&gt;
-&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="配置hdfs默认的数据存放策略"><a href="#配置hdfs默认的数据存放策略" class="headerlink" title="配置hdfs默认的数据存放策略"></a>配置hdfs默认的数据存放策略</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;hdfs-site.xml
-&lt;configuration&gt;
-    &lt;property&gt;
-        &lt;name&gt;dfs.replication&lt;&#x2F;name&gt;
-        &lt;value&gt;2&lt;&#x2F;value&gt;						#hdfs副本数，大于1
-    &lt;&#x2F;property&gt;
-    &lt;property&gt;
-        &lt;name&gt;dfs.namenode.secondary.http-address&lt;&#x2F;name&gt;
-        &lt;value&gt;node3:50090&lt;&#x2F;value&gt;				#指定node3为secondary
-    &lt;&#x2F;property&gt;
-&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="从模板拷贝mapreduce配置文件，配置任务调度策略"><a href="#从模板拷贝mapreduce配置文件，配置任务调度策略" class="headerlink" title="从模板拷贝mapreduce配置文件，配置任务调度策略"></a>从模板拷贝mapreduce配置文件，配置任务调度策略</h5><pre class="line-numbers language-none"><code class="language-none">cp &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml.template &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml
-vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml
-&lt;configuration&gt;
-    &lt;property&gt;
-        &lt;name&gt;mapreduce.framework.name&lt;&#x2F;name&gt;
-        &lt;value&gt;yarn&lt;&#x2F;value&gt;
-    &lt;&#x2F;property&gt;
-&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="配置yarn资源管理角色"><a href="#配置yarn资源管理角色" class="headerlink" title="配置yarn资源管理角色"></a>配置yarn资源管理角色</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;yarn-site.xml
-&lt;configuration&gt;
-    &lt;property&gt;
-        &lt;name&gt;yarn.nodemanager.aux-services&lt;&#x2F;name&gt;
-        &lt;value&gt;mapreduce_shuffle&lt;&#x2F;value&gt;		#表示结构随机
-    &lt;&#x2F;property&gt;
-    &lt;property&gt;
-        &lt;name&gt;yarn.resourcemanager.hostname&lt;&#x2F;name&gt;
-        &lt;value&gt;node1&lt;&#x2F;value&gt;		#指定资源调度者
-    &lt;&#x2F;property&gt;
-&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="配置datanode"><a href="#配置datanode" class="headerlink" title="配置datanode"></a>配置datanode</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;slaves
-node1
-node2
-node3
-.....<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="主节点单独执行"><a href="#主节点单独执行" class="headerlink" title="主节点单独执行"></a>主节点单独执行</h4><h5 id="格式化主节点hdfs"><a href="#格式化主节点hdfs" class="headerlink" title="格式化主节点hdfs"></a>格式化主节点hdfs</h5><pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;bin&#x2F;
-hdfs namenode-format
-ls &#x2F;var&#x2F;HDFSdata&#x2F;dfs&#x2F;name&#x2F;current&#x2F;		#查看image
-cd &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;sbin&#x2F;
-start-dfs.sh
-start-yarn.sh							#启动集群
-jps										#查看<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="访问网址"><a href="#访问网址" class="headerlink" title="访问网址"></a>访问网址</h5><pre class="line-numbers language-none"><code class="language-none">主节点IP:50070							#hdfs
-hdfs dfs -mkdir &#x2F;test
-主节点IP:8088							#yarn	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -520,7 +459,7 @@ hdfs dfs -mkdir &#x2F;test
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yizhongyu.github.io/2022/05/17/hadoop/">https://yizhongyu.github.io/2022/05/17/hadoop/</a>
+                    <a href="https://yizhongyu.github.io/2021/12/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/">https://yizhongyu.github.io/2021/12/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -558,12 +497,8 @@ hdfs dfs -mkdir &#x2F;test
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/centos/">
-                                    <span class="chip bg-color">centos</span>
-                                </a>
-                            
-                                <a href="/tags/Hadoop/">
-                                    <span class="chip bg-color">Hadoop</span>
+                                <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                                    <span class="chip bg-color">博客</span>
                                 </a>
                             
                         </div>
@@ -615,13 +550,13 @@ hdfs dfs -mkdir &#x2F;test
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/18/redis/">
+                <a href="/2022/03/19/mysql_trigger/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="redis">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="mysql触发器">
                         
-                        <span class="card-title">redis</span>
+                        <span class="card-title">mysql触发器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -632,16 +567,12 @@ hdfs dfs -mkdir &#x2F;test
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-18
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-19
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
-                                    集群
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            易
                             
                         </span>
                     </div>
@@ -649,12 +580,8 @@ hdfs dfs -mkdir &#x2F;test
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/centos/">
-                        <span class="chip bg-color">centos</span>
-                    </a>
-                    
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
+                    <a href="/tags/mysql/">
+                        <span class="chip bg-color">mysql</span>
                     </a>
                     
                 </div>
@@ -665,16 +592,16 @@ hdfs dfs -mkdir &#x2F;test
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/16/RabbitMQ/">
+                <a href="/2021/12/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="RabbitMQ">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="我的第一篇博文">
                         
-                        <span class="card-title">RabbitMQ</span>
+                        <span class="card-title">我的第一篇博文</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -685,29 +612,26 @@ hdfs dfs -mkdir &#x2F;test
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-22
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
-                                    集群
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    博客
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/RabbitMQ/">
-                        <span class="chip bg-color">RabbitMQ</span>
-                    </a>
-                    
-                    <a href="/tags/centos/">
-                        <span class="chip bg-color">centos</span>
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
                     </a>
                     
                 </div>
