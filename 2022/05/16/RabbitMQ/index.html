@@ -8,9 +8,7 @@
     <meta name="description" content="分布式消息中间件
 安装RabbitMQ添加具有依赖项的存储库yum install epel-release
 
-
-
-在线安装依赖环境yum install socat build-essential openssl openssl-deve">
+在线安装依赖环境yum install socat build-essential openssl openssl-devel ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -341,6 +339,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
+                                集群
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -379,8 +386,6 @@
             <div id="articleContent">
                 <p><strong>分布式消息中间件</strong></p>
 <h3 id="安装RabbitMQ"><a href="#安装RabbitMQ" class="headerlink" title="安装RabbitMQ"></a>安装RabbitMQ</h3><h5 id="添加具有依赖项的存储库"><a href="#添加具有依赖项的存储库" class="headerlink" title="添加具有依赖项的存储库"></a>添加具有依赖项的存储库</h5><pre class="line-numbers language-none"><code class="language-none">yum install epel-release<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<span id="more"></span>
 
 <h4 id="在线安装依赖环境"><a href="#在线安装依赖环境" class="headerlink" title="在线安装依赖环境"></a>在线安装依赖环境</h4><pre class="line-numbers language-none"><code class="language-none">yum install socat build-essential openssl openssl-devel unixODBC unixODBC-devel make gcc gcc-c++ kernel-devel m4 ncurses-devel tk tc xz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -439,7 +444,7 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
 <p>&#x2F;usr&#x2F;lib&#x2F;rabbitmq&#x2F;lib&#x2F;rabbitmq_server-3.9.16&#x2F;sbin</p>
 <p>&#x2F;etc&#x2F;rabbitmq&#x2F;rabbitmq.conf</p>
 <p>cp &#x2F;usr&#x2F;share&#x2F;doc&#x2F;rabbitmq-server-3.9.16&#x2F;</p>
-<p>日志文件cat &#x2F;var&#x2F;log&#x2F;rabbitmq&#x2F;<a href="mailto:&#x72;&#97;&#x62;&#x62;&#105;&#116;&#64;&#110;&#111;&#x64;&#x65;&#x30;&#51;&#46;&#x6c;&#x6f;&#103;">&#x72;&#97;&#x62;&#x62;&#105;&#116;&#64;&#110;&#111;&#x64;&#x65;&#x30;&#51;&#46;&#x6c;&#x6f;&#103;</a></p>
+<p>日志文件cat &#x2F;var&#x2F;log&#x2F;rabbitmq&#x2F;<a href="mailto:&#x72;&#x61;&#98;&#98;&#x69;&#116;&#x40;&#x6e;&#x6f;&#100;&#101;&#x30;&#51;&#46;&#108;&#111;&#103;">&#x72;&#x61;&#98;&#98;&#x69;&#116;&#x40;&#x6e;&#x6f;&#100;&#101;&#x30;&#51;&#46;&#108;&#111;&#103;</a></p>
 <p>rabbitmq 诊断状态命令：rabbitmq-diagnostics status</p>
 <p>要检查特定节点的位置，包括远程运行的节点，请使用 -n（–node 的缩写）开关：</p>
 <p>rabbitmq-diagnostics status -n [node name]</p>
@@ -581,11 +586,7 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            安装Java确认java安装成功java -version
-rpm -qa | grep jdk
-
-卸载其他版本yum -y remove java...		或者
-rpm -e --nodeps jdk...
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -594,8 +595,12 @@ rpm -e --nodeps jdk...
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            易
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
+                                    集群
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -622,7 +627,7 @@ rpm -e --nodeps jdk...
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/15/ubuntu18.04%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83/">
+                <a href="/2022/05/15/ubuntu18.04/">
                     <div class="card-image">
                         
                         
@@ -854,7 +859,7 @@ rpm -e --nodeps jdk...
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12k</span>
+                        class="white-color">12.8k</span>
             
             
             

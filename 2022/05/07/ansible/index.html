@@ -344,6 +344,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/centos/" class="post-category">
+                                centos
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -385,8 +394,6 @@
 <p>并且要将创建的公钥文件上传至SSH服务器端，</p>
 <p>然后要将公钥信息导入服务器端的目标用户root的公钥数据库，</p>
 <p>最后以服务器端用户root的身份登录验证。</p>
-<span id="more"></span> 
-
 <h4 id="1、在客户端创建密钥对"><a href="#1、在客户端创建密钥对" class="headerlink" title="1、在客户端创建密钥对"></a>1、在客户端创建密钥对</h4><p>在客户端中，通过ssh-keygen工具为当前用户创建密钥对文件。</p>
 <p>可用的加密算法为ECDSA、DSA或RSA（ssh-keygen命令的“-t”选项用于指定算法类型）。</p>
 <p><code>ssh-keygen -t rsa</code><!--创建密钥对-->全部保持默认</p>
@@ -395,7 +402,7 @@
 <p>id_rsa.pub是公钥文件，用来提供给ssh服务器。</p>
 <h4 id="2、将公钥文件上传至服务器"><a href="#2、将公钥文件上传至服务器" class="headerlink" title="2、将公钥文件上传至服务器"></a>2、将公钥文件上传至服务器</h4><p>将上一步生成的公钥文件上传至服务器，并部署到服务器端用户的公钥数据库中。上传公钥文件时可以选择SCP、FTP、HTTP甚至发送E-mail等任何方式。</p>
 <p><code>ssh-copy-id -i ./.ssh/id_rsa.pub root@192.168.200.99</code><!--将公钥文件上传至服务器并导入公钥文本--></p>
-<p>yes输入<a href="mailto:&#114;&#111;&#111;&#116;&#64;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#56;&#x2e;&#50;&#48;&#48;&#46;&#x39;&#57;">&#114;&#111;&#111;&#116;&#64;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#56;&#x2e;&#50;&#48;&#48;&#46;&#x39;&#57;</a>密码</p>
+<p>yes输入<a href="mailto:&#114;&#x6f;&#x6f;&#x74;&#x40;&#x31;&#57;&#x32;&#46;&#49;&#54;&#56;&#x2e;&#50;&#48;&#x30;&#46;&#57;&#x39;">&#114;&#x6f;&#x6f;&#x74;&#x40;&#x31;&#57;&#x32;&#46;&#49;&#54;&#56;&#x2e;&#50;&#48;&#x30;&#46;&#57;&#x39;</a>密码</p>
 <h4 id="3、在客户端使用密钥对验证"><a href="#3、在客户端使用密钥对验证" class="headerlink" title="3、在客户端使用密钥对验证"></a>3、在客户端使用密钥对验证</h4><p>当私钥文件（客户端）、公钥文件（服务器）均部署到位以后，就可以在客户端中进行测试了。</p>
 <p><code>ssh root@192.168.200.99</code></p>
 <h3 id="安装ansible"><a href="#安装ansible" class="headerlink" title="安装ansible"></a>安装ansible</h3><p>使用yum安装</p>
@@ -553,7 +560,7 @@ yj[2:5].kgc.cn
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/08/centos%E5%BD%BB%E5%BA%95%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6/">
+                <a href="/2022/05/08/centos_remove/">
                     <div class="card-image">
                         
                         
@@ -574,8 +581,12 @@ yj[2:5].kgc.cn
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            易
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/centos/" class="post-category">
+                                    centos
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -598,25 +609,19 @@ yj[2:5].kgc.cn
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/06/centos7%E5%AE%89%E8%A3%85java/">
+                <a href="/2022/05/06/centos7_install_java/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="JAVA">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Java">
                         
-                        <span class="card-title">JAVA</span>
+                        <span class="card-title">Java</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            监测java是否存在
-java -version
-rpm -qa | grep jdk
-
-卸载
-rpm -e --nodeps jdk...
-yum -y remove java...
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -625,8 +630,12 @@ yum -y remove java...
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            易
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -836,7 +845,7 @@ yum -y remove java...
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12k</span>
+                        class="white-color">12.8k</span>
             
             
             

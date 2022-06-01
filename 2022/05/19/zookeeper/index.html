@@ -5,11 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="zookeeper, 备忘录">
-    <meta name="description" content="上传zookeeper压缩包
-scp E:\app\Linux\apache-zookeeper-3.8.0-bin.tar.gz root@192.168.200.99:&amp;#x2F;opt
+    <meta name="description" content="上传zookeeper压缩包scp E:\app\Linux\apache-zookeeper-3.8.0-bin.tar.gz root@192.168.200.99:&amp;#x2F;opt
 
 解压
-mkdir -p &amp;#x2F;usr&amp;#">
+mkdir -p &amp;#x2F;usr&amp;#x">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -340,6 +339,15 @@ mkdir -p &amp;#x2F;usr&amp;#">
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
+                                集群
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -356,7 +364,7 @@ mkdir -p &amp;#x2F;usr&amp;#">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    465
+                    464
                 </div>
                 
 
@@ -376,29 +384,23 @@ mkdir -p &amp;#x2F;usr&amp;#">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>上传zookeeper压缩包</p>
-<pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\apache-zookeeper-3.8.0-bin.tar.gz root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h4 id="上传zookeeper压缩包"><a href="#上传zookeeper压缩包" class="headerlink" title="上传zookeeper压缩包"></a>上传zookeeper压缩包</h4><pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\apache-zookeeper-3.8.0-bin.tar.gz root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>解压</p>
 <pre class="line-numbers language-none"><code class="language-none">mkdir -p &#x2F;usr&#x2F;local&#x2F;zookeeper
 tar -zxvf &#x2F;opt&#x2F;apache-zookeeper-3.8.0-bin.tar.gz -C &#x2F;usr&#x2F;local&#x2F;zookeeper<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>从模板拷贝zoo配置文件，配置</p>
-<pre class="line-numbers language-none"><code class="language-none">cp &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;conf&#x2F;zoo_sample.cfg &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;conf&#x2F;zoo.cfg
+<h4 id="从模板拷贝zoo配置文件，配置"><a href="#从模板拷贝zoo配置文件，配置" class="headerlink" title="从模板拷贝zoo配置文件，配置"></a>从模板拷贝zoo配置文件，配置</h4><pre class="line-numbers language-none"><code class="language-none">cp &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;conf&#x2F;zoo_sample.cfg &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;conf&#x2F;zoo.cfg
 vim &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;conf&#x2F;zoo.cfg
 dataDir&#x3D;&#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;zkdata<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<span id="more"></span>
-
-<p>使用</p>
-<pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;
 .&#x2F;bin&#x2F;zkServer.sh start .&#x2F;conf&#x2F;zoo.cfg			#启动zk服务器
 .&#x2F;bin&#x2F;zkServer.sh status .&#x2F;conf&#x2F;zoo.cfg			#查看zk服务器状态
 .&#x2F;bin&#x2F;zkServer.sh stop .&#x2F;conf&#x2F;zoo.cfg			#停止zk服务器
 .&#x2F;zkCli.sh										#启动后进入客户端<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>内部操作</p>
-<pre class="line-numbers language-none"><code class="language-none">ls &#x2F;					#查看根目录
+<h4 id="内部操作"><a href="#内部操作" class="headerlink" title="内部操作"></a>内部操作</h4><pre class="line-numbers language-none"><code class="language-none">ls &#x2F;					#查看根目录
 create &#x2F;test1
 create &#x2F;test2 abc		#创建
 get &#x2F;test2				#拿数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
@@ -560,7 +562,7 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/20/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
+                <a href="/2022/05/20/etcprofile_path/">
                     <div class="card-image">
                         
                         
@@ -581,8 +583,12 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            易
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/centos/" class="post-category">
+                                    centos
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -617,11 +623,7 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Remote Dictionary Server	远程字典服务
-安装REDIS缓存安装部署
-	安装包直接放在root⽬录下
-	1、在&#x2F;usr&#x2F;local&#x2F;下创建redis⽂件夹并进⼊
-cd &#x2F;usr&
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -630,8 +632,12 @@ cd &#x2F;usr&
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            易
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
+                                    集群
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -841,7 +847,7 @@ cd &#x2F;usr&
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12k</span>
+                        class="white-color">12.8k</span>
             
             
             

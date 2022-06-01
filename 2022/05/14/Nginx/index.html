@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Nginx, 备忘录">
     <meta name="description" content="负载均衡中间件 反向代理
-cd &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;mkdir nginxcd nginxtar zxvf &amp;#x2F;root&amp;#x2F;nginx-1.17.10.tar.gz -C .&amp;#x2F;yum">
+创建工作目录
+mkdir &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;nginx
+tar zxvf &amp;#x2F;root&amp;#x2F;nginx-1.17.10.tar.gz -C &amp;#x2F;usr&amp;#x2">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -324,14 +326,23 @@ cd &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;mkdir nginxcd nginxtar zxvf &amp;#x2F;r
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/centos/">
-                                <span class="chip bg-color">centos</span>
+                            <a href="/tags/Nginx/">
+                                <span class="chip bg-color">Nginx</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/centos/" class="post-category">
+                                centos
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -349,7 +360,7 @@ cd &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;mkdir nginxcd nginxtar zxvf &amp;#x2F;r
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    138
+                    155
                 </div>
                 
 
@@ -370,7 +381,19 @@ cd &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;mkdir nginxcd nginxtar zxvf &amp;#x2F;r
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>负载均衡中间件 反向代理</p>
-<p>cd &#x2F;usr&#x2F;local&#x2F;<br>mkdir nginx<br>cd nginx<br>tar zxvf &#x2F;root&#x2F;nginx-1.17.10.tar.gz -C .&#x2F;<br>yum -y install pcre-devel<br>yum -y install openssl openssl-devel<br>cd nginx-1.17.10<br>.&#x2F;configure<br>make &amp;&amp; make install<br>    安装完成后， Nginx的可执⾏⽂件位置位于&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx<br>    启动NGINX<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx<br>    停⽌Nginx服务<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s stop	<br>    重新加载Nginx<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s reload	<br>    配置⽂件位于&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</p>
+<p>创建工作目录</p>
+<pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;usr&#x2F;local&#x2F;nginx
+tar zxvf &#x2F;root&#x2F;nginx-1.17.10.tar.gz -C &#x2F;usr&#x2F;local&#x2F;nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>安装环境</p>
+<pre class="line-numbers language-none"><code class="language-none">yum -y install pcre-devel openssl openssl-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装Nginx</p>
+<pre class="line-numbers language-none"><code class="language-none">cd nginx-1.17.10
+.&#x2F;configure
+make &amp;&amp; make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>​	安装完成后， Nginx的可执⾏⽂件位置位于&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx<br>​	启动NGINX<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx<br>​	停⽌Nginx服务<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s stop	<br>​	重新加载Nginx<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s reload	<br>​	配置⽂件位于&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</p>
 
                 
             </div>
@@ -435,8 +458,8 @@ cd &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;mkdir nginxcd nginxtar zxvf &amp;#x2F;r
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/centos/">
-                                    <span class="chip bg-color">centos</span>
+                                <a href="/tags/Nginx/">
+                                    <span class="chip bg-color">Nginx</span>
                                 </a>
                             
                         </div>
@@ -488,7 +511,7 @@ cd &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;mkdir nginxcd nginxtar zxvf &amp;#x2F;r
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/15/ubuntu18.04%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83/">
+                <a href="/2022/05/15/ubuntu18.04/">
                     <div class="card-image">
                         
                         
@@ -537,7 +560,7 @@ cd &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;mkdir nginxcd nginxtar zxvf &amp;#x2F;r
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/13/deepin%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83/">
+                <a href="/2022/05/13/deepin/">
                     <div class="card-image">
                         
                         
@@ -560,8 +583,8 @@ cd &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;mkdir nginxcd nginxtar zxvf &amp;#x2F;r
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/os/" class="post-category">
-                                    os
+                            <a href="/categories/deepin/" class="post-category">
+                                    deepin
                                 </a>
                             
                             
@@ -769,7 +792,7 @@ cd &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;mkdir nginxcd nginxtar zxvf &amp;#x2F;r
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12k</span>
+                        class="white-color">12.8k</span>
             
             
             

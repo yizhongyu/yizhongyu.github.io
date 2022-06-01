@@ -336,6 +336,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/centos/" class="post-category">
+                                centos
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -373,8 +382,6 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>cron服务是Linux的内置服务，但它不会开机自动启动。可以用以下命令启动和停止服务：<br>&#x2F;sbin&#x2F;service crond start<br>&#x2F;sbin&#x2F;service crond stop<br>&#x2F;sbin&#x2F;service crond restart<br>&#x2F;sbin&#x2F;service crond reload<br>以上1-4行分别为启动、停止、重启服务和重新加载配置。</p>
-<span id="more"></span> 
-
 <p>要把cron设为在开机的时候自动启动，在 &#x2F;etc&#x2F;rc.d&#x2F;rc.local 脚本中加入 &#x2F;sbin&#x2F;service crond start 即可</p>
 <p>查看当前用户的crontab，输入 crontab -l<br>编辑crontab，输入 crontab -e<br>删除crontab，输入 crontab -r</p>
 <p>00 12 * * 1 totem &#x2F;home&#x2F;kqgeo&#x2F;音乐&#x2F;雾.mp3<br>00 12 * * 2 totem &#x2F;home&#x2F;kqgeo&#x2F;音乐&#x2F;雾.mp3<br>00 12 * * 3 totem &#x2F;home&#x2F;kqgeo&#x2F;音乐&#x2F;雾.mp3<br>00 12 * * 4 totem &#x2F;home&#x2F;kqgeo&#x2F;音乐&#x2F;雾.mp3<br>00 12 * * 5 totem &#x2F;home&#x2F;kqgeo&#x2F;音乐&#x2F;雾.mp3<br>30 13 * * 1 totem &#x2F;home&#x2F;kqgeo&#x2F;音乐&#x2F;1_The\ Rain.mp3<br>30 13 * * 2 totem &#x2F;home&#x2F;kqgeo&#x2F;音乐&#x2F;2_城南花已开.mp3<br>30 13 * * 3 totem &#x2F;home&#x2F;kqgeo&#x2F;音乐&#x2F;3_いつも何度でも.mp3<br>30 13 * * 4 totem &#x2F;home&#x2F;kqgeo&#x2F;音乐&#x2F;4_Sentient.mp3<br>30 13 * * 5 totem &#x2F;home&#x2F;kqgeo&#x2F;音乐&#x2F;5_勿念他归.mp3</p>
@@ -499,7 +506,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/10/arch%E5%AE%89%E8%A3%85/">
+                <a href="/2022/05/10/arch_pacman/">
                     <div class="card-image">
                         
                         
@@ -511,9 +518,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            光盘引导，特殊情况需要固定IP
-引导界面操作ip addr change 192.168.200.94&#x2F;24 dev ens192			#固定IP
-ip route add default via 192.168.200.254	
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -550,7 +555,7 @@ ip route add default via 192.168.200.254
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/08/centos%E5%BD%BB%E5%BA%95%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6/">
+                <a href="/2022/05/08/centos_remove/">
                     <div class="card-image">
                         
                         
@@ -571,8 +576,12 @@ ip route add default via 192.168.200.254
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            易
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/centos/" class="post-category">
+                                    centos
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -778,7 +787,7 @@ ip route add default via 192.168.200.254
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12k</span>
+                        class="white-color">12.8k</span>
             
             
             
