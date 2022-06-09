@@ -364,7 +364,7 @@ ss						#">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.1k
                 </div>
                 
 
@@ -451,9 +451,12 @@ systemctl disable firewalld.service								#永久关闭防火墙<span aria-hidd
 
 <h3 id="使用终端远程登陆"><a href="#使用终端远程登陆" class="headerlink" title="使用终端远程登陆"></a>使用终端远程登陆</h3><ul>
 <li><p>ssh空格@IP，cmd进入<code>ssh root@172.3.4.249</code></p>
-<ul>
-<li>1.tab键			用于自动不全命令&#x2F;文件名&#x2F;目录名<br>2.ctrl+l		清理终端显示<br>3.clear&#x2F;cls		清理终端显示<br>4.ctrl+c		终止当前操作</li>
-</ul>
+<pre class="line-numbers language-none"><code class="language-none">1.tab键			用于自动不全命令&#x2F;文件名&#x2F;目录名
+2.ctrl+l		清理终端显示
+3.clear&#x2F;cls		清理终端显示
+4.ctrl+c		终止当前操作
+5.ctrl+r		搜索历史命令
+history			显示历史命令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>scp (secure copy)		#linux下基于ssh登录进行安全的远程文件拷贝命令</p>
 <ul>
@@ -474,12 +477,15 @@ scp 本地文件	远程用户名@远程ip:远程文件夹&#x2F;<span aria-hidden
 </li>
 <li><p>在线安装个编辑器<code>yum -y install vim</code></p>
 </li>
-<li><p>安装本地rpm包<code>rpm -ivh xxx.rpm</code></p>
+<li><p>安装本地rpm包提示安装进度条<code>rpm -ivh xxx.rpm</code></p>
+</li>
+<li><p>卸载<code>rpm -e xxx</code></p>
 </li>
 <li><p>强制卸载</p>
 <pre class="line-numbers language-none"><code class="language-none">rpm -qa|grep xxx
 rpm -e --nodeps xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ul>
+<p><strong>查看软件配置文件路径</strong><code>rpm -qc xxx</code></p>
 <h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><ul>
 <li>使用vi打开文件，默认是命令模式，需要输入a&#x2F;i进入编辑模式，然后输入文本，按下esc键，回到命令模式<ul>
 <li>强制保存退出<code>:wq!</code></li>
@@ -505,9 +511,22 @@ ps -ef|grep xx						#查看父进程
 kill -9 进程数字					 #强制结束进程<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="操作服务"><a href="#操作服务" class="headerlink" title="操作服务"></a>操作服务</h4><pre class="line-numbers language-none"><code class="language-none">systemctl start service_name		#服务启动
+service service_name start
 systemctl stop service_name			#服务停止
+service service_name stop
+systemctl status service_name		#服务状态
+service service_name status
 systemctl enable service_name		#加入自启动
-systemctl disable service_name		#移除自启动<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+chkconfig --add service_name
+systemctl disable service_name		#移除自启动
+chkconfig --del service_name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="开机脚本"><a href="#开机脚本" class="headerlink" title="开机脚本"></a>开机脚本</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;init.d&#x2F;xxx			#新建开机脚本
+chmod +x &#x2F;etc&#x2F;init.d&#x2F;xxx	#赋权
+chkconfig --add xxx			#加入开机自启
+chkconfig --list			#查看开机列表
+systemctl list-unit-files | grep nginx		#搜索nginx的开机启动状态
+systemctl list-unit-files | grep enabled	#搜索全部已启动的服务，enabled 启用；disabled 禁用。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h4><p>查看系统当前编码<code>vim /etc/locale.conf</code>永久使用中文</p>
 <pre class="line-numbers language-none"><code class="language-none">LANG&#x3D;&quot;zh_CN.UTF-8&quot;
@@ -807,13 +826,13 @@ tar zcvf xxx.tar.gz .&#x2F;xxx&#x2F;						#压缩当前目录下的xxx文件夹<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/01/centos_tomcat/">
+                <a href="/2022/04/01/halo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="centos_tomcat">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="halo搭建">
                         
-                        <span class="card-title">centos_tomcat</span>
+                        <span class="card-title">halo搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -824,14 +843,14 @@ tar zcvf xxx.tar.gz .&#x2F;xxx&#x2F;						#压缩当前目录下的xxx文件夹<
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/centos/" class="post-category">
-                                    centos
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    博客
                                 </a>
                             
                             
@@ -841,12 +860,12 @@ tar zcvf xxx.tar.gz .&#x2F;xxx&#x2F;						#压缩当前目录下的xxx文件夹<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/centos/">
-                        <span class="chip bg-color">centos</span>
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
                     </a>
                     
-                    <a href="/tags/tomcat/">
-                        <span class="chip bg-color">tomcat</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
@@ -1043,7 +1062,7 @@ tar zcvf xxx.tar.gz .&#x2F;xxx&#x2F;						#压缩当前目录下的xxx文件夹<
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.2k</span>
+                        class="white-color">18k</span>
             
             
             

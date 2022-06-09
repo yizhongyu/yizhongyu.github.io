@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="redis, 备忘录">
     <meta name="description" content="Remote Dictionary Server	远程字典服务
-安装REDIS缓存安装部署
-	安装包直接放在root⽬录下
-	1、在&amp;#x2F;usr&amp;#x2F;local&amp;#x2F;下创建redis⽂件夹并进⼊
-cd &amp;#x2F;usr&amp;">
+安装yum安装
+#yum install epel-release -y		#可选
+yum install redis					#安装
+systemctl start redi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -365,7 +365,7 @@ cd &amp;#x2F;usr&amp;">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    922
+                    948
                 </div>
                 
 
@@ -386,24 +386,37 @@ cd &amp;#x2F;usr&amp;">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Remote Dictionary Server	远程字典服务</strong></p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre class="line-numbers language-none"><code class="language-none">REDIS缓存安装部署
-	安装包直接放在root⽬录下
-	1、在&#x2F;usr&#x2F;local&#x2F;下创建redis⽂件夹并进⼊
-cd &#x2F;usr&#x2F;local&#x2F;
-mkdir redis
-cd redis
-	2、将Redis安装包解压到&#x2F;usr&#x2F;local&#x2F;redis中即可
-tar zxvf &#x2F;root&#x2F;redis-5.0.14.tar.gz -C .&#x2F;
-	编译并安装
-cd redis-5.0.14&#x2F;
-make &amp;&amp; make install
-	将REDIS安装为系统服务并后台启动
-cd utils&#x2F;
-.&#x2F;install_server.sh
-	此处我全部选择的默认配置即可，有需要可以按需定制
-	查看REDIS服务启动情况
-systemctl status redis_6379.service
-	启动REDIS客户端并测试
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><strong>yum安装</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">#yum install epel-release -y		#可选
+yum install redis					#安装
+systemctl start redis				#启动Redis
+systemctl status redis				#查看Redis状态
+systemctl stop redis				#停止Redis
+systemctl restart redis				#重启Redis
+systemctl enable redis				#加入开机自启
+firewall-cmd --zone&#x3D;public --add-port&#x3D;6379&#x2F;tcp --permanent		#防火墙开放端口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>源码安装</strong></p>
+<p>上传redis源码包到服务器</p>
+<pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\redis-5.0.14.tar.gz root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>解压</p>
+<pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;usr&#x2F;local&#x2F;redis
+tar -zxvf &#x2F;opt&#x2F;redis-5.0.14.tar.gz -C &#x2F;usr&#x2F;local&#x2F;redis<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>编译安装</p>
+<pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis-5.0.14&#x2F;
+make &amp;&amp; make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>将REDIS安装为系统服务并后台启动</p>
+<pre class="line-numbers language-none"><code class="language-none">cd utils&#x2F;
+.&#x2F;install_server.sh			#此处我全部选择的默认配置即可，有需要可以按需定制<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>查看REDIS服务启动情况</p>
+<pre class="line-numbers language-none"><code class="language-none">ps -aux|grep redis
+systemctl status redis_6379.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">	启动REDIS客户端并测试
 	启动⾃带的redis-cli客户端
 redis-cli
 set foo bar
@@ -421,15 +434,7 @@ vim &#x2F;etc&#x2F;redis&#x2F;6379.conf
 	去掉注释，将foobared修改为⾃⼰想要的密码，保存即可。
 	保存，重启Redis服务
 systemctl restart redis_6379.service
-	auth 密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>或者</p>
-<pre class="line-numbers language-none"><code class="language-none">tar zxvf &#x2F;root&#x2F;redis-5.0.14.tar.gz -C .&#x2F;
-make &amp;&amp; make install
-cd utils&#x2F;
-.&#x2F;install_server.sh
-systemctl status redis_6379.service
-vim &#x2F;etc&#x2F;redis&#x2F;6379.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	auth 密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre class="line-numbers language-none"><code class="language-none">redis-server redis.conf				#启动(redis服务加配置文件)
 redis-cli -p 6379					#连接(redis客户端加IP加端口号)
@@ -600,13 +605,13 @@ auth 123							#登录<span aria-hidden="true" class="line-numbers-rows"><span><
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/19/zookeeper/">
+                <a href="/2022/05/19/ZooKeeper/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="zookeeper">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="ZooKeeper">
                         
-                        <span class="card-title">zookeeper</span>
+                        <span class="card-title">ZooKeeper</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -638,8 +643,8 @@ auth 123							#登录<span aria-hidden="true" class="line-numbers-rows"><span><
                         <span class="chip bg-color">centos</span>
                     </a>
                     
-                    <a href="/tags/zookeeper/">
-                        <span class="chip bg-color">zookeeper</span>
+                    <a href="/tags/ZooKeeper/">
+                        <span class="chip bg-color">ZooKeeper</span>
                     </a>
                     
                 </div>
@@ -889,7 +894,7 @@ auth 123							#登录<span aria-hidden="true" class="line-numbers-rows"><span><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.2k</span>
+                        class="white-color">18k</span>
             
             
             

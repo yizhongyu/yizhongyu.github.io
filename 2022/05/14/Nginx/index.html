@@ -6,9 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Nginx, 备忘录">
     <meta name="description" content="负载均衡中间件 反向代理
-创建工作目录
-mkdir &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;nginx
-tar zxvf &amp;#x2F;root&amp;#x2F;nginx-1.17.10.tar.gz -C &amp;#x2F;usr&amp;#x2">
+上传Nginx源码包到服务器
+scp E:\app\Linux\nginx-1.21.6.tar.gz root@192.168.200.99:&amp;#x2F;opt
+
+解压tar zxvf &amp;#x2F;opt&amp;#x2">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -360,7 +361,7 @@ tar zxvf &amp;#x2F;root&amp;#x2F;nginx-1.17.10.tar.gz -C &amp;#x2F;usr&amp;#x2">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    155
+                    670
                 </div>
                 
 
@@ -381,19 +382,157 @@ tar zxvf &amp;#x2F;root&amp;#x2F;nginx-1.17.10.tar.gz -C &amp;#x2F;usr&amp;#x2">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>负载均衡中间件 反向代理</p>
-<p>创建工作目录</p>
-<pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;usr&#x2F;local&#x2F;nginx
-tar zxvf &#x2F;root&#x2F;nginx-1.17.10.tar.gz -C &#x2F;usr&#x2F;local&#x2F;nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>上传Nginx源码包到服务器</p>
+<pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\nginx-1.21.6.tar.gz root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>安装环境</p>
-<pre class="line-numbers language-none"><code class="language-none">yum -y install pcre-devel openssl openssl-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><pre class="line-numbers language-none"><code class="language-none">tar zxvf &#x2F;opt&#x2F;nginx-1.21.6.tar.gz -C &#x2F;usr&#x2F;local&#x2F;src<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>安装Nginx</p>
-<pre class="line-numbers language-none"><code class="language-none">cd nginx-1.17.10
+<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><pre class="line-numbers language-none"><code class="language-none">yum -y install pcre-devel libtool openssl openssl-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;nginx-1.21.6
 .&#x2F;configure
 make &amp;&amp; make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>​	安装完成后， Nginx的可执⾏⽂件位置位于&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx<br>​	启动NGINX<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx<br>​	停⽌Nginx服务<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s stop	<br>​	重新加载Nginx<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s reload	<br>​	配置⽂件位于&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</p>
+<h3 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h3><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;init.d&#x2F;nginx
+#!&#x2F;bin&#x2F;sh
+#
+# nginx - this script starts and stops the nginx daemon
+#
+# chkconfig:   - 85 15
+# description:  NGINX is an HTTP(S) server, HTTP(S) reverse \
+#               proxy and IMAP&#x2F;POP3 proxy server
+# processname: nginx
+# config:      &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf
+# config:      &#x2F;etc&#x2F;sysconfig&#x2F;nginx
+# pidfile:     &#x2F;var&#x2F;run&#x2F;nginx.pid
+
+# Source function library.
+. &#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;functions
+
+# Source networking configuration.
+. &#x2F;etc&#x2F;sysconfig&#x2F;network
+
+# Check that networking is up.
+[ &quot;$NETWORKING&quot; &#x3D; &quot;no&quot; ] &amp;&amp; exit 0
+
+nginx&#x3D;&quot;&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx&quot;
+prog&#x3D;$(basename $nginx)
+
+NGINX_CONF_FILE&#x3D;&quot;&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf&quot;
+
+[ -f &#x2F;etc&#x2F;sysconfig&#x2F;nginx ] &amp;&amp; . &#x2F;etc&#x2F;sysconfig&#x2F;nginx
+
+lockfile&#x3D;&#x2F;var&#x2F;lock&#x2F;subsys&#x2F;nginx
+
+make_dirs() &#123;
+   # make required directories
+   user&#x3D;&#96;$nginx -V 2&gt;&amp;1 | grep &quot;configure arguments:.*--user&#x3D;&quot; | sed &#39;s&#x2F;[^*]*--user&#x3D;\([^ ]*\).*&#x2F;\1&#x2F;g&#39; -&#96;
+   if [ -n &quot;$user&quot; ]; then
+      if [ -z &quot;&#96;grep $user &#x2F;etc&#x2F;passwd&#96;&quot; ]; then
+         useradd -M -s &#x2F;bin&#x2F;nologin $user
+      fi
+      options&#x3D;&#96;$nginx -V 2&gt;&amp;1 | grep &#39;configure arguments:&#39;&#96;
+      for opt in $options; do
+          if [ &#96;echo $opt | grep &#39;.*-temp-path&#39;&#96; ]; then
+              value&#x3D;&#96;echo $opt | cut -d &quot;&#x3D;&quot; -f 2&#96;
+              if [ ! -d &quot;$value&quot; ]; then
+                  # echo &quot;creating&quot; $value
+                  mkdir -p $value &amp;&amp; chown -R $user $value
+              fi
+          fi
+       done
+    fi
+&#125;
+
+start() &#123;
+    [ -x $nginx ] || exit 5
+    [ -f $NGINX_CONF_FILE ] || exit 6
+    make_dirs
+    echo -n $&quot;Starting $prog: &quot;
+    daemon $nginx -c $NGINX_CONF_FILE
+    retval&#x3D;$?
+    echo
+    [ $retval -eq 0 ] &amp;&amp; touch $lockfile
+    return $retval
+&#125;
+
+stop() &#123;
+    echo -n $&quot;Stopping $prog: &quot;
+    killproc $prog -QUIT
+    retval&#x3D;$?
+    echo
+    [ $retval -eq 0 ] &amp;&amp; rm -f $lockfile
+    return $retval
+&#125;
+
+restart() &#123;
+    configtest || return $?
+    stop
+    sleep 1
+    start
+&#125;
+
+reload() &#123;
+    configtest || return $?
+    echo -n $&quot;Reloading $prog: &quot;
+    killproc $prog -HUP
+    retval&#x3D;$?
+    echo
+&#125;
+
+force_reload() &#123;
+    restart
+&#125;
+
+configtest() &#123;
+  $nginx -t -c $NGINX_CONF_FILE
+&#125;
+
+rh_status() &#123;
+    status $prog
+&#125;
+
+rh_status_q() &#123;
+    rh_status &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1
+&#125;
+
+case &quot;$1&quot; in
+    start)
+        rh_status_q &amp;&amp; exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart|configtest)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    force-reload)
+        force_reload
+        ;;
+    status)
+        rh_status
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 0
+            ;;
+    *)
+        echo $&quot;Usage: $0 &#123;start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest&#125;&quot;
+        exit 2
+esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">chmod +x &#x2F;etc&#x2F;init.d&#x2F;nginx
+chkconfig --add nginx
+chkconfig nginx on
+service nginx start
+service nginx status...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -792,7 +931,7 @@ make &amp;&amp; make install<span aria-hidden="true" class="line-numbers-rows"><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.2k</span>
+                        class="white-color">18k</span>
             
             
             

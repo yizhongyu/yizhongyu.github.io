@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="centos环境变量, 备忘录">
     <meta name="description" content="不修改&amp;#x2F;etc&amp;#x2F;profile，新增&amp;#x2F;etc&amp;#x2F;profile.d&amp;#x2F;文件夹下.sh文件
-参考 55  for i in /etc/profile.d/*.sh ; do
-&amp;#x2F;etc&amp;#">
+参考&amp;#x2F;etc&amp;#x2F;profile中 55  for i in /etc/profile.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -359,7 +358,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    146
+                    206
                 </div>
                 
 
@@ -380,10 +379,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>不修改&#x2F;etc&#x2F;profile，新增&#x2F;etc&#x2F;profile.d&#x2F;文件夹下.sh文件</p>
-<p>参考 <code>55  for i in /etc/profile.d/*.sh ; do</code></p>
+<p>参考&#x2F;etc&#x2F;profile中 <code>55  for i in /etc/profile.d/*.sh ; do</code>这句</p>
 <h3 id="x2F-etc-x2F-profile-d-x2F-sh"><a href="#x2F-etc-x2F-profile-d-x2F-sh" class="headerlink" title="&#x2F;etc&#x2F;profile.d&#x2F;*.sh"></a>&#x2F;etc&#x2F;profile.d&#x2F;*.sh</h3><p>弃用 vim &#x2F;etc&#x2F;profile</p>
 <pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;profile.d&#x2F;java.sh
-export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;jdk1.8.0_333-amd64
+export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;default
 export CLASSPATH&#x3D;$JAVA_HOME&#x2F;lib&#x2F;
 export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -394,6 +393,14 @@ export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin<span aria-hi
 <pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;profile.d&#x2F;git.sh
 export GIT_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;git&#x2F;git-2.36.1
 export PATH&#x3D;$PATH:$GIT_HOME&#x2F;bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;profile.d&#x2F;hbase.sh
+export HBASE_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;hbase&#x2F;hbase-2.4.12&#x2F;
+export PATH&#x3D;$PATH:$HBASE_HOME&#x2F;bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;profile.d&#x2F;maven.sh
+export MAVEN_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;maven
+export PATH&#x3D;$MAVEN_HOME&#x2F;bin:$PATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>source &#x2F;etc&#x2F;profile</p>
 
@@ -562,13 +569,13 @@ export PATH&#x3D;$PATH:$GIT_HOME&#x2F;bin<span aria-hidden="true" class="line-nu
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/19/zookeeper/">
+                <a href="/2022/05/19/ZooKeeper/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="zookeeper">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="ZooKeeper">
                         
-                        <span class="card-title">zookeeper</span>
+                        <span class="card-title">ZooKeeper</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -600,8 +607,8 @@ export PATH&#x3D;$PATH:$GIT_HOME&#x2F;bin<span aria-hidden="true" class="line-nu
                         <span class="chip bg-color">centos</span>
                     </a>
                     
-                    <a href="/tags/zookeeper/">
-                        <span class="chip bg-color">zookeeper</span>
+                    <a href="/tags/ZooKeeper/">
+                        <span class="chip bg-color">ZooKeeper</span>
                     </a>
                     
                 </div>
@@ -798,7 +805,7 @@ export PATH&#x3D;$PATH:$GIT_HOME&#x2F;bin<span aria-hidden="true" class="line-nu
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.2k</span>
+                        class="white-color">18k</span>
             
             
             

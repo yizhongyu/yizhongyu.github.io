@@ -5,12 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="halo搭建, 备忘录">
-    <meta name="description" content="安装java
-yum install java-11-openjdk -y
-
-nohup java -jar halo-1.5.0.jar &amp;amp;
-mkdir &amp;#x2F;usr&amp;#x2F;local&amp;#x2F;nginx
-cd &amp;#x">
+    <meta name="description" content="Halo [ˈheɪloʊ]，一款现代化的开源博客&amp;#x2F;CMS系统。
+前期准备（Java&amp;#x2F;nginx)
+安装java。。。。
+目前运行 Halo 的最低依赖要求为 JRE 11，请务必确保在进行下面操作之前已经正确安装了 J">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -366,7 +364,7 @@ cd &amp;#x">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    203
+                    542
                 </div>
                 
 
@@ -386,48 +384,78 @@ cd &amp;#x">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>安装java</p>
-<pre class="line-numbers language-none"><code class="language-none">yum install java-11-openjdk -y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p><strong>Halo</strong> [ˈheɪloʊ]，一款现代化的开源博客&#x2F;CMS系统。</p>
+<p><strong>前期准备</strong>（Java&#x2F;nginx)</p>
+<p>安装java。。。。</p>
+<p>目前运行 Halo 的最低依赖要求为 JRE 11，请务必确保在进行下面操作之前已经正确安装了 JRE。</p>
+<p>目前介绍两种 Linux 发行版的安装方式，均为 OpenJRE，不推荐 Oracle 版本。</p>
+<pre class="line-numbers language-none"><code class="language-none">rpm -qa | grep java
+yum -y remove xxx
+sudo yum install java-11-openjdk -y
+java -version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>nohup java -jar halo-1.5.0.jar &amp;</p>
-<pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;usr&#x2F;local&#x2F;nginx
-cd &#x2F;usr&#x2F;local&#x2F;nginx
-tar zxvf &#x2F;root&#x2F;nginx-1.17.10.tar.gz -C .&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>安装nginx。。。</p>
+<h3 id="安装halo"><a href="#安装halo" class="headerlink" title="安装halo"></a>安装halo</h3><h5 id="创建工作目录"><a href="#创建工作目录" class="headerlink" title="创建工作目录"></a>创建工作目录</h5><pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;root&#x2F;.halo &amp;&amp; cd &#x2F;root&#x2F;.halo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">yum -y install pcre-devel
-yum -y install openssl openssl-devel<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="下载运行包官网安装包"><a href="#下载运行包官网安装包" class="headerlink" title="下载运行包官网安装包"></a>下载运行包<a target="_blank" rel="noopener" href="https://docs.halo.run/getting-started/downloads">官网安装包</a></h4><pre class="line-numbers language-none"><code class="language-none">curl -L https:&#x2F;&#x2F;github.com&#x2F;halo-dev&#x2F;halo&#x2F;releases&#x2F;download&#x2F;v1.5.3&#x2F;halo-1.5.3.jar --output halo.jar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">cd nginx-1.17.10
-.&#x2F;configure
-make &amp;&amp; make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="下载示例配置文件到"><a href="#下载示例配置文件到" class="headerlink" title="下载示例配置文件到"></a>下载示例配置文件到</h4><pre class="line-numbers language-none"><code class="language-none">wget https:&#x2F;&#x2F;dl.halo.run&#x2F;config&#x2F;application-template.yaml -O .&#x2F;application.yaml <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>​	安装完成后， Nginx的可执⾏⽂件位置位于&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx<br>启动NGINX</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="编辑配置文件，配置数据库或者端口等，如需配置请参考-配置参考"><a href="#编辑配置文件，配置数据库或者端口等，如需配置请参考-配置参考" class="headerlink" title="编辑配置文件，配置数据库或者端口等，如需配置请参考 配置参考"></a>编辑配置文件，配置数据库或者端口等，如需配置请参考 <a target="_blank" rel="noopener" href="https://docs.halo.run/getting-started/config">配置参考</a></h5><pre class="line-numbers language-none"><code class="language-none">vim application.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>停⽌Nginx服务</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s stop	<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>测试运行 Halo</p>
+<pre class="line-numbers language-none"><code class="language-none">java -jar halo.jar
+nohup java -jar halo.jar &amp;			#或者后台运行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>重新加载Nginx</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s reload	<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>看到类似以下日志输出，则代表启动成功</p>
+<pre class="line-numbers language-none"><code class="language-none">run.halo.app.listener.StartedListener    : Halo started at         http:&#x2F;&#x2F;127.0.0.1:8090
+run.halo.app.listener.StartedListener    : Halo admin started at   http:&#x2F;&#x2F;127.0.0.1:8090&#x2F;admin
+run.halo.app.listener.StartedListener    : Halo has started successfully!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>配置⽂件位于&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</p>
-<pre class="line-numbers language-none"><code class="language-none">   upstream blog
-   &#123;
-	server 127.0.0.1:8090;
-   &#125;
+<p>打开 <code>http://ip:8090</code> 即可看到安装引导界面。</p>
+<h3 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h3><h4 id="下载-Halo-官方的-halo-service-模板"><a href="#下载-Halo-官方的-halo-service-模板" class="headerlink" title="下载 Halo 官方的 halo.service 模板"></a>下载 Halo 官方的 halo.service 模板</h4><pre class="line-numbers language-none"><code class="language-none">wget https:&#x2F;&#x2F;dl.halo.run&#x2F;config&#x2F;halo.service -O &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;halo.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-location &#x2F;
-&#123;
-	proxy_pass http:&#x2F;&#x2F;blog;                                     
-	proxy_set_header HOST $host;                                
-	proxy_set_header X-Forwarded-Proto $scheme;                 
-	proxy_set_header X-Real-IP $remote_addr;                    
-	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+<h5 id="修改-halo-service"><a href="#修改-halo-service" class="headerlink" title="修改 halo.service"></a>修改 halo.service</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;halo.service
+[Unit]
+Description&#x3D;Halo Service
+Documentation&#x3D;https:&#x2F;&#x2F;halo.run
+After&#x3D;network-online.target
+Wants&#x3D;network-online.target
+
+[Service]
+Type&#x3D;simple
+User&#x3D;USER
+ExecStart&#x3D;&#x2F;usr&#x2F;bin&#x2F;java -server -Xms256m -Xmx256m -jar YOUR_JAR_PATH&#x3D;&#x2F;root&#x2F;.halo&#x2F;halo.jar
+ExecStop&#x3D;&#x2F;bin&#x2F;kill -s QUIT $MAINPID
+Restart&#x3D;always
+StandOutput&#x3D;syslog
+
+StandError&#x3D;inherit
+
+[Install]
+WantedBy&#x3D;multi-user.target<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">systemctl daemon-reload					#重新加载 systemd
+systemctl start halo					#运行服务
+systemctl enable halo					#在系统启动时启动服务
+journalctl -n 20 -u halo				#查看服务日志检查启动状态<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="nginx配置文件"><a href="#nginx配置文件" class="headerlink" title="nginx配置文件"></a>nginx配置文件</h3><pre class="line-numbers language-none"><code class="language-none">upstream halo &#123;
+  server 127.0.0.1:8090;
 &#125;
-.&#x2F;nginx -s reload<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>笔记一团糟，有空再改</p>
+server &#123;
+  listen 80;
+  listen [::]:80;
+  server_name www.yourdomain.com;
+  client_max_body_size 1024m;
+  location &#x2F; &#123;
+    proxy_pass http:&#x2F;&#x2F;halo;
+    proxy_set_header HOST $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -549,13 +577,13 @@ location &#x2F;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/01/centos_tomcat/">
+                <a href="/2022/05/01/centos7/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="centos_tomcat">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="centos7基础命令">
                         
-                        <span class="card-title">centos_tomcat</span>
+                        <span class="card-title">centos7基础命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -572,8 +600,8 @@ location &#x2F;
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/centos/" class="post-category">
-                                    centos
+                            <a href="/categories/os/" class="post-category">
+                                    os
                                 </a>
                             
                             
@@ -585,10 +613,6 @@ location &#x2F;
                     
                     <a href="/tags/centos/">
                         <span class="chip bg-color">centos</span>
-                    </a>
-                    
-                    <a href="/tags/tomcat/">
-                        <span class="chip bg-color">tomcat</span>
                     </a>
                     
                 </div>
@@ -623,8 +647,12 @@ location &#x2F;
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            易
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -830,7 +858,7 @@ location &#x2F;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.2k</span>
+                        class="white-color">18k</span>
             
             
             

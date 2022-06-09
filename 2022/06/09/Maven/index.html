@@ -4,12 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="centos_tomcat, 备忘录">
-    <meta name="description" content="在Linux系统下配置service启动和关闭(:set ff&amp;#x3D;unix	#注意格式)
-vim &amp;#x2F;etc&amp;#x2F;init.d&amp;#x2F;tomcat
-
-#!&amp;#x2F;bin&amp;#x2F;bash  
-# This i">
+    <meta name="keywords" content="Maven项⽬构建和管理⼯具安装, 备忘录">
+    <meta name="description" content="Maven 翻译为”专家”、”内行”，是 Apache 下的一个纯 Java 开发的开源项目。基于项目对象模型（缩写：POM）概念，Maven利用一个中央信息片断能管理一个项目的构建、报告和文档等步骤。
+Maven 是一个项目管理工具，可以">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +20,7 @@ vim &amp;#x2F;etc&amp;#x2F;init.d&amp;#x2F;tomcat
 
     
 
-    <title>centos_tomcat | 备忘录</title>
+    <title>Maven项⽬构建和管理⼯具安装 | 备忘录</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -206,12 +203,12 @@ vim &amp;#x2F;etc&amp;#x2F;init.d&amp;#x2F;tomcat
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">centos_tomcat</h1>
+                    <h1 class="description center-align post-title">Maven项⽬构建和管理⼯具安装</h1>
                 </div>
             </div>
         </div>
@@ -327,12 +324,8 @@ vim &amp;#x2F;etc&amp;#x2F;init.d&amp;#x2F;tomcat
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/centos/">
-                                <span class="chip bg-color">centos</span>
-                            </a>
-                        
-                            <a href="/tags/tomcat/">
-                                <span class="chip bg-color">tomcat</span>
+                            <a href="/tags/Maven/">
+                                <span class="chip bg-color">Maven</span>
                             </a>
                         
                     </div>
@@ -356,7 +349,7 @@ vim &amp;#x2F;etc&amp;#x2F;init.d&amp;#x2F;tomcat
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-01
+                    2022-06-09
                 </div>
                 
 
@@ -365,7 +358,7 @@ vim &amp;#x2F;etc&amp;#x2F;init.d&amp;#x2F;tomcat
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    322
+                    357
                 </div>
                 
 
@@ -385,88 +378,32 @@ vim &amp;#x2F;etc&amp;#x2F;init.d&amp;#x2F;tomcat
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在Linux系统下配置service启动和关闭(:set ff&#x3D;unix	#注意格式)</p>
-<pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;init.d&#x2F;tomcat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>Maven 翻译为”专家”、”内行”，是 Apache 下的一个纯 Java 开发的开源项目。基于项目对象模型（缩写：POM）概念，Maven利用一个中央信息片断能管理一个项目的构建、报告和文档等步骤。</p>
+<p>Maven 是一个项目管理工具，可以对 Java 项目进行构建、依赖管理。</p>
+<p>Maven 也可被用于构建和管理各种项目，例如 C#，Ruby，Scala 和其他语言编写的项目。Maven 曾是 Jakarta 项目的子项目，现为由 Apache 软件基金会主持的独立 Apache 项目。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>上传Maven源码包到服务器</p>
+<pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\apache-maven-3.8.5-bin.tar.gz root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">#!&#x2F;bin&#x2F;bash  
-# This is the init script for starting up the  
-#  Jakarta Tomcat server  
-#  
-# chkconfig: 345 91 10  
-# description: Starts and stops the Tomcat daemon.  
-#  
+<p>解压</p>
+<pre class="line-numbers language-none"><code class="language-none">tar -zxvf &#x2F;opt&#x2F;apache-maven-3.8.5-bin.tar.gz -C &#x2F;usr&#x2F;local
+mv &#x2F;usr&#x2F;local&#x2F;apache-maven-3.8.5 &#x2F;usr&#x2F;local&#x2F;maven<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-# Source function library.  
-. &#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;functions  
+<h4 id="配置MAVEN阿⾥云加速镜像源"><a href="#配置MAVEN阿⾥云加速镜像源" class="headerlink" title="配置MAVEN阿⾥云加速镜像源"></a>配置MAVEN阿⾥云加速镜像源</h4><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;local&#x2F;maven&#x2F;conf&#x2F;settings.xml
+在&lt;mirrors&gt;&lt;&#x2F;mirrors&gt;标签对⾥添加如下内容
+    &lt;mirror&gt;
+      &lt;id&gt;alimaven&lt;&#x2F;id&gt;
+      &lt;name&gt;aliyun maven&lt;&#x2F;name&gt;
+      &lt;url&gt;http:&#x2F;&#x2F;maven.aliyun.com&#x2F;nexus&#x2F;content&#x2F;groups&#x2F;public&#x2F;&lt;&#x2F;url&gt;
+      &lt;mirrorOf&gt;central&lt;&#x2F;mirrorOf&gt;
+    &lt;&#x2F;mirror&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-# Get config.  
-. &#x2F;etc&#x2F;sysconfig&#x2F;network  
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;profile.d&#x2F;maven.sh
+export MAVEN_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;maven
+export PATH&#x3D;$MAVEN_HOME&#x2F;bin:$PATH
+source &#x2F;etc&#x2F;profile					#刷新环境变量
+mvn –v								#检验安装结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-# Check that networking is up.  
-[ &quot;$&#123;NETWORKING&#125;&quot; &#x3D; &quot;no&quot; ] &amp;&amp; exit 0
 
-export JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;java&#x2F;jdk1.8.0_161					#自己的jdk安装目录
-tomcat_home&#x3D;&#x2F;usr&#x2F;local&#x2F;tomcat									#自己的tomcat安装目录
-startup&#x3D;$tomcat_home&#x2F;bin&#x2F;startup.sh  
-shutdown&#x3D;$tomcat_home&#x2F;bin&#x2F;shutdown.sh  
-
-start()&#123;  
-   echo -n &quot;Starting Tomcat service:&quot;  
-   cd $tomcat_home  
-   $startup  
-   echo &quot;tomcat is succeessfully started up&quot;  
-&#125;  
-
-stop()&#123;  
-   echo -n &quot;Shutting down tomcat: &quot;  
-   cd $tomcat_home  
-   $shutdown  
-   echo &quot;tomcat is succeessfully shut down.&quot;  
-&#125;  
-
-status()&#123;  
-    numproc&#x3D;&#96;ps -ef | grep catalina | grep -v &quot;grep catalina&quot; | wc -l&#96;  
-    if [ $numproc -gt 0 ]; then  
-       echo &quot;Tomcat is running...&quot;  
-    else  
-       echo &quot;Tomcat is stopped...&quot;  
-    fi  
-&#125;  
-
-restart()&#123;  
-   stop  
-   start  
-&#125;    
-# See how we were called.  
-case &quot;$1&quot; in  
-start)  
-   start  
-   ;;  
-stop)  
-   stop  
-   ;;  
-status)  
-   status  
-   ;;  
-restart)  
-   restart  
-   ;;  
-*)  
-   echo $&quot;Usage: $0 &#123;start|stop|status|restart&#125;&quot;  
-   exit 1  
-esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>给权限</p>
-<pre class="line-numbers language-none"><code class="language-none">chmod 755 &#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;tomcat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>将文件加入到服务队列中</p>
-<pre class="line-numbers language-none"><code class="language-none">chkconfig --add tomcat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>查看tomcat 文件是否加入服务列表成功</p>
-<pre class="line-numbers language-none"><code class="language-none">chkconfig --list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>设置服务开机自启动</p>
-<pre class="line-numbers language-none"><code class="language-none">chkconfig tomcat on<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -492,7 +429,7 @@ esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yizhongyu.github.io/2022/05/01/centos_tomcat/">https://yizhongyu.github.io/2022/05/01/centos_tomcat/</a>
+                    <a href="https://yizhongyu.github.io/2022/06/09/Maven/">https://yizhongyu.github.io/2022/06/09/Maven/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -530,12 +467,8 @@ esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/centos/">
-                                    <span class="chip bg-color">centos</span>
-                                </a>
-                            
-                                <a href="/tags/tomcat/">
-                                    <span class="chip bg-color">tomcat</span>
+                                <a href="/tags/Maven/">
+                                    <span class="chip bg-color">Maven</span>
                                 </a>
                             
                         </div>
@@ -587,13 +520,13 @@ esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/01/centos7/">
+                <a href="/2022/06/09/MySQL_use/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="centos7基础命令">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="MySQL数据库命令行使用">
                         
-                        <span class="card-title">centos7基础命令</span>
+                        <span class="card-title">MySQL数据库命令行使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -604,14 +537,14 @@ esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-09
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/os/" class="post-category">
-                                    os
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -625,6 +558,10 @@ esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                         <span class="chip bg-color">centos</span>
                     </a>
                     
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -636,13 +573,13 @@ esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/01/halo/">
+                <a href="/2022/06/09/Tomcat/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="halo搭建">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Tomcat安装">
                         
-                        <span class="card-title">halo搭建</span>
+                        <span class="card-title">Tomcat安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -653,14 +590,14 @@ esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    博客
+                            <a href="/categories/centos/" class="post-category">
+                                    centos
                                 </a>
                             
                             
@@ -670,12 +607,8 @@ esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
-                    </a>
-                    
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/Tomcat/">
+                        <span class="chip bg-color">Tomcat</span>
                     </a>
                     
                 </div>
@@ -872,7 +805,7 @@ esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.2k</span>
+                        class="white-color">18k</span>
             
             
             

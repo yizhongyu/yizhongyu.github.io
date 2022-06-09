@@ -13,8 +13,7 @@ yum list | grep xx
 yum -y remove
 
 需要删除的数据目录
-rm -rf &amp;#x2F;var&amp;#x2F;lib&amp;#x2F;xx&amp;#x2F;*
-rm ">
+find &amp;#x2F; elasticsearch | grep elasticsear">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -366,7 +365,7 @@ rm ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    51
+                    96
                 </div>
                 
 
@@ -394,9 +393,16 @@ rm ">
 yum -y remove<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>需要删除的数据目录</p>
-<pre class="line-numbers language-none"><code class="language-none">rm -rf &#x2F;var&#x2F;lib&#x2F;xx&#x2F;*
+<pre class="line-numbers language-none"><code class="language-none">find &#x2F; elasticsearch | grep elasticsearc		#例如搜索根目录下的所有elas
+rm -rf &#x2F;var&#x2F;lib&#x2F;xx&#x2F;*
 rm -rf &#x2F;etc&#x2F;xx&#x2F;*
-rm -rf &#x2F;usr&#x2F;lib&#x2F;xx&#x2F;*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+rm -rf &#x2F;usr&#x2F;lib&#x2F;xx&#x2F;*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>完全卸载mariadb</p>
+<pre class="line-numbers language-none"><code class="language-none">rpm -qa|grep mariadb
+yum -y remove mariadb
+rm -rf &#x2F;etc&#x2F;my.cnf*
+rm -rf &#x2F;var&#x2F;lib&#x2F;mysql*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -808,7 +814,7 @@ rm -rf &#x2F;usr&#x2F;lib&#x2F;xx&#x2F;*<span aria-hidden="true" class="line-num
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.2k</span>
+                        class="white-color">18k</span>
             
             
             

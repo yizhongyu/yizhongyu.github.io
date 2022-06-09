@@ -5,9 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="hexo搭建, 备忘录">
-    <meta name="description" content="安装node.jshexo需要node.js来支持
-node最新版 node长期支持版
-上传node源码包到服务器scp E:\app\Linux\node-v16.15.0-linux-x64.tar.xz root@39.106.67.">
+    <meta name="description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+安装node.jshexo需要Node.js&amp;#x2F;Git来支持
+
+Node.js(No">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -363,7 +364,7 @@ node最新版 node长期支持版
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    438
+                    519
                 </div>
                 
 
@@ -383,14 +384,22 @@ node最新版 node长期支持版
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h4><p><strong>hexo需要node.js来支持</strong></p>
+                <p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h4 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h4><p><strong>hexo需要Node.js&#x2F;Git来支持</strong></p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="http://nodejs.org/">Node.js</a>(Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://git-scm.com/">Git</a></p>
+</li>
+</ul>
+<p>安装</p>
 <p><a target="_blank" rel="noopener" href="https://nodejs.org/dist/latest/">node最新版</a> <a target="_blank" rel="noopener" href="https://nodejs.org/dist/v16.15.0/node-v16.15.0-linux-x64.tar.xz">node长期支持版</a></p>
-<h5 id="上传node源码包到服务器"><a href="#上传node源码包到服务器" class="headerlink" title="上传node源码包到服务器"></a>上传node源码包到服务器</h5><pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\node-v16.15.0-linux-x64.tar.xz root@39.106.67.52:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="上传node源码包到服务器"><a href="#上传node源码包到服务器" class="headerlink" title="上传node源码包到服务器"></a>上传node源码包到服务器</h5><pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\node-v16.15.0-linux-x64.tar.xz root@192.168.200.98:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h5 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h5><pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;usr&#x2F;local&#x2F;node
 tar -xJvf &#x2F;opt&#x2F;node-v16.15.0-linux-x64.tar.xz -C &#x2F;usr&#x2F;local&#x2F;node<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h5 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h5><pre class="line-numbers language-none"><code class="language-none">yum -y install epel-release wege gcc pcre-devel zlib-devel vim<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h5><pre class="line-numbers language-none"><code class="language-none">yum -y install epel-release wege gcc pcre-devel zlib-devel git-core<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h5 id="编辑主目录下的配置文件，添加路径"><a href="#编辑主目录下的配置文件，添加路径" class="headerlink" title="编辑主目录下的配置文件，添加路径"></a>编辑主目录下的配置文件，添加路径</h5><pre class="line-numbers language-none"><code class="language-none">vim ~&#x2F;.bash_profile
 export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;node&#x2F;node-v16.15.0-linux-x64&#x2F;bin:$PATH
@@ -561,18 +570,17 @@ tar -zcvf 博客.tar.gz .&#x2F;blog&#x2F;<span aria-hidden="true" class="line-nu
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/27/hexo/">
+                <a href="/2022/06/02/HBase/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="hexo搭建">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Apache HBase">
                         
-                        <span class="card-title">hexo搭建</span>
+                        <span class="card-title">Apache HBase</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -582,31 +590,30 @@ tar -zcvf 博客.tar.gz .&#x2F;blog&#x2F;<span aria-hidden="true" class="line-nu
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-27
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-02
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    博客
+                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
+                                    集群
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
+                    <a href="/tags/centos/">
+                        <span class="chip bg-color">centos</span>
                     </a>
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/Hadoop/">
+                        <span class="chip bg-color">Hadoop</span>
                     </a>
                     
                 </div>
@@ -852,7 +859,7 @@ tar -zcvf 博客.tar.gz .&#x2F;blog&#x2F;<span aria-hidden="true" class="line-nu
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.2k</span>
+                        class="white-color">18k</span>
             
             
             

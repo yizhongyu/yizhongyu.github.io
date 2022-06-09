@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="RabbitMQ, 备忘录">
     <meta name="description" content="分布式消息中间件
-安装RabbitMQ添加具有依赖项的存储库yum install epel-release
+消息队列RabbitMQ安装部署添加具有依赖项的存储库yum install epel-release
 
-在线安装依赖环境yum install socat build-essential openssl openssl-devel ">
+在线安装依赖环境yum install socat build-essential openssl openssl-">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -364,7 +364,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    652
+                    692
                 </div>
                 
 
@@ -385,11 +385,12 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>分布式消息中间件</strong></p>
-<h3 id="安装RabbitMQ"><a href="#安装RabbitMQ" class="headerlink" title="安装RabbitMQ"></a>安装RabbitMQ</h3><h5 id="添加具有依赖项的存储库"><a href="#添加具有依赖项的存储库" class="headerlink" title="添加具有依赖项的存储库"></a>添加具有依赖项的存储库</h5><pre class="line-numbers language-none"><code class="language-none">yum install epel-release<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="消息队列RabbitMQ安装部署"><a href="#消息队列RabbitMQ安装部署" class="headerlink" title="消息队列RabbitMQ安装部署"></a>消息队列RabbitMQ安装部署</h3><h5 id="添加具有依赖项的存储库"><a href="#添加具有依赖项的存储库" class="headerlink" title="添加具有依赖项的存储库"></a>添加具有依赖项的存储库</h5><pre class="line-numbers language-none"><code class="language-none">yum install epel-release<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="在线安装依赖环境"><a href="#在线安装依赖环境" class="headerlink" title="在线安装依赖环境"></a>在线安装依赖环境</h4><pre class="line-numbers language-none"><code class="language-none">yum install socat build-essential openssl openssl-devel unixODBC unixODBC-devel make gcc gcc-c++ kernel-devel m4 ncurses-devel tk tc xz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>本机传送文件<code>scp E:\app\Linux\* root@192.168.200.99:/opt</code></p>
+<p>⾸先安装Erlang环境，因为RabbitMQ需要Erlang环境的⽀持，所以必须先安装Erlang。</p>
 <ul>
 <li><h5 id="安装-Erlang-RabbitMQ与Erlang-Versions需要对应"><a href="#安装-Erlang-RabbitMQ与Erlang-Versions需要对应" class="headerlink" title="安装 Erlang(RabbitMQ与Erlang Versions需要对应)"></a>安装 Erlang(RabbitMQ与Erlang Versions需要对应)</h5><p><a target="_blank" rel="noopener" href="https://www.rabbitmq.com/which-erlang.html">rabbitmq对照表</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.erlang-solutions.com/downloads/">Erlang</a></p>
@@ -397,6 +398,10 @@
 </li>
 </ul>
 <pre class="line-numbers language-none"><code class="language-none">rpm -ivh esl-erlang_23.3.4.5-1_centos_7_amd64.rpm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>测试 erlang 是否安装成功</p>
+<pre class="line-numbers language-none"><code class="language-none">erl
+halt().<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h4 id="安装rabbitmq以及运行和查看状态"><a href="#安装rabbitmq以及运行和查看状态" class="headerlink" title="安装rabbitmq以及运行和查看状态"></a>安装rabbitmq以及运行和查看状态</h4><pre class="line-numbers language-none"><code class="language-none">rpm -ivh rabbitmq-server-3.9.16-1.el7.noarch.rpm（版本需要与erlang对应）
 &#x2F;sbin&#x2F;service rabbitmq-server start
@@ -444,7 +449,7 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
 <p>&#x2F;usr&#x2F;lib&#x2F;rabbitmq&#x2F;lib&#x2F;rabbitmq_server-3.9.16&#x2F;sbin</p>
 <p>&#x2F;etc&#x2F;rabbitmq&#x2F;rabbitmq.conf</p>
 <p>cp &#x2F;usr&#x2F;share&#x2F;doc&#x2F;rabbitmq-server-3.9.16&#x2F;</p>
-<p>日志文件cat &#x2F;var&#x2F;log&#x2F;rabbitmq&#x2F;<a href="mailto:&#x72;&#97;&#98;&#x62;&#x69;&#116;&#64;&#x6e;&#x6f;&#x64;&#x65;&#48;&#51;&#x2e;&#108;&#x6f;&#103;">&#x72;&#97;&#98;&#x62;&#x69;&#116;&#64;&#x6e;&#x6f;&#x64;&#x65;&#48;&#51;&#x2e;&#108;&#x6f;&#103;</a></p>
+<p>日志文件cat &#x2F;var&#x2F;log&#x2F;rabbitmq&#x2F;<a href="mailto:&#x72;&#x61;&#98;&#98;&#x69;&#x74;&#64;&#110;&#111;&#100;&#x65;&#x30;&#x33;&#x2e;&#x6c;&#111;&#x67;">&#x72;&#x61;&#98;&#98;&#x69;&#x74;&#64;&#110;&#111;&#100;&#x65;&#x30;&#x33;&#x2e;&#x6c;&#111;&#x67;</a></p>
 <p>rabbitmq 诊断状态命令：rabbitmq-diagnostics status</p>
 <p>要检查特定节点的位置，包括远程运行的节点，请使用 -n（–node 的缩写）开关：</p>
 <p>rabbitmq-diagnostics status -n [node name]</p>
@@ -859,7 +864,7 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.2k</span>
+                        class="white-color">18k</span>
             
             
             

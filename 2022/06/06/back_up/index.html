@@ -4,11 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="zookeeper, 备忘录">
-    <meta name="description" content="上传zookeeper压缩包scp E:\app\Linux\apache-zookeeper-3.8.0-bin.tar.gz root@192.168.200.99:&amp;#x2F;opt
+    <meta name="keywords" content="备份, 备忘录">
+    <meta name="description" content="备份使用的工具有哪些?
+本地备份: cp远程备份: scp rsync sz rzrsync 远程同步工具
 
-解压
-mkdir -p &amp;#x2F;usr&amp;#x">
+实现主机与主机之间的同步, 实现增量的同步. linux\windows\mac
+PS: 如果将rsync当一个服务来使用,则需要">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +23,7 @@ mkdir -p &amp;#x2F;usr&amp;#x">
 
     
 
-    <title>zookeeper | 备忘录</title>
+    <title>备份 | 备忘录</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -205,12 +206,12 @@ mkdir -p &amp;#x2F;usr&amp;#x">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">zookeeper</h1>
+                    <h1 class="description center-align post-title">备份</h1>
                 </div>
             </div>
         </div>
@@ -330,8 +331,8 @@ mkdir -p &amp;#x2F;usr&amp;#x">
                                 <span class="chip bg-color">centos</span>
                             </a>
                         
-                            <a href="/tags/zookeeper/">
-                                <span class="chip bg-color">zookeeper</span>
+                            <a href="/tags/work/">
+                                <span class="chip bg-color">work</span>
                             </a>
                         
                     </div>
@@ -342,8 +343,8 @@ mkdir -p &amp;#x2F;usr&amp;#x">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
-                                集群
+                            <a href="/categories/work/" class="post-category">
+                                work
                             </a>
                         
                     </div>
@@ -355,7 +356,7 @@ mkdir -p &amp;#x2F;usr&amp;#x">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-19
+                    2022-06-06
                 </div>
                 
 
@@ -364,7 +365,7 @@ mkdir -p &amp;#x2F;usr&amp;#x">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    464
+                    601
                 </div>
                 
 
@@ -384,63 +385,117 @@ mkdir -p &amp;#x2F;usr&amp;#x">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="上传zookeeper压缩包"><a href="#上传zookeeper压缩包" class="headerlink" title="上传zookeeper压缩包"></a>上传zookeeper压缩包</h4><pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\apache-zookeeper-3.8.0-bin.tar.gz root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p><strong>备份使用的工具有哪些?</strong></p>
+<h4 id="本地备份-cp"><a href="#本地备份-cp" class="headerlink" title="本地备份: cp"></a>本地备份: cp</h4><h4 id="远程备份-scp-rsync-sz-rz"><a href="#远程备份-scp-rsync-sz-rz" class="headerlink" title="远程备份: scp rsync sz rz"></a>远程备份: scp rsync sz rz</h4><p>rsync 远程同步工具</p>
+<ul>
+<li>实现主机与主机之间的同步, 实现增量的同步. linux\windows\mac</li>
+<li>PS: 如果将rsync当一个服务来使用,则需要知道 rsync 是个 c&#x2F;s架构</li>
+</ul>
+<p><strong>rsync备份工具应用几种场景?</strong></p>
+<ul>
+<li>推 客户端推送数据至服务端 电脑—&gt;云盘</li>
+<li>拉 客户端拉取服务上的数据 电脑 &lt;—- 云盘</li>
+</ul>
+<p><strong>rsync三大传输模式</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">yum install rsync -y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>解压</p>
-<pre class="line-numbers language-none"><code class="language-none">mkdir -p &#x2F;usr&#x2F;local&#x2F;zookeeper
-tar -zxvf &#x2F;opt&#x2F;apache-zookeeper-3.8.0-bin.tar.gz -C &#x2F;usr&#x2F;local&#x2F;zookeeper<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>本地传输</strong>		类似于使用cp</p>
+<pre class="line-numbers language-none"><code class="language-none">Local:  rsync [OPTION...] SRC... [DEST]
+rsync -avz oldxu.com &#x2F;tmp&#x2F;					#文件
+rsync -avz &#x2F;etc&#x2F; &#x2F;tmp&#x2F;						#目录
+每次拷贝都是增量
+1，如果有新增, 拷贝新增
+2，如果修改历史拷贝过的文件, 则同步修改后的文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="从模板拷贝zoo配置文件，配置"><a href="#从模板拷贝zoo配置文件，配置" class="headerlink" title="从模板拷贝zoo配置文件，配置"></a>从模板拷贝zoo配置文件，配置</h4><pre class="line-numbers language-none"><code class="language-none">cp &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;conf&#x2F;zoo_sample.cfg &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;conf&#x2F;zoo.cfg
-vim &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;conf&#x2F;zoo.cfg
-dataDir&#x3D;&#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;zkdata<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>远程传输</strong>		类似于scp,基于ssh协议</p>
+<pre class="line-numbers language-none"><code class="language-none">Pull: rsync [OPTION...] [USER@]HOST:SRC... [DEST]
+rsync -avz root@172.16.1.31:&#x2F;root&#x2F;31.txt .&#x2F;				#下载31服务器上&#x2F;root&#x2F;31.txt文件,至本地的当前目录,使用31的root身份
+rsync -avz root@172.16.1.31:&#x2F;opt&#x2F;etc_test&#x2F; .&#x2F;			#下载目录,以及目录下的所有内容至本地
+rsync -avz root@172.16.1.31:&#x2F;opt&#x2F;etc_test .&#x2F;&#96;			#下载这个目录下的所有内容至本地<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;
-.&#x2F;bin&#x2F;zkServer.sh start .&#x2F;conf&#x2F;zoo.cfg			#启动zk服务器
-.&#x2F;bin&#x2F;zkServer.sh status .&#x2F;conf&#x2F;zoo.cfg			#查看zk服务器状态
-.&#x2F;bin&#x2F;zkServer.sh stop .&#x2F;conf&#x2F;zoo.cfg			#停止zk服务器
-.&#x2F;zkCli.sh										#启动后进入客户端<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">Push: rsync [OPTION...] SRC... [USER@]HOST:DEST
+rsync -avz .&#x2F;41.txt root@172.16.1.31:&#x2F;opt&#x2F;				#推送本地的文件或目录,至远程主机31的&#x2F;opt目录下,使用的是31的root身份<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="内部操作"><a href="#内部操作" class="headerlink" title="内部操作"></a>内部操作</h4><pre class="line-numbers language-none"><code class="language-none">ls &#x2F;					#查看根目录
-create &#x2F;test1
-create &#x2F;test2 abc		#创建
-get &#x2F;test2				#拿数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>集群</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;zkdata<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">mkdir zk1 zk2 zk3 zk4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>cd zk1&#x2F;</p>
-<pre class="line-numbers language-none"><code class="language-none">vim myid 	1
-echo 2 &gt; .&#x2F;zk2&#x2F;myid
-echo 3 &gt; .&#x2F;zk3&#x2F;myid
-echo 4 &gt; .&#x2F;zk4&#x2F;myid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>&#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;conf</p>
-<p>cp zoo.cfg zoo1.cfg</p>
-<p>vim zoo1.cfg</p>
-<pre class="line-numbers language-none"><code class="language-none">dataDir&#x3D;&#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;zkdata&#x2F;zk1
-server.1&#x3D;192.168.200.99:2001:3001
-server.2&#x3D;192.168.200.98:2002:3002
-server.3&#x3D;192.168.200.97:2003:3003
-server.4&#x3D;192.168.200.96:2004:3004:observer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">dataDir&#x3D;&#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;zkdata&#x2F;zk2
-clientPort&#x3D;2182
-server.1&#x3D;192.168.200.99:2001:3001
-server.2&#x3D;192.168.200.98:2002:3002
-server.3&#x3D;192.168.200.97:2003:3003
-server.4&#x3D;192.168.200.96:2004:3004:observer
-。。。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>启动集群并查看leader，follower，observer</p>
-<pre class="line-numbers language-none"><code class="language-none">.&#x2F;bin&#x2F;zkServer.sh start .&#x2F;conf&#x2F;zoo1.cfg
-.&#x2F;bin&#x2F;zkServer.sh status .&#x2F;conf&#x2F;zoo1.cfg
-。。。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>连接zk集群</p>
-<pre class="line-numbers language-none"><code class="language-none">.&#x2F;bin&#x2F;zkCli.sh -server 192.168.200.99:2181,192.168.200.98:2182,192.168.200.97:2183<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>归档模式传输, 等于-tropgD</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>详细模式输出, 打印速率, 文件数量等</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>传输时进行压缩以提高效率</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归传输目录及子目录，即目录下得所有目录都同样传输。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>保持文件时间信息</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>保持文件属主信息</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>保持文件权限</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>保持文件属组信息</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>保留软连接</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>显示同步的过程及传输时的进度等信息</td>
+</tr>
+<tr>
+<td>-D</td>
+<td>保持设备文件信息</td>
+</tr>
+<tr>
+<td>L</td>
+<td>保留软连接指向的目标文件</td>
+</tr>
+<tr>
+<td>e</td>
+<td>使用的信道协议,指定替代rsh的shell程序 -e ‘ssh’</td>
+</tr>
+<tr>
+<td>–exclude&#x3D;PATTERN</td>
+<td>指定排除不需要传输的文件模式</td>
+</tr>
+<tr>
+<td>–exclude-from&#x3D;file</td>
+<td>文件名所在的目录文件</td>
+</tr>
+<tr>
+<td>–bwlimit&#x3D;100</td>
+<td>限速传输</td>
+</tr>
+<tr>
+<td>–partial</td>
+<td>断点续传</td>
+</tr>
+<tr>
+<td>–delete</td>
+<td>让目标目录和源目录数据保持一致</td>
+</tr>
+</tbody></table>
 
                 
             </div>
@@ -467,7 +522,7 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yizhongyu.github.io/2022/05/19/zookeeper/">https://yizhongyu.github.io/2022/05/19/zookeeper/</a>
+                    <a href="https://yizhongyu.github.io/2022/06/06/back_up/">https://yizhongyu.github.io/2022/06/06/back_up/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -509,8 +564,8 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
                                     <span class="chip bg-color">centos</span>
                                 </a>
                             
-                                <a href="/tags/zookeeper/">
-                                    <span class="chip bg-color">zookeeper</span>
+                                <a href="/tags/work/">
+                                    <span class="chip bg-color">work</span>
                                 </a>
                             
                         </div>
@@ -562,13 +617,13 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/20/etcprofile_path/">
+                <a href="/2022/06/07/MariaDB/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="centos环境变量">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MariaDB基本使用">
                         
-                        <span class="card-title">centos环境变量</span>
+                        <span class="card-title">MariaDB基本使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -579,14 +634,14 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-20
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-07
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/centos/" class="post-category">
-                                    centos
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -600,6 +655,10 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
                         <span class="chip bg-color">centos</span>
                     </a>
                     
+                    <a href="/tags/MariaDB/">
+                        <span class="chip bg-color">MariaDB</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -611,13 +670,13 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/18/redis/">
+                <a href="/2022/06/02/HBase/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="redis">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Apache HBase">
                         
-                        <span class="card-title">redis</span>
+                        <span class="card-title">Apache HBase</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -628,7 +687,7 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-02
                             </span>
                         <span class="publish-author">
                             
@@ -649,8 +708,8 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
                         <span class="chip bg-color">centos</span>
                     </a>
                     
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
+                    <a href="/tags/Hadoop/">
+                        <span class="chip bg-color">Hadoop</span>
                     </a>
                     
                 </div>
@@ -847,7 +906,7 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.2k</span>
+                        class="white-color">18k</span>
             
             
             
