@@ -400,20 +400,6 @@
             <div class="card">
                 <div class="card-content">
                     
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;我的梦想
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
-        </div>
-    </div>
-</div>
-
-                    
 
                     
 
@@ -448,11 +434,11 @@
                 <a href="/2022/05/01/centos7/">
                     <h3 class="post-title">centos7基础命令</h3>
                 </a>
-                <p class="post-description">远程网络配置文件查看网络ifconfig
+                <p class="post-description">记录一下使用频次较高的命令，后面再来整理一篇好用的命令
+网络查看网络信息ifconfig
 ip addr
-ip address show			#IP地址MAC地址
-dhclient				#重新分配IP
-ip rout</p>
+ip address show					#IP地址MAC地址
+d</p>
                 <a href="/2022/05/01/centos7/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
                     <i class="icon far fa-eye fa-fw"></i>阅读更多
                 </a>
@@ -477,6 +463,60 @@ ip rout</p>
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/07/21/centos7_kernel/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="centos内核恢复">
+                            
+                            <span class="card-title">centos内核恢复</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                恢复教程适用手动划区安装centos7
+最坏的情况rm -rf /*可以尝试恢复
+光驱引导，进入救援模式后开始
+bin目录损坏的情况可选操作cd &#x2F;mnt&#x2F;sysimage
+ln -s usr&#x2F;bin bin
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/centos/" class="post-category">
+                                    centos
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/centos7/">
+                            <span class="chip bg-color">centos7</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
             
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
@@ -788,8 +828,8 @@ rpm -qa|grep mariadb
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/centos/">
-                            <span class="chip bg-color">centos</span>
+                        <a href="/tags/centos7/">
+                            <span class="chip bg-color">centos7</span>
                         </a>
                         
                         <a href="/tags/MariaDB/">
@@ -1080,56 +1120,6 @@ ssh-keygen -
             </div>
               <!-- 隐藏某个文章 -->
             
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/05/20/etcprofile_path/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="centos环境变量">
-                            
-                            <span class="card-title">centos环境变量</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                不修改&#x2F;etc&#x2F;profile，新增&#x2F;etc&#x2F;profile.d&#x2F;文件夹下.sh文件
-参考&#x2F;etc&#x2F;profile中 55  for i in /etc/profile.
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/centos/" class="post-category">
-                                    centos
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/centos/">
-                            <span class="chip bg-color">centos</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
         </div>
     </article>
 
@@ -1232,7 +1222,7 @@ ssh-keygen -
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">18k</span>
+                        class="white-color">20.2k</span>
             
             
             

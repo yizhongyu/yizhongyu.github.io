@@ -329,8 +329,8 @@ rpm -qa|grep mariadb
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/centos/">
-                                <span class="chip bg-color">centos</span>
+                            <a href="/tags/centos7/">
+                                <span class="chip bg-color">centos7</span>
                             </a>
                         
                             <a href="/tags/MariaDB/">
@@ -367,7 +367,7 @@ rpm -qa|grep mariadb
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    324
+                    873
                 </div>
                 
 
@@ -444,6 +444,144 @@ systemctl restart firewalld<span aria-hidden="true" class="line-numbers-rows"><s
 
 <h4 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h4><pre class="line-numbers language-none"><code class="language-none">systemctl enable mariadb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<h3 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">#!&#x2F;bin&#x2F;bash
+# ------------------------------------------
+# Filename: mariadb_384.sh
+# Revision: 1.1
+# Description: yum install mariadb on centos7.4
+# Date: 2022-08-01
+# Author: clarence
+gridknow&#x3D;&#x2F;usr&#x2F;local&#x2F;gridknow
+username&#x3D;root
+password&#x3D;123456
+#安装服务并拷贝配置文件
+    yum -y install mariadb-server mariadb
+echo &quot;[client]
+port            &#x3D; 3306
+default-character-set &#x3D; utf8
+
+[mysqld]
+datadir&#x3D;&#x2F;var&#x2F;lib&#x2F;mysql
+socket&#x3D;&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql.sock
+
+#add
+port            &#x3D; 3306
+skip-name-resolve
+key_buffer_size &#x3D; 96M
+table_cache &#x3D; 256
+sort_buffer_size &#x3D; 3M
+join_buffer_size &#x3D; 3M
+net_buffer_length &#x3D; 8K
+read_buffer_size &#x3D; 3M
+read_rnd_buffer_size &#x3D; 1M
+max_allowed_packet &#x3D; 128M
+max_heap_table_size &#x3D; 32M
+tmp_table_size &#x3D; 512M
+back_log &#x3D; 100
+default-storage-engine&#x3D;MyISAM
+wait_timeout &#x3D; 3880000
+interactive_timeout &#x3D; 3880000
+
+thread_cache_size &#x3D; 256
+thread_concurrency &#x3D; 8
+
+log_bin_trust_function_creators &#x3D; 1
+event_scheduler &#x3D; 1
+binlog_cache_size &#x3D; 1M
+lower_case_table_names &#x3D; 1
+character_set_server &#x3D; utf8
+max_connections &#x3D; 4000
+max_connect_errors &#x3D; 1000000
+max_prepared_stmt_count &#x3D; 1048575
+wait_timeout &#x3D; 3880000
+interactive_timeout &#x3D; 3880000
+query_cache_size &#x3D; 128M
+query_cache_limit &#x3D; 2M
+expire_logs_days &#x3D; 7
+
+log-bin &#x3D; mysql-bin
+log-bin-index &#x3D; binlog.index
+server-id &#x3D; 33061
+binlog_format &#x3D; ROW
+relay-log &#x3D; mysql-relay-bin
+
+innodb_buffer_pool_size &#x3D; 1024M
+innodb_additional_mem_pool_size &#x3D; 2M
+innodb_log_file_size &#x3D; 64M
+innodb_log_buffer_size &#x3D; 8M
+
+[mysqldump]
+quick
+max_allowed_packet &#x3D; 128M
+
+[mysql]
+no-auto-rehash
+
+[isamchk]
+key_buffer &#x3D; 20M
+sort_buffer_size &#x3D; 20M
+read_buffer &#x3D; 2M
+write_buffer &#x3D; 2M
+
+[myisamchk]
+key_buffer &#x3D; 20M
+sort_buffer_size &#x3D; 20M
+read_buffer &#x3D; 2M
+write_buffer &#x3D; 2M
+
+[mysqlhotcopy]
+interactive-timeout &#x3D; 7200
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links&#x3D;0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http:&#x2F;&#x2F;fedoraproject.org&#x2F;wiki&#x2F;Systemd
+
+[mysqld_safe]
+log-error&#x3D;&#x2F;var&#x2F;log&#x2F;mariadb&#x2F;mariadb.log
+pid-file&#x3D;&#x2F;var&#x2F;run&#x2F;mariadb&#x2F;mariadb.pid
+
+#
+# include all files from the config directory
+#
+!includedir &#x2F;etc&#x2F;my.cnf.d
+
+&quot; &gt;&#x2F;etc&#x2F;my.cnf
+#启动服务并设置为开机自动启动
+    systemctl start mariadb
+    systemctl enable mariadb
+#配置密码；创建数据库；导入数据库；修改权限
+    mysqladmin -u $username password $password
+    mysql -u$&#123;username&#125; -p$&#123;password&#125; -e &quot;
+	create database cdms;
+	create database datamanage2;
+	create database userinternet_record;
+	create database alertmsg;
+	create database zkconfig;
+	create database apgs3;
+	create database iteamwebnew;
+	create database appstore;
+	create database pmchat;
+	create database ephemeris;
+	create database pmdashboard;
+	create database gk_user_center;
+	create database pmoa;
+	create database gkrm;
+	create database produce-data;
+	create database gkskdsvr;
+	create database push_server;
+	create database gktomcat;
+	GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; identified by &#39;mariadbpasswd&#39; with grant option;
+	flush privileges;
+	quit &quot;
+sed -i &quot;34i LimitNOFILE&#x3D;10000&quot; &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;mariadb.service
+sed -i &quot;35i LimitNPROC&#x3D;10000&quot; &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;mariadb.service
+systemctl --system daemon-reload
+systemctl restart mariadb
+
+echo &#39;------------mariadb has been installed and completed------------&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -508,8 +646,8 @@ systemctl restart firewalld<span aria-hidden="true" class="line-numbers-rows"><s
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/centos/">
-                                    <span class="chip bg-color">centos</span>
+                                <a href="/tags/centos7/">
+                                    <span class="chip bg-color">centos7</span>
                                 </a>
                             
                                 <a href="/tags/MariaDB/">
@@ -854,7 +992,7 @@ systemctl restart firewalld<span aria-hidden="true" class="line-numbers-rows"><s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">18k</span>
+                        class="white-color">20.2k</span>
             
             
             

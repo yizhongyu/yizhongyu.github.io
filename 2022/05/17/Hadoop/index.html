@@ -4,12 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Docker_RabbitMQ, 备忘录">
-    <meta name="description" content="安装docker设置仓库安装软件包（提供实用程序）并设置稳定的存储库。
-$ sudo yum install -y yum-utils
-$ sudo yum-config-manager \
-    --add-repo \
-    htt">
+    <meta name="keywords" content="Hadoop, 备忘录">
+    <meta name="description" content="Hadoop 是一个开源的分布式计算和存储框架，由 Apache 基金会开发和维护。
+Hadoop 为庞大的计算机集群提供可靠的、可伸缩的应用层计算和存储支持，它允许使用简单的编程模型跨计算机群集分布式处理大型数据集，并且支持在单台计算机到">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +20,7 @@ $ sudo yum-config-manager \
 
     
 
-    <title>Docker_RabbitMQ | 备忘录</title>
+    <title>Hadoop | 备忘录</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -211,7 +208,7 @@ $ sudo yum-config-manager \
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Docker_RabbitMQ</h1>
+                    <h1 class="description center-align post-title">Hadoop</h1>
                 </div>
             </div>
         </div>
@@ -327,12 +324,12 @@ $ sudo yum-config-manager \
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/docker/">
-                                <span class="chip bg-color">docker</span>
+                            <a href="/tags/Hadoop/">
+                                <span class="chip bg-color">Hadoop</span>
                             </a>
                         
-                            <a href="/tags/RabbitMQ/">
-                                <span class="chip bg-color">RabbitMQ</span>
+                            <a href="/tags/centos7/">
+                                <span class="chip bg-color">centos7</span>
                             </a>
                         
                     </div>
@@ -343,8 +340,8 @@ $ sudo yum-config-manager \
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/docker/" class="post-category">
-                                docker
+                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
+                                集群
                             </a>
                         
                     </div>
@@ -356,7 +353,7 @@ $ sudo yum-config-manager \
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-05
+                    2022-05-17
                 </div>
                 
 
@@ -365,7 +362,7 @@ $ sudo yum-config-manager \
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    477
+                    1.1k
                 </div>
                 
 
@@ -385,69 +382,117 @@ $ sudo yum-config-manager \
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><h4 id="设置仓库"><a href="#设置仓库" class="headerlink" title="设置仓库"></a>设置仓库</h4><p>安装软件包（提供实用程序）并设置<strong>稳定的</strong>存储库。</p>
-<pre class="line-numbers language-none"><code class="language-none">$ sudo yum install -y yum-utils
-$ sudo yum-config-manager \
-    --add-repo \
-    https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+                <p>Hadoop 是一个开源的分布式计算和存储框架，由 Apache 基金会开发和维护。</p>
+<p>Hadoop 为庞大的计算机集群提供可靠的、可伸缩的应用层计算和存储支持，它允许使用简单的编程模型跨计算机群集分布式处理大型数据集，并且支持在单台计算机到几千台计算机之间进行扩展。</p>
+<p>Hadoop 使用 Java 开发，所以可以在多种不同硬件平台的计算机上部署和使用。其核心部件包括分布式文件系统 (Hadoop DFS，HDFS) 和 MapReduce。</p>
+<h4 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h4><h5 id="确认java安装成功"><a href="#确认java安装成功" class="headerlink" title="确认java安装成功"></a>确认java安装成功</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">java -version
+rpm -qa | grep jdk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="安装-Docker-引擎"><a href="#安装-Docker-引擎" class="headerlink" title="安装 Docker 引擎"></a>安装 Docker 引擎</h4><ol>
-<li><p>安装<em>最新版本</em>的 Docker 引擎、容器和 Docker Compose，或转到下一步以安装特定版本：</p>
-<pre class="line-numbers language-none"><code class="language-none">$ sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>启动 Docker。</p>
-<pre class="line-numbers language-none"><code class="language-none">$ sudo systemctl start docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>通过运行映像来验证 Docker 引擎是否已正确安装。<code>hello-world</code></p>
-<pre class="line-numbers language-none"><code class="language-none">$ sudo docker run hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="卸载其他版本"><a href="#卸载其他版本" class="headerlink" title="卸载其他版本"></a>卸载其他版本</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum -y remove java...		#或者
+rpm -e --nodeps jdk...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>此命令下载测试映像并在容器中运行它。当容器运行时，它会打印一条消息并退出。</p>
-</li>
-</ol>
-<h4 id="卸载-Docker-引擎"><a href="#卸载-Docker-引擎" class="headerlink" title="卸载 Docker 引擎"></a>卸载 Docker 引擎</h4><ol>
-<li><p>卸载 Docker 引擎、CLI、Containerd 和 Docker Compose 包：</p>
-<pre class="line-numbers language-none"><code class="language-none">$ sudo yum remove docker-ce docker-ce-cli containerd.io<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>主机上的映像、容器、卷或自定义配置文件不会自动删除。删除所有映像、容器和卷：</p>
-<pre class="line-numbers language-none"><code class="language-none">$ sudo rm -rf &#x2F;var&#x2F;lib&#x2F;docker
-$ sudo rm -rf &#x2F;var&#x2F;lib&#x2F;containerd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-</ol>
-<p><del>创建工作目录</del></p>
-<p><code>mkdir ~/.RabbitMQ &amp;&amp; cd ~/.RabbitMQ</code></p>
-<pre class="line-numbers language-none"><code class="language-none">mkdir -p ~&#x2F;.rabbitmq&#x2F;&#123;etc,lib,var&#x2F;&#123;lib,log&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="上传jdk1-8rpm安装包"><a href="#上传jdk1-8rpm安装包" class="headerlink" title="上传jdk1.8rpm安装包"></a>上传jdk1.8rpm安装包</h5><pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\jdk-18_linux-x64_bin.rpm root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<h5 id="执行安装jdk"><a href="#执行安装jdk" class="headerlink" title="执行安装jdk"></a>执行安装jdk</h5><pre class="line-numbers language-none"><code class="language-none">rpm -ivh jdk-8u333-linux-x64.rpm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>默认home路径：&#x2F;usr&#x2F;java&#x2F;jdk1.8.0_333-amd64</p>
+<h5 id="添加环境变量文件到-x2F-etc-x2F-profile-d-x2F"><a href="#添加环境变量文件到-x2F-etc-x2F-profile-d-x2F" class="headerlink" title="添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;"></a>添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;profile.d&#x2F;java.sh
+export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;jdk1.8.0_333-amd64
+export CLASSPATH&#x3D;$JAVA_HOME&#x2F;lib&#x2F;
+export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="拉取最新docker镜像，"><a href="#拉取最新docker镜像，" class="headerlink" title="拉取最新docker镜像，"></a>拉取最新docker镜像，</h4><pre class="line-numbers language-none"><code class="language-none">docker pull rabbitmq:management<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="安装Hadoop"><a href="#安装Hadoop" class="headerlink" title="安装Hadoop"></a>安装Hadoop</h4><h5 id="上传Hadoop压缩包"><a href="#上传Hadoop压缩包" class="headerlink" title="上传Hadoop压缩包"></a>上传Hadoop压缩包</h5><pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\hadoop-2.10.1.tar.gz root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>查看端口是否被占用，</p>
-<pre class="line-numbers language-none"><code class="language-none">yum install lsof
-lsof -i:15672<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>解压</p>
+<pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;usr&#x2F;hadoop
+tar -zxvf hadoop-2.10.1.tar.gz -C &#x2F;usr&#x2F;hadoop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>创建容器</p>
-<pre class="line-numbers language-none"><code class="language-none">docker run -di --name myrabbit -e RABBITMQ_DEFAULT_USER&#x3D;admin -e RABBITMQ_DEFAULT_PASS&#x3D;admin -p 15672:15672 -p 5672:5672 -p 25672:25672 -p 61613:61613 -p 1883:1883 rabbitmq:management<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>默认home路径：&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1</p>
+<h5 id="添加环境变量文件到-x2F-etc-x2F-profile-d-x2F-1"><a href="#添加环境变量文件到-x2F-etc-x2F-profile-d-x2F-1" class="headerlink" title="添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;"></a>添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;etc&#x2F;profile.d&#x2F;hadoop.sh
+export HADOOP_HOME&#x3D;&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1
+export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin
+source &#x2F;etc&#x2F;profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">-di：	创建一个守护式容器
-–name：	为容器指定一个名称
--e：		添加环境变量
--p：		端口映射，格式为 主机(宿主)端口:容器端口 ，可在 application.yaml 配置。
--v： 工作目录映射。形式为：-v 宿主机路径:&#x2F;root&#x2F;.halo，后者不能修改。
-–unless-stoppedt： 建议设置为 unless-stopped，在 Docker 启动的时候自动启动 Halo 容器。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>验证</p>
+<pre class="line-numbers language-none"><code class="language-none">hadoop version
+whereis hdfs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<h5 id="创建HDFS数据目录"><a href="#创建HDFS数据目录" class="headerlink" title="创建HDFS数据目录"></a>创建HDFS数据目录</h5><pre class="line-numbers language-none"><code class="language-none">mkdir &#x2F;var&#x2F;HDFSdata<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>配置文件位置：&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;</p>
+<p><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/r2.10.1/hadoop-project-dist/hadoop-common/SingleCluster.html">官方配置说明</a></p>
+<h5 id="为Hadoop提供Java解释器路径信息，主要解决远程访问Hadoop是Javahome无法继承的问题"><a href="#为Hadoop提供Java解释器路径信息，主要解决远程访问Hadoop是Javahome无法继承的问题" class="headerlink" title="为Hadoop提供Java解释器路径信息，主要解决远程访问Hadoop是Javahome无法继承的问题"></a>为Hadoop提供Java解释器路径信息，主要解决远程访问Hadoop是Javahome无法继承的问题</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;hadoop-env.sh
+# The java implementation to use.
+export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;default	（rpm安装路径）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>停止并删除当前运行中的容器</li>
-</ul>
-<p><code>docker stop myrabbit</code></p>
-<p><code>docker ps -a</code></p>
-<p><code>docker rm -f myrabbit</code></p>
-<p><code>rm -rf ~/.myrabbit</code>     # 完全删除映射到本地的数据</p>
-<ul>
-<li>备份数据</li>
-</ul>
-<p><code>cp -r ~/.myrabbit ~/.myrabbit.backup</code></p>
+<h5 id="为yarn任务，资源管理器提供Java运行环境"><a href="#为yarn任务，资源管理器提供Java运行环境" class="headerlink" title="为yarn任务，资源管理器提供Java运行环境"></a>为yarn任务，资源管理器提供Java运行环境</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;yarn-env.sh
+# export JAVA_HOME&#x3D;&#x2F;home&#x2F;y&#x2F;libexec&#x2F;jdk1.6.0&#x2F;
+if [ &quot;$JAVA_HOME&quot; !&#x3D; &quot;&quot; ]; then
+  #echo &quot;run java in $JAVA_HOME&quot;
+  JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;default		(这一步还是修改Javahome)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h5 id="Hadoop核心文件配置-指定文件系统"><a href="#Hadoop核心文件配置-指定文件系统" class="headerlink" title="Hadoop核心文件配置(指定文件系统)"></a>Hadoop核心文件配置(指定文件系统)</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;core-site.xml
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;fs.defaultFS&lt;&#x2F;name&gt;
+        &lt;value&gt;hdfs:&#x2F;&#x2F;localhost:9000&lt;&#x2F;value&gt;	#修改localhost
+    &lt;&#x2F;property&gt;
+    &lt;property&gt;
+        &lt;name&gt;hadoop.tmp.dir&lt;&#x2F;name&gt;
+        &lt;value&gt;&#x2F;var&#x2F;HDFSdata&lt;&#x2F;value&gt;			#HDFS数据目录
+    &lt;&#x2F;property&gt;
+&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="配置hdfs默认的数据存放策略"><a href="#配置hdfs默认的数据存放策略" class="headerlink" title="配置hdfs默认的数据存放策略"></a>配置hdfs默认的数据存放策略</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;hdfs-site.xml
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;&#x2F;name&gt;
+        &lt;value&gt;2&lt;&#x2F;value&gt;						#hdfs副本数，大于1
+    &lt;&#x2F;property&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.namenode.secondary.http-address&lt;&#x2F;name&gt;
+        &lt;value&gt;node3:50090&lt;&#x2F;value&gt;				#指定node3为secondary
+    &lt;&#x2F;property&gt;
+&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="从模板拷贝mapreduce配置文件，配置任务调度策略"><a href="#从模板拷贝mapreduce配置文件，配置任务调度策略" class="headerlink" title="从模板拷贝mapreduce配置文件，配置任务调度策略"></a>从模板拷贝mapreduce配置文件，配置任务调度策略</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cp &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml.template &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml
+vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapreduce.framework.name&lt;&#x2F;name&gt;
+        &lt;value&gt;yarn&lt;&#x2F;value&gt;
+    &lt;&#x2F;property&gt;
+&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="配置yarn资源管理角色"><a href="#配置yarn资源管理角色" class="headerlink" title="配置yarn资源管理角色"></a>配置yarn资源管理角色</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;yarn-site.xml
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;yarn.nodemanager.aux-services&lt;&#x2F;name&gt;
+        &lt;value&gt;mapreduce_shuffle&lt;&#x2F;value&gt;		#表示结构随机
+    &lt;&#x2F;property&gt;
+    &lt;property&gt;
+        &lt;name&gt;yarn.resourcemanager.hostname&lt;&#x2F;name&gt;
+        &lt;value&gt;node1&lt;&#x2F;value&gt;					#指定资源调度者
+    &lt;&#x2F;property&gt;
+&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="配置datanode"><a href="#配置datanode" class="headerlink" title="配置datanode"></a>配置datanode</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;slaves
+node1
+node2
+node3
+.....<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="主节点单独执行"><a href="#主节点单独执行" class="headerlink" title="主节点单独执行"></a>主节点单独执行</h4><h5 id="格式化主节点hdfs"><a href="#格式化主节点hdfs" class="headerlink" title="格式化主节点hdfs"></a>格式化主节点hdfs</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cd &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;bin&#x2F;
+hdfs namenode-format
+ls &#x2F;var&#x2F;HDFSdata&#x2F;dfs&#x2F;name&#x2F;current&#x2F;		#查看image
+cd &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;sbin&#x2F;
+start-dfs.sh
+start-yarn.sh							#启动集群
+jps										#查看<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="访问网址"><a href="#访问网址" class="headerlink" title="访问网址"></a>访问网址</h5><pre class="line-numbers language-none"><code class="language-none">主节点IP:50070							#hdfs
+hdfs dfs -mkdir &#x2F;test
+主节点IP:8088							#yarn	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -473,7 +518,7 @@ lsof -i:15672<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yizhongyu.github.io/2022/05/05/Docker_RabbitMQ/">https://yizhongyu.github.io/2022/05/05/Docker_RabbitMQ/</a>
+                    <a href="https://yizhongyu.github.io/2022/05/17/Hadoop/">https://yizhongyu.github.io/2022/05/17/Hadoop/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -511,12 +556,12 @@ lsof -i:15672<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/docker/">
-                                    <span class="chip bg-color">docker</span>
+                                <a href="/tags/Hadoop/">
+                                    <span class="chip bg-color">Hadoop</span>
                                 </a>
                             
-                                <a href="/tags/RabbitMQ/">
-                                    <span class="chip bg-color">RabbitMQ</span>
+                                <a href="/tags/centos7/">
+                                    <span class="chip bg-color">centos7</span>
                                 </a>
                             
                         </div>
@@ -568,13 +613,13 @@ lsof -i:15672<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/06/centos7_install_java/">
+                <a href="/2022/05/18/redis/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Java">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="redis">
                         
-                        <span class="card-title">Java</span>
+                        <span class="card-title">redis</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -585,14 +630,14 @@ lsof -i:15672<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-18
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
+                                    集群
                                 </a>
                             
                             
@@ -602,12 +647,12 @@ lsof -i:15672<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/centos/">
-                        <span class="chip bg-color">centos</span>
+                    <a href="/tags/centos7/">
+                        <span class="chip bg-color">centos7</span>
                     </a>
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
                     </a>
                     
                 </div>
@@ -621,13 +666,13 @@ lsof -i:15672<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/04/Docker_Nginx/">
+                <a href="/2022/05/17/hadoop/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Docker_Nginx">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Hadoop">
                         
-                        <span class="card-title">Docker_Nginx</span>
+                        <span class="card-title">Hadoop</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -638,14 +683,14 @@ lsof -i:15672<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/docker/" class="post-category">
-                                    docker
+                            <a href="/categories/%E9%9B%86%E7%BE%A4/" class="post-category">
+                                    集群
                                 </a>
                             
                             
@@ -655,12 +700,12 @@ lsof -i:15672<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
+                    <a href="/tags/centos/">
+                        <span class="chip bg-color">centos</span>
                     </a>
                     
-                    <a href="/tags/Nginx/">
-                        <span class="chip bg-color">Nginx</span>
+                    <a href="/tags/Hadoop/">
+                        <span class="chip bg-color">Hadoop</span>
                     </a>
                     
                 </div>

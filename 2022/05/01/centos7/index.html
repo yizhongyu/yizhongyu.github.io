@@ -5,14 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="centos7基础命令, 备忘录">
-    <meta name="description" content="远程网络配置文件查看网络ifconfig
+    <meta name="description" content="记录一下使用频次较高的命令，后面再来整理一篇好用的命令
+网络查看网络信息ifconfig
 ip addr
-ip address show			#IP地址MAC地址
-dhclient				#重新分配IP
-ip route show			#路由
-ip n
-ip -s l
-ss						#">
+ip address show					#IP地址MAC地址
+dhclient						#重新分配IP
+ip route show	">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -330,8 +328,8 @@ ss						#">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/centos/">
-                                <span class="chip bg-color">centos</span>
+                            <a href="/tags/centos7/">
+                                <span class="chip bg-color">centos7</span>
                             </a>
                         
                     </div>
@@ -364,7 +362,7 @@ ss						#">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.4k
                 </div>
                 
 
@@ -384,16 +382,18 @@ ss						#">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h2><h3 id="网络配置文件"><a href="#网络配置文件" class="headerlink" title="网络配置文件"></a>网络配置文件</h3><h4 id="查看网络"><a href="#查看网络" class="headerlink" title="查看网络"></a>查看网络</h4><pre class="line-numbers language-none"><code class="language-none">ifconfig
+                <p><strong>记录一下使用频次较高的命令，后面再来整理一篇好用的命令</strong></p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h4 id="查看网络信息"><a href="#查看网络信息" class="headerlink" title="查看网络信息"></a>查看网络信息</h4><pre class="line-numbers language-none"><code class="language-none">ifconfig
 ip addr
-ip address show			#IP地址MAC地址
-dhclient				#重新分配IP
-ip route show			#路由
+ip address show					#IP地址MAC地址
+dhclient						#重新分配IP
+ip route show					#路由
 ip n
 ip -s l
-ss						#网络信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ss								#网络信息
+netstat -anp | grep 8080		#查看端口是否已经监听<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="固定IP"><a href="#固定IP" class="headerlink" title="固定IP"></a>固定IP</h4><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-[eth0]		#[网卡号]
+<h4 id="设置固定IP"><a href="#设置固定IP" class="headerlink" title="设置固定IP"></a>设置固定IP</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-[eth0]		#[网卡号]
 BOOTPROTO&#x3D;static									#(none禁止DHCP，static启用静态IP地址，dhcp开启DHCP服务)
 IPV6INIT&#x3D;no											#禁止IPV6
 ONBOOT&#x3D;yes											#开机启动
@@ -404,7 +404,7 @@ GATEWAY&#x3D;172.3.4.1									#网关
 DNS1&#x3D;218.104.111.114
 DNS2&#x3D;180.76.76.76									#DNS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="重启网络服务"><a href="#重启网络服务" class="headerlink" title="重启网络服务"></a>重启网络服务</h4><pre class="line-numbers language-none"><code class="language-none">systemctl restart network.service
+<h4 id="重启网络服务"><a href="#重启网络服务" class="headerlink" title="重启网络服务"></a>重启网络服务</h4><pre class="line-numbers language-none"><code class="language-none">systemctl restart network.service			#或
 service network restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h4 id="其他网络参数"><a href="#其他网络参数" class="headerlink" title="其他网络参数"></a>其他网络参数</h4><ul>
@@ -418,13 +418,17 @@ service network restart<span aria-hidden="true" class="line-numbers-rows"><span>
 <li>MAC-address表示指定一个MAC地址<code>MACADDR=“MAC-address”</code></li>
 <li>是否允许非root用户控制该设备<code>USERCTL=yes/no</code></li>
 </ul>
-<h3 id="查看主机信息"><a href="#查看主机信息" class="headerlink" title="查看主机信息"></a>查看主机信息</h3><pre class="line-numbers language-none"><code class="language-none">hostnamectl
+<h4 id="查看主机信息"><a href="#查看主机信息" class="headerlink" title="查看主机信息"></a>查看主机信息</h4><pre class="line-numbers language-none"><code class="language-none">hostnamectl
 cat &#x2F;etc&#x2F;centos-release			#查看系统版本
 sestatus						#se状态<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="修改host-x2F-se"><a href="#修改host-x2F-se" class="headerlink" title="修改host&#x2F;se"></a>修改host&#x2F;se</h4><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;hostname
-vim &#x2F;etc&#x2F;hosts
-vim &#x2F;etc&#x2F;selinux&#x2F;config<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="修改host"><a href="#修改host" class="headerlink" title="修改host"></a>修改host</h4><pre class="line-numbers language-none"><code class="language-none">hostname 123				#临时修改
+vim &#x2F;etc&#x2F;hostname			#永久修改
+echo &quot;123 &gt;&gt;&#x2F;etc&#x2F;hostname	#或者echo输出到末尾
+vim &#x2F;etc&#x2F;hosts				#编辑或者echo
+echo &quot;IP空格hostname&quot; &gt;&gt;&#x2F;etc&#x2F;hosts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="用sed修改selinux状态"><a href="#用sed修改selinux状态" class="headerlink" title="用sed修改selinux状态"></a>用sed修改selinux状态</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sed -i &quot;s&#x2F;SELINUX&#x3D;enforcing&#x2F;SELINUX&#x3D;disabled&#x2F;g&quot; &#x2F;etc&#x2F;selinux&#x2F;config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="其他常用配置文件"><a href="#其他常用配置文件" class="headerlink" title="其他常用配置文件"></a>其他常用配置文件</h4><ul>
 <li>配置域名服务客户端的控制文件<code>/etc/host.conf</code></li>
@@ -437,7 +441,7 @@ vim &#x2F;etc&#x2F;selinux&#x2F;config<span aria-hidden="true" class="line-numbe
 <li>设定了主机使用的协议以及各个协议的协议号<code>/etc/protocols</code></li>
 <li>设定主机的不同端口的网络服务<code>/etc/services</code></li>
 </ul>
-<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><pre class="line-numbers language-none"><code class="language-none">systemctl status firewalld				#查看防火墙状态
+<h4 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h4><pre class="line-numbers language-none"><code class="language-none">systemctl status firewalld				#查看防火墙状态
 firewall-cmd --list-ports				#查看防火墙开放了哪些端口
 systemctl stop firewalld.service		#关闭防火墙
 service firewalld start					#开启防火墙
@@ -479,7 +483,7 @@ scp 本地文件	远程用户名@远程ip:远程文件夹&#x2F;<span aria-hidden
 </li>
 <li><p>安装本地rpm包提示安装进度条<code>rpm -ivh xxx.rpm</code></p>
 </li>
-<li><p>卸载<code>rpm -e xxx</code></p>
+<li><p>卸载<code>rpm -e xxx</code>或<code>yum remove -y xxx</code></p>
 </li>
 <li><p>强制卸载</p>
 <pre class="line-numbers language-none"><code class="language-none">rpm -qa|grep xxx
@@ -505,10 +509,11 @@ rpm -e --nodeps xxx<span aria-hidden="true" class="line-numbers-rows"><span></sp
 </ul>
 </li>
 </ul>
-<h2 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h2><h4 id="查看服务"><a href="#查看服务" class="headerlink" title="查看服务"></a>查看服务</h4><pre class="line-numbers language-none"><code class="language-none">pstree -pu							#进程树
+<h2 id="服务管理"><a href="#服务管理" class="headerlink" title="服务管理"></a>服务管理</h2><h4 id="查看服务进程"><a href="#查看服务进程" class="headerlink" title="查看服务进程"></a>查看服务进程</h4><pre class="line-numbers language-none"><code class="language-none">pstree -pu							#进程树
 ps -aux|grep xx						#查看所有进程
 ps -ef|grep xx						#查看父进程
-kill -9 进程数字					 #强制结束进程<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+netstat -tunlp|grep port			#根据端口号查看进程
+kill -9 进程数字					 #强制结束进程<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="操作服务"><a href="#操作服务" class="headerlink" title="操作服务"></a>操作服务</h4><pre class="line-numbers language-none"><code class="language-none">systemctl start service_name		#服务启动
 service service_name start
@@ -523,17 +528,18 @@ chkconfig --del service_name<span aria-hidden="true" class="line-numbers-rows"><
 
 <h5 id="开机脚本"><a href="#开机脚本" class="headerlink" title="开机脚本"></a>开机脚本</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;init.d&#x2F;xxx			#新建开机脚本
 chmod +x &#x2F;etc&#x2F;init.d&#x2F;xxx	#赋权
-chkconfig --add xxx			#加入开机自启
-chkconfig --list			#查看开机列表
+chkconfig --add xxx			#加入开机列表
+chkconfig xxx on			#状态开
+chkconfig --list			#查看开机列表详情
 systemctl list-unit-files | grep nginx		#搜索nginx的开机启动状态
-systemctl list-unit-files | grep enabled	#搜索全部已启动的服务，enabled 启用；disabled 禁用。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+systemctl list-unit-files | grep enabled	#搜索全部已启动的服务，enabled 启用；disabled 禁用。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h4><p>查看系统当前编码<code>vim /etc/locale.conf</code>永久使用中文</p>
 <pre class="line-numbers language-none"><code class="language-none">LANG&#x3D;&quot;zh_CN.UTF-8&quot;
 LC_ALL&#x3D;&quot;zh_CN.UTF-8&quot;
 LC_CTYPE&#x3D;&quot;zh_CN.UTF-8&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h4 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h4><ul>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><h4 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h4><ul>
 <li>新建文件夹<code>mkdir</code></li>
 <li>递归创建目录，即使上级目录不存在，会按目录层级自动创建目录<code>mkdir -p</code></li>
 <li>新建文本<code>vi</code> <code>vim</code> <code>touch</code></li>
@@ -617,8 +623,11 @@ tar zcvf xxx.tar.gz .&#x2F;xxx&#x2F;						#压缩当前目录下的xxx文件夹<
 <li><p>test最高权限(r:4,w:2,x:1)<code>chmod -R 777 test</code></p>
 </li>
 </ul>
-<h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><p>文件路径</p>
-<pre class="line-numbers language-none"><code class="language-none">find &#x2F; -name xxx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><pre class="line-numbers language-none"><code class="language-none">find &#x2F; -name xxx					#查找根目录下xxx的文件
+find .&#x2F; -iname xxx					#加i标识忽略大小写
+cat xxx | grep 123					#匹配xx文本中的123字符
+cat xxx | grep 123 -i				#加-i参数忽略大小写
+find . |xargs grep -ri &#39;123&#39;		#查找当前目录包含文本123的文件位置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="命令路径"><a href="#命令路径" class="headerlink" title="命令路径"></a>命令路径</h4><pre class="line-numbers language-none"><code class="language-none">which xx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -630,7 +639,7 @@ tar zcvf xxx.tar.gz .&#x2F;xxx&#x2F;						#压缩当前目录下的xxx文件夹<
 <li>查看文件前20行<code>head -n 20 xx.xx</code></li>
 <li>与head相反<code>tail</code></li>
 </ul>
-<h2 id="重启关机"><a href="#重启关机" class="headerlink" title="重启关机"></a>重启关机</h2><p>关闭系统前同步内存到硬盘中<code>sync</code></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="重启关机"><a href="#重启关机" class="headerlink" title="重启关机"></a>重启关机</h4><p>关闭系统前同步内存到硬盘中<code>sync</code></p>
 <ul>
 <li><p>重启系统<code>reboot</code> <code>systemctl</code> <code>reboot</code></p>
 </li>
@@ -652,14 +661,16 @@ tar zcvf xxx.tar.gz .&#x2F;xxx&#x2F;						#压缩当前目录下的xxx文件夹<
 <li>修改密码<code>passwd 123</code></li>
 <li>锁定账户<code>passwd -l 123</code></li>
 </ul>
-<h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><ul>
-<li>查看磁盘占用率<code>df -h</code></li>
-<li>查看文件占用<code>du -ha</code></li>
-<li>检查根目录下每个文件占用的容量<code>du -hsm /*</code></li>
-<li>查看指定目录文件占用<code>du -hs /usr/src/</code></li>
-<li>挂载磁盘(将外部设备123挂载到mut目录下<code>mount /dev/123 /mnt/123</code></li>
-<li>强制卸载<code>umount -f /mnt/123</code></li>
-</ul>
+<h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">df -h						#查看磁盘占用率
+lsblk						#列出磁盘信息
+lsblk -f					#列出文件系统
+du -ha						#查看每个文件占用
+du -hs						#查看当前文件夹大小
+du -hsm &#x2F;*					#检查根目录下每个文件占用的容量
+du -hs &#x2F;usr&#x2F;src&#x2F;			#查看指定目录文件占用
+mount &#x2F;dev&#x2F;123 &#x2F;mnt&#x2F;123		#挂载磁盘(将外部设备123挂载到mut目录下
+umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -724,8 +735,8 @@ tar zcvf xxx.tar.gz .&#x2F;xxx&#x2F;						#压缩当前目录下的xxx文件夹<
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/centos/">
-                                    <span class="chip bg-color">centos</span>
+                                <a href="/tags/centos7/">
+                                    <span class="chip bg-color">centos7</span>
                                 </a>
                             
                         </div>
@@ -1062,7 +1073,7 @@ tar zcvf xxx.tar.gz .&#x2F;xxx&#x2F;						#压缩当前目录下的xxx文件夹<
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">18k</span>
+                        class="white-color">20.2k</span>
             
             
             

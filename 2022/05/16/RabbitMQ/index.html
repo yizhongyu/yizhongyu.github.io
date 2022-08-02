@@ -330,8 +330,8 @@
                                 <span class="chip bg-color">RabbitMQ</span>
                             </a>
                         
-                            <a href="/tags/centos/">
-                                <span class="chip bg-color">centos</span>
+                            <a href="/tags/centos7/">
+                                <span class="chip bg-color">centos7</span>
                             </a>
                         
                     </div>
@@ -364,7 +364,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    692
+                    693
                 </div>
                 
 
@@ -412,7 +412,7 @@ chkconfig rabbitmq-server on				#开机自启<span aria-hidden="true" class="lin
 <h5 id="开启管理页面"><a href="#开启管理页面" class="headerlink" title="开启管理页面"></a>开启管理页面</h5><pre class="line-numbers language-none"><code class="language-none">rabbitmq-plugins enable rabbitmq_management<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>然后就可以使用linux的ip地址:15672去访问了 用户名密码<code>guest</code>只可以本地访问</p>
-<h5 id="新增用户与权限-主节点执行"><a href="#新增用户与权限-主节点执行" class="headerlink" title="新增用户与权限(主节点执行)"></a>新增用户与权限(主节点执行)</h5><pre class="line-numbers language-none"><code class="language-none">rabbitmqctl add_user admin admin						#添加账号
+<h5 id="新增用户与权限-主节点执行"><a href="#新增用户与权限-主节点执行" class="headerlink" title="新增用户与权限(主节点执行)"></a>新增用户与权限(主节点执行)</h5><pre class="line-numbers language-none"><code class="language-none">rabbitmqctl add_user admin 654321						#添加账号admin
 rabbitmqctl set_user_tags admin administrator			#设置用户角色
 rabbitmqctl set_permissions -p &#x2F; admin &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;	#设置用户权限
 rabbitmqctl change_password admin 123456				#更改密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
@@ -424,7 +424,7 @@ rabbitmqctl change_password admin 123456				#更改密码<span aria-hidden="true
 
 <h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><p>hosts与防火墙需要提前设置</p>
 <p>确保各个节点的cookie文件使用的是同一个值(</p>
-<h5 id="主节点执行"><a href="#主节点执行" class="headerlink" title="主节点执行"></a>主节点执行</h5><pre class="line-numbers language-none"><code class="language-none">scp -p &#x2F;var&#x2F;lib&#x2F;rabbitmq&#x2F;.erlang.cookie  root@node2:&#x2F;var&#x2F;lib&#x2F;rabbitmq&#x2F;.erlang.cookie
+<h5 id="主节点执行"><a href="#主节点执行" class="headerlink" title="主节点执行"></a>主节点执行</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">scp -p &#x2F;var&#x2F;lib&#x2F;rabbitmq&#x2F;.erlang.cookie  root@node2:&#x2F;var&#x2F;lib&#x2F;rabbitmq&#x2F;.erlang.cookie
 scp -p &#x2F;var&#x2F;lib&#x2F;rabbitmq&#x2F;.erlang.cookie  root@node3:&#x2F;var&#x2F;lib&#x2F;rabbitmq&#x2F;.erlang.cookie<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h5 id="杀报错端口进程-从节点执行"><a href="#杀报错端口进程-从节点执行" class="headerlink" title="杀报错端口进程(从节点执行)"></a>杀报错端口进程(从节点执行)</h5><pre class="line-numbers language-none"><code class="language-none">netstat -lnp | grep 25672
@@ -449,7 +449,7 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
 <p>&#x2F;usr&#x2F;lib&#x2F;rabbitmq&#x2F;lib&#x2F;rabbitmq_server-3.9.16&#x2F;sbin</p>
 <p>&#x2F;etc&#x2F;rabbitmq&#x2F;rabbitmq.conf</p>
 <p>cp &#x2F;usr&#x2F;share&#x2F;doc&#x2F;rabbitmq-server-3.9.16&#x2F;</p>
-<p>日志文件cat &#x2F;var&#x2F;log&#x2F;rabbitmq&#x2F;<a href="mailto:&#x72;&#x61;&#98;&#98;&#x69;&#x74;&#64;&#110;&#111;&#100;&#x65;&#x30;&#x33;&#x2e;&#x6c;&#111;&#x67;">&#x72;&#x61;&#98;&#98;&#x69;&#x74;&#64;&#110;&#111;&#100;&#x65;&#x30;&#x33;&#x2e;&#x6c;&#111;&#x67;</a></p>
+<p>日志文件cat &#x2F;var&#x2F;log&#x2F;rabbitmq&#x2F;<a href="mailto:&#x72;&#97;&#x62;&#x62;&#105;&#116;&#64;&#110;&#x6f;&#x64;&#101;&#48;&#x33;&#46;&#108;&#x6f;&#103;">&#x72;&#97;&#x62;&#x62;&#105;&#116;&#64;&#110;&#x6f;&#x64;&#101;&#48;&#x33;&#46;&#108;&#x6f;&#103;</a></p>
 <p>rabbitmq 诊断状态命令：rabbitmq-diagnostics status</p>
 <p>要检查特定节点的位置，包括远程运行的节点，请使用 -n（–node 的缩写）开关：</p>
 <p>rabbitmq-diagnostics status -n [node name]</p>
@@ -526,8 +526,8 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
                                     <span class="chip bg-color">RabbitMQ</span>
                                 </a>
                             
-                                <a href="/tags/centos/">
-                                    <span class="chip bg-color">centos</span>
+                                <a href="/tags/centos7/">
+                                    <span class="chip bg-color">centos7</span>
                                 </a>
                             
                         </div>
@@ -864,7 +864,7 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">18k</span>
+                        class="white-color">20.2k</span>
             
             
             
