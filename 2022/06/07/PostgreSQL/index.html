@@ -325,8 +325,8 @@ PostgreSQL 的 Slogan 是 “世界上最先进的开源关">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/centos/">
-                                <span class="chip bg-color">centos</span>
+                            <a href="/tags/centos7/">
+                                <span class="chip bg-color">centos7</span>
                             </a>
                         
                             <a href="/tags/PostgreSQL/">
@@ -363,7 +363,7 @@ PostgreSQL 的 Slogan 是 “世界上最先进的开源关">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    209
+                    361
                 </div>
                 
 
@@ -386,22 +386,43 @@ PostgreSQL 的 Slogan 是 “世界上最先进的开源关">
                 <p>PostgreSQL 是一个免费的对象-关系数据库服务器(ORDBMS)，在灵活的BSD许可证下发行。</p>
 <p>PostgreSQL 开发者把它念作 <strong>post-gress-Q-L</strong>。</p>
 <p>PostgreSQL 的 Slogan 是 “世界上最先进的开源关系型数据库”。</p>
-<p>[PostgreSQL官网下载](<a target="_blank" rel="noopener" href="https://www.postgresql.org/download/linux/redhat/">PostgreSQL: Linux downloads (Red Hat family)</a>)</p>
-<p>yum安装</p>
+<p>[PostgreSQL官网下载](<a target="_blank" rel="noopener" href="https://www.postgresql.org/download/linux/redhat/">PostgreSQL: Linux downloads (Red Hat family)</a>)	<a target="_blank" rel="noopener" href="http://www.postgres.cn/docs/12/installation.html">官方教程</a>	<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/PostgreSQL_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">arch_wiki教程</a></p>
+<h3 id="在线安装"><a href="#在线安装" class="headerlink" title="在线安装"></a>在线安装</h3><p>yum安装</p>
 <pre class="line-numbers language-none"><code class="language-none">yum install postgresql postgresql-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>centos7在线安装</p>
-<pre class="line-numbers language-none"><code class="language-none">sudo yum install -y https:&#x2F;&#x2F;download.postgresql.org&#x2F;pub&#x2F;repos&#x2F;yum&#x2F;reporpms&#x2F;EL-7-x86_64&#x2F;pgdg-redhat-repo-latest.noarch.rpm		#安装rpm源
+<p>或者</p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">sudo yum install -y https:&#x2F;&#x2F;download.postgresql.org&#x2F;pub&#x2F;repos&#x2F;yum&#x2F;reporpms&#x2F;EL-7-x86_64&#x2F;pgdg-redhat-repo-latest.noarch.rpm		#安装rpm源
 sudo yum install -y postgresql14-server					#安装PostgreSQL
 sudo &#x2F;usr&#x2F;pgsql-14&#x2F;bin&#x2F;postgresql-14-setup initdb		#初始化数据库并启用自动启动
 sudo systemctl enable postgresql-14
 sudo systemctl start postgresql-14<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>开防火墙</p>
-<pre class="line-numbers language-none"><code class="language-none">firewall-cmd --add-service&#x3D;postgresql				#添加端口
+<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">su postgres					#切换到普通用户
+psql						#登录
+ALTER USER postgres WITH PASSWORD &#39;新密码&#39;;	#改密码
+\q							#退出<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="开防火墙"><a href="#开防火墙" class="headerlink" title="开防火墙"></a>开防火墙</h4><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">firewall-cmd --add-service&#x3D;postgresql				#添加端口
 firewall-cmd --add-service&#x3D;postgresql --permanent	#重启后依然有效
 firewall-cm --info-service&#x3D;postgresql				#查看这个服务到底是什么端口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre class="line-numbers language-none"><code class="language-none">creat database 名字；
+CREATE EXTENSION xxx;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><pre class="line-numbers language-none"><code class="language-none">make --version		#版本3.80或以上<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">.&#x2F;configure
+make
+su
+make install
+adduser postgres
+mkdir &#x2F;usr&#x2F;local&#x2F;pgsql&#x2F;data
+chown postgres &#x2F;usr&#x2F;local&#x2F;pgsql&#x2F;data
+su - postgres
+&#x2F;usr&#x2F;local&#x2F;pgsql&#x2F;bin&#x2F;initdb -D &#x2F;usr&#x2F;local&#x2F;pgsql&#x2F;data
+&#x2F;usr&#x2F;local&#x2F;pgsql&#x2F;bin&#x2F;pg_ctl -D &#x2F;usr&#x2F;local&#x2F;pgsql&#x2F;data -l logfile start
+&#x2F;usr&#x2F;local&#x2F;pgsql&#x2F;bin&#x2F;createdb test
+&#x2F;usr&#x2F;local&#x2F;pgsql&#x2F;bin&#x2F;psql test<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -466,8 +487,8 @@ firewall-cm --info-service&#x3D;postgresql				#查看这个服务到底是什么
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/centos/">
-                                    <span class="chip bg-color">centos</span>
+                                <a href="/tags/centos7/">
+                                    <span class="chip bg-color">centos7</span>
                                 </a>
                             
                                 <a href="/tags/PostgreSQL/">
@@ -812,7 +833,7 @@ firewall-cm --info-service&#x3D;postgresql				#查看这个服务到底是什么
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">20.2k</span>
+                        class="white-color">20.3k</span>
             
             
             
