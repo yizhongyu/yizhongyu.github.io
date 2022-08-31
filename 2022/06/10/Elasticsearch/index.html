@@ -4,13 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="centos7基础命令, 备忘录">
-    <meta name="description" content="记录一下使用频次较高的命令，后面再来整理一篇好用的命令
-网络查看网络信息ifconfig
-ip addr
-ip address show					#IP地址MAC地址
-dhclient						#重新分配IP
-ip route show	">
+    <meta name="keywords" content="Elasticsearch安装, 备忘录">
+    <meta name="description" content="rpm安装上传elasticsearch-6.8.23.rpm&amp;#x2F;elasticsearch-analysis-ik-6.8.23.zip包到服务器
+scp E:\app\Linux\elasticsearch-6.8.23.rpm">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +18,7 @@ ip route show	">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>centos7基础命令 | 备忘录</title>
+    <title>Elasticsearch安装 | 备忘录</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -230,12 +226,12 @@ ip route show	">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">centos7基础命令</h1>
+                    <h1 class="description center-align post-title">Elasticsearch安装</h1>
                 </div>
             </div>
         </div>
@@ -259,8 +255,8 @@ ip route show	">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/centos7/">
-                                <span class="chip bg-color">centos7</span>
+                            <a href="/tags/Elasticsearch/">
+                                <span class="chip bg-color">Elasticsearch</span>
                             </a>
                         
                     </div>
@@ -271,8 +267,8 @@ ip route show	">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/os/" class="post-category">
-                                os
+                            <a href="/categories/work/" class="post-category">
+                                work
                             </a>
                         
                     </div>
@@ -284,7 +280,7 @@ ip route show	">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-01
+                    2022-06-10
                 </div>
                 
 
@@ -293,7 +289,7 @@ ip route show	">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    319
                 </div>
                 
 
@@ -313,294 +309,54 @@ ip route show	">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>记录一下使用频次较高的命令，后面再来整理一篇好用的命令</strong></p>
-<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h4 id="查看网络信息"><a href="#查看网络信息" class="headerlink" title="查看网络信息"></a>查看网络信息</h4><pre class="line-numbers language-none"><code class="language-none">ifconfig
-ip addr
-ip address show					#IP地址MAC地址
-dhclient						#重新分配IP
-ip route show					#路由
-ip n
-ip -s l
-ss								#网络信息
-netstat -anp | grep 8080		#查看端口是否已经监听<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="rpm安装"><a href="#rpm安装" class="headerlink" title="rpm安装"></a>rpm安装</h2><p>上传elasticsearch-6.8.23.rpm&#x2F;elasticsearch-analysis-ik-6.8.23.zip包到服务器</p>
+<pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\elasticsearch-6.8.23.rpm E:\app\Linux\elasticsearch-analysis-ik-6.8.23.zip root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="设置固定IP"><a href="#设置固定IP" class="headerlink" title="设置固定IP"></a>设置固定IP</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-[eth0]		#[网卡号]
-BOOTPROTO&#x3D;static									#(none禁止DHCP，static启用静态IP地址，dhcp开启DHCP服务)
-IPV6INIT&#x3D;no											#禁止IPV6
-ONBOOT&#x3D;yes											#开机启动
-IPADDR&#x3D;172.3.4.249									#静态IP地址
-NETMASK&#x3D;255.255.255.0								#子网掩码
-PREFIX&#x3D;24											#掩码长度
-GATEWAY&#x3D;172.3.4.1									#网关
-DNS1&#x3D;218.104.111.114
-DNS2&#x3D;180.76.76.76									#DNS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">rpm -ivh &#x2F;opt&#x2F;elasticsearch-6.8.23.rpm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="重启网络服务"><a href="#重启网络服务" class="headerlink" title="重启网络服务"></a>重启网络服务</h4><pre class="line-numbers language-none"><code class="language-none">systemctl restart network.service			#或
-service network restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>列出elasticsearch配置文件</p>
+<pre class="line-numbers language-none"><code class="language-none">rpm -qc elasticsearch
+输出：&#x2F;etc&#x2F;elasticsearch&#x2F;elasticsearch.yml
+	 &#x2F;etc&#x2F;elasticsearch&#x2F;jvm.options
+	 &#x2F;etc&#x2F;sysconfig&#x2F;elasticsearch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="其他网络参数"><a href="#其他网络参数" class="headerlink" title="其他网络参数"></a>其他网络参数</h4><ul>
-<li>是否允许DHCP获得的DNS覆盖本地的DNS<code>PEERDNS</code></li>
-<li>是否从DHCP服务器获取用于定义接口的默认网关的信息的路由表条目<code>PEERROUTES</code></li>
-<li>唯一标识<code>UUID</code></li>
-<li>如果ipv4配置失败禁用设备<code>IPV4_FAILURE_FATAL=yes</code></li>
-<li>如果ipv6配置失败禁用设备<code>IPV6_FAILURE_FATAL=yes</code></li>
-<li>定义设备名称<code>NAME=“eth 或 ens”</code></li>
-<li>address表示广播地址<code>BROADCAST=“address”</code></li>
-<li>MAC-address表示指定一个MAC地址<code>MACADDR=“MAC-address”</code></li>
-<li>是否允许非root用户控制该设备<code>USERCTL=yes/no</code></li>
-</ul>
-<h4 id="查看主机信息"><a href="#查看主机信息" class="headerlink" title="查看主机信息"></a>查看主机信息</h4><pre class="line-numbers language-none"><code class="language-none">hostnamectl
-cat &#x2F;etc&#x2F;centos-release			#查看系统版本
-sestatus						#se状态<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>查看yml中的path路径</p>
+<pre class="line-numbers language-none"><code class="language-none">cat &#x2F;etc&#x2F;elasticsearch&#x2F;elasticsearch.yml |grep path
+输出：path.data: &#x2F;var&#x2F;lib&#x2F;elasticsearch
+	 path.logs: &#x2F;var&#x2F;log&#x2F;elasticsearch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="修改host"><a href="#修改host" class="headerlink" title="修改host"></a>修改host</h4><pre class="line-numbers language-none"><code class="language-none">hostname 123				#临时修改
-vim &#x2F;etc&#x2F;hostname			#永久修改
-echo &quot;123 &gt;&gt;&#x2F;etc&#x2F;hostname	#或者echo输出到末尾
-vim &#x2F;etc&#x2F;hosts				#编辑或者echo
-echo &quot;IP空格hostname&quot; &gt;&gt;&#x2F;etc&#x2F;hosts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>给这两个目录elasticsearch权限</p>
+<pre class="line-numbers language-none"><code class="language-none">chown -R elasticsearch.elasticsearch &#x2F;var&#x2F;lib&#x2F;elasticsearch
+chown -R elasticsearch.elasticsearch &#x2F;var&#x2F;log&#x2F;elasticsearch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="用sed修改selinux状态"><a href="#用sed修改selinux状态" class="headerlink" title="用sed修改selinux状态"></a>用sed修改selinux状态</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sed -i &quot;s&#x2F;SELINUX&#x3D;enforcing&#x2F;SELINUX&#x3D;disabled&#x2F;g&quot; &#x2F;etc&#x2F;selinux&#x2F;config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>修改内存</p>
+<pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;elasticsearch&#x2F;jvm.options
+## -Xms4g
+## -Xmx4g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="其他常用配置文件"><a href="#其他常用配置文件" class="headerlink" title="其他常用配置文件"></a>其他常用配置文件</h4><ul>
-<li>配置域名服务客户端的控制文件<code>/etc/host.conf</code></li>
-<li>完成主机名映射为IP地址的功能<code>/etc/hosts</code></li>
-<li>域名服务客户端的配置文件,用于指定域名服务器的位置<code>/etc/resolv.conf</code></li>
-<li>包含了主机最基本的网络信息,用于系统启动<code>/etc/sysconfig/network</code></li>
-<li>系统启动时初始化网络的一些信息以及网卡的配置文件<code>/etc/sysconfig/network-script/</code></li>
-<li>定义了由超级进程xinetd启动的网络服务<code>/etc/xinetd.conf</code></li>
-<li>完成域名与网络地址的映射<code>/etc/networks</code></li>
-<li>设定了主机使用的协议以及各个协议的协议号<code>/etc/protocols</code></li>
-<li>设定主机的不同端口的网络服务<code>/etc/services</code></li>
-</ul>
-<h4 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h4><pre class="line-numbers language-none"><code class="language-none">systemctl status firewalld				#查看防火墙状态
-firewall-cmd --list-ports				#查看防火墙开放了哪些端口
-systemctl stop firewalld.service		#关闭防火墙
-service firewalld start					#开启防火墙
-systemctl restart firewalld.service		#重启防火墙<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>添加JAVA_HOME&#x3D;</p>
+<pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;sysconfig&#x2F;elasticsearch
+# Elasticsearch Java path
+JAVA_HOME&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent		#开启端口
---zone作用域;--add-port&#x3D;80&#x2F;tcp添加端口，格式为:端口&#x2F;通讯协议;--permanent永久生效，没有此参数重启后失效<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>改network.host:</p>
+<pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;elasticsearch&#x2F;elasticsearch.yml
+network.host: gridknow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">systemctl stop firewalld.service
-systemctl disable firewalld.service								#永久关闭防火墙<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>重启</p>
+<pre class="line-numbers language-none"><code class="language-none">systemctl restart elasticsearch.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="使用终端远程登陆"><a href="#使用终端远程登陆" class="headerlink" title="使用终端远程登陆"></a>使用终端远程登陆</h3><ul>
-<li><p>ssh空格@IP，cmd进入<code>ssh root@172.3.4.249</code></p>
-<pre class="line-numbers language-none"><code class="language-none">1.tab键			用于自动不全命令&#x2F;文件名&#x2F;目录名
-2.ctrl+l		清理终端显示
-3.clear&#x2F;cls		清理终端显示
-4.ctrl+c		终止当前操作
-5.ctrl+r		搜索历史命令
-history			显示历史命令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>scp (secure copy)		#linux下基于ssh登录进行安全的远程文件拷贝命令</p>
-<ul>
-<li><p>递归复制整个目录<code>-r</code></p>
-</li>
-<li><p>详细方式输出<code>-v</code></p>
-</li>
-<li><p>不显示传输进度条<code>-q</code></p>
-</li>
-<li><p>允许压缩<code>-c</code></p>
-<pre class="line-numbers language-none"><code class="language-none">scp -r &#x2F;usr&#x2F;local&#x2F;setup root@192.168.1.233:&#x2F;usr&#x2F;local&#x2F;
-scp 本地文件	远程用户名@远程ip:远程文件夹&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-</ul>
-</li>
-</ul>
-<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><ul>
-<li><p>查看vim是否安装<code>rpm -qa|grep vim</code></p>
-</li>
-<li><p>在线安装个编辑器<code>yum -y install vim</code></p>
-</li>
-<li><p>安装本地rpm包提示安装进度条<code>rpm -ivh xxx.rpm</code></p>
-</li>
-<li><p>卸载<code>rpm -e xxx</code>或<code>yum remove -y xxx</code></p>
-</li>
-<li><p>强制卸载</p>
-<pre class="line-numbers language-none"><code class="language-none">rpm -qa|grep xxx
-rpm -e --nodeps xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-</ul>
-<p><strong>查看软件配置文件路径</strong><code>rpm -qc xxx</code></p>
-<h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><ul>
-<li>使用vi打开文件，默认是命令模式，需要输入a&#x2F;i进入编辑模式，然后输入文本，按下esc键，回到命令模式<ul>
-<li>强制保存退出<code>:wq!</code></li>
-<li>写入write<code>w</code></li>
-<li>退出quit<code>q</code></li>
-<li>强制<code>!</code></li>
-<li>保存退出<code>:x</code></li>
-<li>删除光标位置的字符(X删除前一个)<code>x</code></li>
-<li>查找字符串(n下一个N上一个)<code>/xx</code></li>
-<li>复制几行<code>数字YY</code></li>
-<li>剪切几行<code>数字DD</code></li>
-<li>插入<code>P</code></li>
-<li>撤销<code>u</code></li>
-<li>编辑的数据另存为<code>:w [filename]</code></li>
-<li>如果已改动保持并退出，未改动不存储离开<code>ZZ</code></li>
-<li>显示行号(:set nonu相反)<code>:set nu</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="服务管理"><a href="#服务管理" class="headerlink" title="服务管理"></a>服务管理</h2><h4 id="查看服务进程"><a href="#查看服务进程" class="headerlink" title="查看服务进程"></a>查看服务进程</h4><pre class="line-numbers language-none"><code class="language-none">pstree -pu							#进程树
-ps -aux|grep xx						#查看所有进程
-ps -ef|grep xx						#查看父进程
-netstat -tunlp|grep port			#根据端口号查看进程
-kill -9 进程数字					 #强制结束进程<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>安装ik分词器</p>
+<pre class="line-numbers language-none"><code class="language-none">unzip &#x2F;opt&#x2F;elasticsearch-analysis-ik-6.8.23.zip -d &#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins&#x2F;ik-6.8.23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="操作服务"><a href="#操作服务" class="headerlink" title="操作服务"></a>操作服务</h4><pre class="line-numbers language-none"><code class="language-none">systemctl start service_name		#服务启动
-service service_name start
-systemctl stop service_name			#服务停止
-service service_name stop
-systemctl status service_name		#服务状态
-service service_name status
-systemctl enable service_name		#加入自启动
-chkconfig --add service_name
-systemctl disable service_name		#移除自启动
-chkconfig --del service_name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="tar-gz安装"><a href="#tar-gz安装" class="headerlink" title="tar.gz安装"></a>tar.gz安装</h2><p>上传源码包到服务器</p>
+<pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\arm\elasticsearch-6.8.23.tar.gz E:\app\Linux\arm\elasticsearch-analysis-ik-6.8.23.zip root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="开机脚本"><a href="#开机脚本" class="headerlink" title="开机脚本"></a>开机脚本</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;init.d&#x2F;xxx			#新建开机脚本
-chmod +x &#x2F;etc&#x2F;init.d&#x2F;xxx	#赋权
-chkconfig --add xxx			#加入开机列表
-chkconfig xxx on			#状态开
-chkconfig --list			#查看开机列表详情
-systemctl list-unit-files | grep nginx		#搜索nginx的开机启动状态
-systemctl list-unit-files | grep enabled	#搜索全部已启动的服务，enabled 启用；disabled 禁用。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>解压</p>
+<pre class="line-numbers language-none"><code class="language-none">tar -zxvf &#x2F;opt&#x2F;elasticsearch-6.8.23.tar.gz -C &#x2F;etc
+mv &#x2F;etc&#x2F;elasticsearch-6.8.23&#x2F; &#x2F;etc&#x2F;elasticsearch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h4><p>查看系统当前编码<code>vim /etc/locale.conf</code>永久使用中文</p>
-<pre class="line-numbers language-none"><code class="language-none">LANG&#x3D;&quot;zh_CN.UTF-8&quot;
-LC_ALL&#x3D;&quot;zh_CN.UTF-8&quot;
-LC_CTYPE&#x3D;&quot;zh_CN.UTF-8&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><h4 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h4><ul>
-<li>新建文件夹<code>mkdir</code></li>
-<li>递归创建目录，即使上级目录不存在，会按目录层级自动创建目录<code>mkdir -p</code></li>
-<li>新建文本<code>vi</code> <code>vim</code> <code>touch</code></li>
-</ul>
-<h4 id="路径与属性"><a href="#路径与属性" class="headerlink" title="路径与属性"></a>路径与属性</h4><ul>
-<li><p>返回上级目录(cd ..&#x2F;..)上上层<code>cd ..</code></p>
-</li>
-<li><p>进入绝对路径目录<code>cd /</code></p>
-</li>
-<li><p>进入用户根目录(cd)<code>cd ~</code></p>
-</li>
-<li><p>查看当前的路径<code>pwd</code></p>
-</li>
-<li><p>显示文件属性(ll)<code>ls -l</code></p>
-<ul>
-<li>查看包括隐藏文件在内的所有文件以及属性<code>ls -al</code></li>
-</ul>
-</li>
-</ul>
-<h4 id="移动（搬家）命令-gt-move-gt-mv"><a href="#移动（搬家）命令-gt-move-gt-mv" class="headerlink" title="移动（搬家）命令 &gt; move &gt; mv"></a>移动（搬家）命令 &gt; move &gt; mv</h4><ul>
-<li><p>要移动的文件 目标地址<code>mv /home/xb.py  /tmp/ xb1.py</code></p>
-<ul>
-<li>文件或文件夹改名<code>mv xxx.log  xx.py</code></li>
-</ul>
-</li>
-</ul>
-<h4 id="删除-gt-remove-gt-rm"><a href="#删除-gt-remove-gt-rm" class="headerlink" title="删除 &gt; remove &gt; rm"></a>删除 &gt; remove &gt; rm</h4><ul>
-<li>删除root目录下的xx文件夹<code>rm -rf /root/xx</code></li>
-<li>删除etc&#x2F;yum.repos.d目录下的所有文件<code>rm -rf /etc/yum.repos.d/*</code></li>
-<li>需要删除确认<code>-i</code></li>
-<li>强制删除<code>-f</code></li>
-<li>递归删除目录和内容<code>-r</code></li>
-</ul>
-<p>	</p>
-<h4 id="复制-gt-copy-gt-cp"><a href="#复制-gt-copy-gt-cp" class="headerlink" title="复制 &gt; copy &gt; cp"></a>复制 &gt; copy &gt; cp</h4><ul>
-<li>复制 xxx.txt 到 &#x2F;tmp目录下<code>cp xxx.txt /tmp</code></li>
-<li>复制 xxx.txt 顺便改名为 xb.txt<code>cp xxx.txt /tmp/xb.txt</code></li>
-<li>linux下面有很多命令，一般没有办法直接处理文件夹，因此需要加上（参数 ）<br>递归，复制目录以及目录的子文件<code>cp -r</code><br>复制文件，同时保持文件的属性不变(stat)<code>cp -p</code><br>相当于( -pdr)<code>cp -a</code><br>递归复制test文件夹，为rest2<code>cp -r test test2</code></li>
-<li>输入字符串<code>echo</code><ul>
-<li>添加xx字符串到test.txt<code>echo &quot;xx&quot; &gt;&gt;test.txt</code></li>
-</ul>
-</li>
-</ul>
-<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p>创建硬链接(一个文件多个路径，防止误删)<code>ln xx xx</code><br>创建软链接(符号链接)<code>ln -s xx xx</code></p>
-<h4 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h4><pre class="line-numbers language-none"><code class="language-none">tar zxvf &#x2F;root&#x2F;xxx.tar.gz -C &#x2F;xxx&#x2F;xxx			#解压文件到指定目录
-tar -xJvf &#x2F;root&#x2F;xxx.tar.xz -C &#x2F;xxx&#x2F;xxx
-tar zcvf xxx.tar.gz .&#x2F;xxx&#x2F;						#压缩当前目录下的xxx文件夹<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h4><ul>
-<li>用于在终端下载网络文件<br>wget [参数] 下载地址</li>
-</ul>
-<h4 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h4><table>
-<thead>
-<tr>
-<th align="center">d</th>
-<th align="center">rwx</th>
-<th align="center">r-x</th>
-<th>r-x</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">d文件夹&#x2F;l链接&#x2F;-文件</td>
-<td align="center">属主权限</td>
-<td align="center">属组权限</td>
-<td>其他用户权限</td>
-</tr>
-<tr>
-<td align="center">r读&#x2F;147</td>
-<td align="center">w写&#x2F;258</td>
-<td align="center">x执行&#x2F;369</td>
-<td></td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>test文件属主改为123<code>chown -R 123 test</code></p>
-</li>
-<li><p>opt目录下的test文件夹给123管理<code>sudo chown -R 123:123 /opt/test</code></p>
-</li>
-<li><p>test文件属组改为123<code>chgrp -R 123 test</code></p>
-</li>
-<li><p>test最高权限(r:4,w:2,x:1)<code>chmod -R 777 test</code></p>
-</li>
-</ul>
-<h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><pre class="line-numbers language-none"><code class="language-none">find &#x2F; -name xxx					#查找根目录下xxx的文件
-find .&#x2F; -iname xxx					#加i标识忽略大小写
-cat xxx | grep 123					#匹配xx文本中的123字符
-cat xxx | grep 123 -i				#加-i参数忽略大小写
-find . |xargs grep -ri &#39;123&#39;		#查找当前目录包含文本123的文件位置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="命令路径"><a href="#命令路径" class="headerlink" title="命令路径"></a>命令路径</h4><pre class="line-numbers language-none"><code class="language-none">which xx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h4><ul>
-<li>查看(tac)从下到上反着看<code>cat</code></li>
-<li>显示行号<code>nl</code></li>
-<li>翻页查看(空格翻页，enter往下翻一行，:f查看当前行号)<code>more</code></li>
-<li>与more相反(q离开)(&#x2F;xx，向下查找字符串，?向上查询，n继续查找N与n方向相反)<code>less</code></li>
-<li>查看文件前20行<code>head -n 20 xx.xx</code></li>
-<li>与head相反<code>tail</code></li>
-</ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="重启关机"><a href="#重启关机" class="headerlink" title="重启关机"></a>重启关机</h4><p>关闭系统前同步内存到硬盘中<code>sync</code></p>
-<ul>
-<li><p>重启系统<code>reboot</code> <code>systemctl</code> <code>reboot</code></p>
-</li>
-<li><p>十分钟后重启<code>shutdown -r nowshutdown -r +10</code><br>#重启机器</p>
-</li>
-<li><p>关闭系统<code>poweroff</code> <code>systemctl poweroff</code> <code>halt</code></p>
-</li>
-<li><p>马上关机<code>shutdownshutdown -h now</code></p>
-</li>
-<li><p>十分钟后关机<code>shutdown -h 10</code> <code>shutdown -h +10</code></p>
-</li>
-<li><p>今天14点关机<code>shutdown -h 14:00</code></p>
-</li>
-</ul>
-<h3 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h3><ul>
-<li>新建用户(自动创建123用户及主目录)<code>useradd -m 123</code></li>
-<li>删除用户(删除用户账号以及主目录)<code>userdel -r 123</code></li>
-<li>切换用户<code>su 123</code></li>
-<li>修改密码<code>passwd 123</code></li>
-<li>锁定账户<code>passwd -l 123</code></li>
-</ul>
-<h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">df -h						#查看磁盘占用率
-lsblk						#列出磁盘信息
-lsblk -f					#列出文件系统
-du -ha						#查看每个文件占用
-du -hs						#查看当前文件夹大小
-du -hsm &#x2F;*					#检查根目录下每个文件占用的容量
-du -hs &#x2F;usr&#x2F;src&#x2F;			#查看指定目录文件占用
-mount &#x2F;dev&#x2F;123 &#x2F;mnt&#x2F;123		#挂载磁盘(将外部设备123挂载到mut目录下
-umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;etc&#x2F;elasticsearch&#x2F;distribution&#x2F;src&#x2F;config&#x2F;elasticsearch.yml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
                 
@@ -628,7 +384,7 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yizhongyu.github.io/2022/05/01/centos7/">https://yizhongyu.github.io/2022/05/01/centos7/</a>
+                    <a href="https://yizhongyu.github.io/2022/06/10/Elasticsearch/">https://yizhongyu.github.io/2022/06/10/Elasticsearch/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -666,8 +422,8 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/centos7/">
-                                    <span class="chip bg-color">centos7</span>
+                                <a href="/tags/Elasticsearch/">
+                                    <span class="chip bg-color">Elasticsearch</span>
                                 </a>
                             
                         </div>
@@ -717,13 +473,13 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/01/Docker/">
+                <a href="/2022/07/21/centos7_kernel/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Docker基础">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="centos内核恢复">
                         
-                        <span class="card-title">Docker基础</span>
+                        <span class="card-title">centos内核恢复</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -734,14 +490,14 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/docker/" class="post-category">
-                                    docker
+                            <a href="/categories/centos/" class="post-category">
+                                    centos
                                 </a>
                             
                             
@@ -751,8 +507,8 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
+                    <a href="/tags/centos7/">
+                        <span class="chip bg-color">centos7</span>
                     </a>
                     
                 </div>
@@ -766,13 +522,13 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/01/halo/">
+                <a href="/2022/06/09/MySQL_use/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="halo搭建">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="MySQL数据库命令行使用">
                         
-                        <span class="card-title">halo搭建</span>
+                        <span class="card-title">MySQL数据库命令行使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -783,14 +539,14 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    博客
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -800,12 +556,12 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
+                    <a href="/tags/centos/">
+                        <span class="chip bg-color">centos</span>
                     </a>
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -1002,7 +758,7 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">22.9k</span>
+                        class="white-color">23.6k</span>
             
             
             
