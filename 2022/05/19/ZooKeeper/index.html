@@ -293,7 +293,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    705
+                    677
                 </div>
                 
 
@@ -306,9 +306,14 @@
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -332,26 +337,26 @@ dataDir&#x3D;&#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;zkdata<span aria-hidden="t
 .&#x2F;zkCli.sh										#启动后进入客户端<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>开机自启</strong>（需要jdk）</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;etc&#x2F;init.d&#x2F;zookeeper
-#!&#x2F;bin&#x2F;bash
-#chkconfig:- 20 90
-#description:zookeeper
-#processname:zookeeper
-export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;default
-ZOOKEEPER_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;zookeeper&#x2F;apache-zookeeper-3.8.0-bin&#x2F;
-case $1 in
-		start) su root $ZOOKEEPER_HOME&#x2F;bin&#x2F;zkServer.sh start;;
-		stop) su root $ZOOKEEPER_HOME&#x2F;bin&#x2F;zkServer.sh stop;;
-		status) su root $ZOOKEEPER_HOME&#x2F;bin&#x2F;zkServer.sh status;;
-		restart) su root $ZOOKEEPER_HOME&#x2F;bin&#x2F;zkServer.sh restart;;
-		*) echo &quot;require start|stop|status|restart&quot; ;;
-esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/init.d/zookeeper
+<span class="token comment">#!/bin/bash</span>
+<span class="token comment">#chkconfig:- 20 90</span>
+<span class="token comment">#description:zookeeper</span>
+<span class="token comment">#processname:zookeeper</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span>/usr/java/default
+<span class="token assign-left variable">ZOOKEEPER_HOME</span><span class="token operator">=</span>/usr/local/zookeeper/apache-zookeeper-3.8.0-bin/
+<span class="token keyword">case</span> <span class="token variable">$1</span> <span class="token keyword">in</span>
+		start<span class="token punctuation">)</span> <span class="token function">su</span> root <span class="token variable">$ZOOKEEPER_HOME</span>/bin/zkServer.sh start<span class="token punctuation">;</span><span class="token punctuation">;</span>
+		stop<span class="token punctuation">)</span> <span class="token function">su</span> root <span class="token variable">$ZOOKEEPER_HOME</span>/bin/zkServer.sh stop<span class="token punctuation">;</span><span class="token punctuation">;</span>
+		status<span class="token punctuation">)</span> <span class="token function">su</span> root <span class="token variable">$ZOOKEEPER_HOME</span>/bin/zkServer.sh status<span class="token punctuation">;</span><span class="token punctuation">;</span>
+		restart<span class="token punctuation">)</span> <span class="token function">su</span> root <span class="token variable">$ZOOKEEPER_HOME</span>/bin/zkServer.sh restart<span class="token punctuation">;</span><span class="token punctuation">;</span>
+		*<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"require start|stop|status|restart"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token keyword">esac</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chmod +x &#x2F;etc&#x2F;init.d&#x2F;zookeeper
-chkconfig --add zookeeper
-chkconfig zookeeper on
-service zookeeper start
-service zookeeper status...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> +x /etc/init.d/zookeeper
+<span class="token function">chkconfig</span> --add zookeeper
+<span class="token function">chkconfig</span> zookeeper on
+<span class="token function">service</span> zookeeper start
+<span class="token function">service</span> zookeeper status<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="内部操作"><a href="#内部操作" class="headerlink" title="内部操作"></a>内部操作</h4><pre class="line-numbers language-none"><code class="language-none">ls &#x2F;					#查看根目录
 create &#x2F;test1
@@ -621,7 +626,7 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -635,8 +640,6 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -798,7 +801,7 @@ server.4&#x3D;192.168.200.96:2004:3004:observer
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.6k</span>
+                        class="white-color">23.8k</span>
             
             
             

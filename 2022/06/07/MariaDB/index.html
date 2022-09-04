@@ -298,7 +298,7 @@ rpm -qa|grep mariadb
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    873
+                    757
                 </div>
                 
 
@@ -311,9 +311,14 @@ rpm -qa|grep mariadb
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -375,116 +380,116 @@ systemctl restart firewalld<span aria-hidden="true" class="line-numbers-rows"><s
 
 <h4 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h4><pre class="line-numbers language-none"><code class="language-none">systemctl enable mariadb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">#!&#x2F;bin&#x2F;bash
-# ------------------------------------------
-# Filename: mariadb_384.sh
-# Revision: 1.1
-# Description: yum install mariadb on centos7.4
-# Date: 2022-08-01
-# Author: clarence
-gridknow&#x3D;&#x2F;usr&#x2F;local&#x2F;gridknow
-username&#x3D;root
-password&#x3D;123456
-#安装服务并拷贝配置文件
-    yum -y install mariadb-server mariadb
-echo &quot;[client]
-port            &#x3D; 3306
-default-character-set &#x3D; utf8
+<h3 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># ------------------------------------------</span>
+<span class="token comment"># Filename: mariadb_384.sh</span>
+<span class="token comment"># Revision: 1.1</span>
+<span class="token comment"># Description: yum install mariadb on centos7.4</span>
+<span class="token comment"># Date: 2022-08-01</span>
+<span class="token comment"># Author: clarence</span>
+<span class="token assign-left variable">gridknow</span><span class="token operator">=</span>/usr/local/gridknow
+<span class="token assign-left variable">username</span><span class="token operator">=</span>root
+<span class="token assign-left variable">password</span><span class="token operator">=</span><span class="token number">123456</span>
+<span class="token comment">#安装服务并拷贝配置文件</span>
+    yum -y <span class="token function">install</span> mariadb-server mariadb
+<span class="token builtin class-name">echo</span> <span class="token string">"[client]
+port            = 3306
+default-character-set = utf8
 
 [mysqld]
-datadir&#x3D;&#x2F;var&#x2F;lib&#x2F;mysql
-socket&#x3D;&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql.sock
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
 
 #add
-port            &#x3D; 3306
+port            = 3306
 skip-name-resolve
-key_buffer_size &#x3D; 96M
-table_cache &#x3D; 256
-sort_buffer_size &#x3D; 3M
-join_buffer_size &#x3D; 3M
-net_buffer_length &#x3D; 8K
-read_buffer_size &#x3D; 3M
-read_rnd_buffer_size &#x3D; 1M
-max_allowed_packet &#x3D; 128M
-max_heap_table_size &#x3D; 32M
-tmp_table_size &#x3D; 512M
-back_log &#x3D; 100
-default-storage-engine&#x3D;MyISAM
-wait_timeout &#x3D; 3880000
-interactive_timeout &#x3D; 3880000
+key_buffer_size = 96M
+table_cache = 256
+sort_buffer_size = 3M
+join_buffer_size = 3M
+net_buffer_length = 8K
+read_buffer_size = 3M
+read_rnd_buffer_size = 1M
+max_allowed_packet = 128M
+max_heap_table_size = 32M
+tmp_table_size = 512M
+back_log = 100
+default-storage-engine=MyISAM
+wait_timeout = 3880000
+interactive_timeout = 3880000
 
-thread_cache_size &#x3D; 256
-thread_concurrency &#x3D; 8
+thread_cache_size = 256
+thread_concurrency = 8
 
-log_bin_trust_function_creators &#x3D; 1
-event_scheduler &#x3D; 1
-binlog_cache_size &#x3D; 1M
-lower_case_table_names &#x3D; 1
-character_set_server &#x3D; utf8
-max_connections &#x3D; 4000
-max_connect_errors &#x3D; 1000000
-max_prepared_stmt_count &#x3D; 1048575
-wait_timeout &#x3D; 3880000
-interactive_timeout &#x3D; 3880000
-query_cache_size &#x3D; 128M
-query_cache_limit &#x3D; 2M
-expire_logs_days &#x3D; 7
+log_bin_trust_function_creators = 1
+event_scheduler = 1
+binlog_cache_size = 1M
+lower_case_table_names = 1
+character_set_server = utf8
+max_connections = 4000
+max_connect_errors = 1000000
+max_prepared_stmt_count = 1048575
+wait_timeout = 3880000
+interactive_timeout = 3880000
+query_cache_size = 128M
+query_cache_limit = 2M
+expire_logs_days = 7
 
-log-bin &#x3D; mysql-bin
-log-bin-index &#x3D; binlog.index
-server-id &#x3D; 33061
-binlog_format &#x3D; ROW
-relay-log &#x3D; mysql-relay-bin
+log-bin = mysql-bin
+log-bin-index = binlog.index
+server-id = 33061
+binlog_format = ROW
+relay-log = mysql-relay-bin
 
-innodb_buffer_pool_size &#x3D; 1024M
-innodb_additional_mem_pool_size &#x3D; 2M
-innodb_log_file_size &#x3D; 64M
-innodb_log_buffer_size &#x3D; 8M
+innodb_buffer_pool_size = 1024M
+innodb_additional_mem_pool_size = 2M
+innodb_log_file_size = 64M
+innodb_log_buffer_size = 8M
 
 [mysqldump]
 quick
-max_allowed_packet &#x3D; 128M
+max_allowed_packet = 128M
 
 [mysql]
 no-auto-rehash
 
 [isamchk]
-key_buffer &#x3D; 20M
-sort_buffer_size &#x3D; 20M
-read_buffer &#x3D; 2M
-write_buffer &#x3D; 2M
+key_buffer = 20M
+sort_buffer_size = 20M
+read_buffer = 2M
+write_buffer = 2M
 
 [myisamchk]
-key_buffer &#x3D; 20M
-sort_buffer_size &#x3D; 20M
-read_buffer &#x3D; 2M
-write_buffer &#x3D; 2M
+key_buffer = 20M
+sort_buffer_size = 20M
+read_buffer = 2M
+write_buffer = 2M
 
 [mysqlhotcopy]
-interactive-timeout &#x3D; 7200
+interactive-timeout = 7200
 # Disabling symbolic-links is recommended to prevent assorted security risks
-symbolic-links&#x3D;0
+symbolic-links=0
 # Settings user and group are ignored when systemd is used.
 # If you need to run mysqld under a different user or group,
 # customize your systemd unit file for mariadb according to the
-# instructions in http:&#x2F;&#x2F;fedoraproject.org&#x2F;wiki&#x2F;Systemd
+# instructions in http://fedoraproject.org/wiki/Systemd
 
 [mysqld_safe]
-log-error&#x3D;&#x2F;var&#x2F;log&#x2F;mariadb&#x2F;mariadb.log
-pid-file&#x3D;&#x2F;var&#x2F;run&#x2F;mariadb&#x2F;mariadb.pid
+log-error=/var/log/mariadb/mariadb.log
+pid-file=/var/run/mariadb/mariadb.pid
 
 #
 # include all files from the config directory
 #
-!includedir &#x2F;etc&#x2F;my.cnf.d
+!includedir /etc/my.cnf.d
 
-&quot; &gt;&#x2F;etc&#x2F;my.cnf
-#启动服务并设置为开机自动启动
+"</span> <span class="token operator">></span>/etc/my.cnf
+<span class="token comment">#启动服务并设置为开机自动启动</span>
     systemctl start mariadb
-    systemctl enable mariadb
-#配置密码；创建数据库；导入数据库；修改权限
-    mysqladmin -u $username password $password
-    mysql -u$&#123;username&#125; -p$&#123;password&#125; -e &quot;
+    systemctl <span class="token builtin class-name">enable</span> mariadb
+<span class="token comment">#配置密码；创建数据库；导入数据库；修改权限</span>
+    mysqladmin -u <span class="token variable">$username</span> password <span class="token variable">$password</span>
+    mysql -u<span class="token variable">$&#123;username&#125;</span> -p<span class="token variable">$&#123;password&#125;</span> -e <span class="token string">"
 	create database cdms;
 	create database datamanage2;
 	create database userinternet_record;
@@ -503,15 +508,15 @@ pid-file&#x3D;&#x2F;var&#x2F;run&#x2F;mariadb&#x2F;mariadb.pid
 	create database gkskdsvr;
 	create database push_server;
 	create database gktomcat;
-	GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; identified by &#39;mariadbpasswd&#39; with grant option;
+	GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' identified by 'mariadbpasswd' with grant option;
 	flush privileges;
-	quit &quot;
-sed -i &quot;34i LimitNOFILE&#x3D;10000&quot; &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;mariadb.service
-sed -i &quot;35i LimitNPROC&#x3D;10000&quot; &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;mariadb.service
+	quit "</span>
+<span class="token function">sed</span> -i <span class="token string">"34i LimitNOFILE=10000"</span> /usr/lib/systemd/system/mariadb.service
+<span class="token function">sed</span> -i <span class="token string">"35i LimitNPROC=10000"</span> /usr/lib/systemd/system/mariadb.service
 systemctl --system daemon-reload
 systemctl restart mariadb
 
-echo &#39;------------mariadb has been installed and completed------------&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token builtin class-name">echo</span> <span class="token string">'------------mariadb has been installed and completed------------'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -744,7 +749,7 @@ echo &#39;------------mariadb has been installed and completed------------&#39;<
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -758,8 +763,6 @@ echo &#39;------------mariadb has been installed and completed------------&#39;<
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -921,7 +924,7 @@ echo &#39;------------mariadb has been installed and completed------------&#39;<
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.6k</span>
+                        class="white-color">23.8k</span>
             
             
             

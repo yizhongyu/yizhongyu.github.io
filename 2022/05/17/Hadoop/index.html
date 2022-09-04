@@ -293,7 +293,7 @@ Hadoop 为庞大的计算机集群提供可靠的、可伸缩的应用层计算�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    946
                 </div>
                 
 
@@ -306,9 +306,14 @@ Hadoop 为庞大的计算机集群提供可靠的、可伸缩的应用层计算�
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -317,10 +322,10 @@ Hadoop 为庞大的计算机集群提供可靠的、可伸缩的应用层计算�
 <p>Hadoop 为庞大的计算机集群提供可靠的、可伸缩的应用层计算和存储支持，它允许使用简单的编程模型跨计算机群集分布式处理大型数据集，并且支持在单台计算机到几千台计算机之间进行扩展。</p>
 <p>Hadoop 使用 Java 开发，所以可以在多种不同硬件平台的计算机上部署和使用。其核心部件包括分布式文件系统 (Hadoop DFS，HDFS) 和 MapReduce。</p>
 <h4 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h4><h5 id="确认java安装成功"><a href="#确认java安装成功" class="headerlink" title="确认java安装成功"></a>确认java安装成功</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">java -version
-rpm -qa | grep jdk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">rpm</span> -qa <span class="token operator">|</span> <span class="token function">grep</span> jdk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h5 id="卸载其他版本"><a href="#卸载其他版本" class="headerlink" title="卸载其他版本"></a>卸载其他版本</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum -y remove java...		#或者
-rpm -e --nodeps jdk...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h5 id="卸载其他版本"><a href="#卸载其他版本" class="headerlink" title="卸载其他版本"></a>卸载其他版本</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum -y remove java<span class="token punctuation">..</span>.		<span class="token comment">#或者</span>
+<span class="token function">rpm</span> -e --nodeps jdk<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h5 id="上传jdk1-8rpm安装包"><a href="#上传jdk1-8rpm安装包" class="headerlink" title="上传jdk1.8rpm安装包"></a>上传jdk1.8rpm安装包</h5><pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\jdk-18_linux-x64_bin.rpm root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -339,10 +344,10 @@ export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin<span aria-hidden="true" class="line-n
 tar -zxvf hadoop-2.10.1.tar.gz -C &#x2F;usr&#x2F;hadoop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>默认home路径：&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1</p>
-<h5 id="添加环境变量文件到-x2F-etc-x2F-profile-d-x2F-1"><a href="#添加环境变量文件到-x2F-etc-x2F-profile-d-x2F-1" class="headerlink" title="添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;"></a>添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;etc&#x2F;profile.d&#x2F;hadoop.sh
-export HADOOP_HOME&#x3D;&#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1
-export PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin:$HADOOP_HOME&#x2F;sbin
-source &#x2F;etc&#x2F;profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="添加环境变量文件到-x2F-etc-x2F-profile-d-x2F-1"><a href="#添加环境变量文件到-x2F-etc-x2F-profile-d-x2F-1" class="headerlink" title="添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;"></a>添加环境变量文件到&#x2F;etc&#x2F;profile.d&#x2F;</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/profile.d/hadoop.sh
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">HADOOP_HOME</span><span class="token operator">=</span>/usr/hadoop/hadoop-2.10.1
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$HADOOP_HOME</span>/bin:<span class="token variable">$HADOOP_HOME</span>/sbin
+<span class="token builtin class-name">source</span> /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>验证</p>
 <pre class="line-numbers language-none"><code class="language-none">hadoop version
@@ -362,50 +367,50 @@ if [ &quot;$JAVA_HOME&quot; !&#x3D; &quot;&quot; ]; then
   #echo &quot;run java in $JAVA_HOME&quot;
   JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;default		(这一步还是修改Javahome)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="Hadoop核心文件配置-指定文件系统"><a href="#Hadoop核心文件配置-指定文件系统" class="headerlink" title="Hadoop核心文件配置(指定文件系统)"></a>Hadoop核心文件配置(指定文件系统)</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;core-site.xml
-&lt;configuration&gt;
-    &lt;property&gt;
-        &lt;name&gt;fs.defaultFS&lt;&#x2F;name&gt;
-        &lt;value&gt;hdfs:&#x2F;&#x2F;localhost:9000&lt;&#x2F;value&gt;	#修改localhost
-    &lt;&#x2F;property&gt;
-    &lt;property&gt;
-        &lt;name&gt;hadoop.tmp.dir&lt;&#x2F;name&gt;
-        &lt;value&gt;&#x2F;var&#x2F;HDFSdata&lt;&#x2F;value&gt;			#HDFS数据目录
-    &lt;&#x2F;property&gt;
-&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="Hadoop核心文件配置-指定文件系统"><a href="#Hadoop核心文件配置-指定文件系统" class="headerlink" title="Hadoop核心文件配置(指定文件系统)"></a>Hadoop核心文件配置(指定文件系统)</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /usr/hadoop/hadoop-2.10.1/etc/hadoop/core-site.xml
+<span class="token operator">&lt;</span>configuration<span class="token operator">></span>
+    <span class="token operator">&lt;</span>property<span class="token operator">></span>
+        <span class="token operator">&lt;</span>name<span class="token operator">></span>fs.defaultFS<span class="token operator">&lt;</span>/name<span class="token operator">></span>
+        <span class="token operator">&lt;</span>value<span class="token operator">></span>hdfs://localhost:900<span class="token operator"><span class="token file-descriptor important">0</span>&lt;</span>/value<span class="token operator">></span>	<span class="token comment">#修改localhost</span>
+    <span class="token operator">&lt;</span>/property<span class="token operator">></span>
+    <span class="token operator">&lt;</span>property<span class="token operator">></span>
+        <span class="token operator">&lt;</span>name<span class="token operator">></span>hadoop.tmp.dir<span class="token operator">&lt;</span>/name<span class="token operator">></span>
+        <span class="token operator">&lt;</span>value<span class="token operator">></span>/var/HDFSdata<span class="token operator">&lt;</span>/value<span class="token operator">></span>			<span class="token comment">#HDFS数据目录</span>
+    <span class="token operator">&lt;</span>/property<span class="token operator">></span>
+<span class="token operator">&lt;</span>/configuration<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="配置hdfs默认的数据存放策略"><a href="#配置hdfs默认的数据存放策略" class="headerlink" title="配置hdfs默认的数据存放策略"></a>配置hdfs默认的数据存放策略</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;hdfs-site.xml
-&lt;configuration&gt;
-    &lt;property&gt;
-        &lt;name&gt;dfs.replication&lt;&#x2F;name&gt;
-        &lt;value&gt;2&lt;&#x2F;value&gt;						#hdfs副本数，大于1
-    &lt;&#x2F;property&gt;
-    &lt;property&gt;
-        &lt;name&gt;dfs.namenode.secondary.http-address&lt;&#x2F;name&gt;
-        &lt;value&gt;node3:50090&lt;&#x2F;value&gt;				#指定node3为secondary
-    &lt;&#x2F;property&gt;
-&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="配置hdfs默认的数据存放策略"><a href="#配置hdfs默认的数据存放策略" class="headerlink" title="配置hdfs默认的数据存放策略"></a>配置hdfs默认的数据存放策略</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /usr/hadoop/hadoop-2.10.1/etc/hadoop/hdfs-site.xml
+<span class="token operator">&lt;</span>configuration<span class="token operator">></span>
+    <span class="token operator">&lt;</span>property<span class="token operator">></span>
+        <span class="token operator">&lt;</span>name<span class="token operator">></span>dfs.replication<span class="token operator">&lt;</span>/name<span class="token operator">></span>
+        <span class="token operator">&lt;</span>value<span class="token operator">></span><span class="token operator"><span class="token file-descriptor important">2</span>&lt;</span>/value<span class="token operator">></span>						<span class="token comment">#hdfs副本数，大于1</span>
+    <span class="token operator">&lt;</span>/property<span class="token operator">></span>
+    <span class="token operator">&lt;</span>property<span class="token operator">></span>
+        <span class="token operator">&lt;</span>name<span class="token operator">></span>dfs.namenode.secondary.http-address<span class="token operator">&lt;</span>/name<span class="token operator">></span>
+        <span class="token operator">&lt;</span>value<span class="token operator">></span>node3:5009<span class="token operator"><span class="token file-descriptor important">0</span>&lt;</span>/value<span class="token operator">></span>				<span class="token comment">#指定node3为secondary</span>
+    <span class="token operator">&lt;</span>/property<span class="token operator">></span>
+<span class="token operator">&lt;</span>/configuration<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="从模板拷贝mapreduce配置文件，配置任务调度策略"><a href="#从模板拷贝mapreduce配置文件，配置任务调度策略" class="headerlink" title="从模板拷贝mapreduce配置文件，配置任务调度策略"></a>从模板拷贝mapreduce配置文件，配置任务调度策略</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cp &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml.template &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml
-vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml
-&lt;configuration&gt;
-    &lt;property&gt;
-        &lt;name&gt;mapreduce.framework.name&lt;&#x2F;name&gt;
-        &lt;value&gt;yarn&lt;&#x2F;value&gt;
-    &lt;&#x2F;property&gt;
-&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="从模板拷贝mapreduce配置文件，配置任务调度策略"><a href="#从模板拷贝mapreduce配置文件，配置任务调度策略" class="headerlink" title="从模板拷贝mapreduce配置文件，配置任务调度策略"></a>从模板拷贝mapreduce配置文件，配置任务调度策略</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> /usr/hadoop/hadoop-2.10.1/etc/hadoop/mapred-site.xml.template /usr/hadoop/hadoop-2.10.1/etc/hadoop/mapred-site.xml
+<span class="token function">vim</span> /usr/hadoop/hadoop-2.10.1/etc/hadoop/mapred-site.xml
+<span class="token operator">&lt;</span>configuration<span class="token operator">></span>
+    <span class="token operator">&lt;</span>property<span class="token operator">></span>
+        <span class="token operator">&lt;</span>name<span class="token operator">></span>mapreduce.framework.name<span class="token operator">&lt;</span>/name<span class="token operator">></span>
+        <span class="token operator">&lt;</span>value<span class="token operator">></span>yarn<span class="token operator">&lt;</span>/value<span class="token operator">></span>
+    <span class="token operator">&lt;</span>/property<span class="token operator">></span>
+<span class="token operator">&lt;</span>/configuration<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="配置yarn资源管理角色"><a href="#配置yarn资源管理角色" class="headerlink" title="配置yarn资源管理角色"></a>配置yarn资源管理角色</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;yarn-site.xml
-&lt;configuration&gt;
-    &lt;property&gt;
-        &lt;name&gt;yarn.nodemanager.aux-services&lt;&#x2F;name&gt;
-        &lt;value&gt;mapreduce_shuffle&lt;&#x2F;value&gt;		#表示结构随机
-    &lt;&#x2F;property&gt;
-    &lt;property&gt;
-        &lt;name&gt;yarn.resourcemanager.hostname&lt;&#x2F;name&gt;
-        &lt;value&gt;node1&lt;&#x2F;value&gt;					#指定资源调度者
-    &lt;&#x2F;property&gt;
-&lt;&#x2F;configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="配置yarn资源管理角色"><a href="#配置yarn资源管理角色" class="headerlink" title="配置yarn资源管理角色"></a>配置yarn资源管理角色</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /usr/hadoop/hadoop-2.10.1/etc/hadoop/yarn-site.xml
+<span class="token operator">&lt;</span>configuration<span class="token operator">></span>
+    <span class="token operator">&lt;</span>property<span class="token operator">></span>
+        <span class="token operator">&lt;</span>name<span class="token operator">></span>yarn.nodemanager.aux-services<span class="token operator">&lt;</span>/name<span class="token operator">></span>
+        <span class="token operator">&lt;</span>value<span class="token operator">></span>mapreduce_shuffle<span class="token operator">&lt;</span>/value<span class="token operator">></span>		<span class="token comment">#表示结构随机</span>
+    <span class="token operator">&lt;</span>/property<span class="token operator">></span>
+    <span class="token operator">&lt;</span>property<span class="token operator">></span>
+        <span class="token operator">&lt;</span>name<span class="token operator">></span>yarn.resourcemanager.hostname<span class="token operator">&lt;</span>/name<span class="token operator">></span>
+        <span class="token operator">&lt;</span>value<span class="token operator">></span>node<span class="token operator"><span class="token file-descriptor important">1</span>&lt;</span>/value<span class="token operator">></span>					<span class="token comment">#指定资源调度者</span>
+    <span class="token operator">&lt;</span>/property<span class="token operator">></span>
+<span class="token operator">&lt;</span>/configuration<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h5 id="配置datanode"><a href="#配置datanode" class="headerlink" title="配置datanode"></a>配置datanode</h5><pre class="line-numbers language-none"><code class="language-none">vim &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;etc&#x2F;hadoop&#x2F;slaves
 node1
@@ -413,13 +418,13 @@ node2
 node3
 .....<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="主节点单独执行"><a href="#主节点单独执行" class="headerlink" title="主节点单独执行"></a>主节点单独执行</h4><h5 id="格式化主节点hdfs"><a href="#格式化主节点hdfs" class="headerlink" title="格式化主节点hdfs"></a>格式化主节点hdfs</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cd &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;bin&#x2F;
+<h4 id="主节点单独执行"><a href="#主节点单独执行" class="headerlink" title="主节点单独执行"></a>主节点单独执行</h4><h5 id="格式化主节点hdfs"><a href="#格式化主节点hdfs" class="headerlink" title="格式化主节点hdfs"></a>格式化主节点hdfs</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/hadoop/hadoop-2.10.1/bin/
 hdfs namenode-format
-ls &#x2F;var&#x2F;HDFSdata&#x2F;dfs&#x2F;name&#x2F;current&#x2F;		#查看image
-cd &#x2F;usr&#x2F;hadoop&#x2F;hadoop-2.10.1&#x2F;sbin&#x2F;
+<span class="token function">ls</span> /var/HDFSdata/dfs/name/current/		<span class="token comment">#查看image</span>
+<span class="token builtin class-name">cd</span> /usr/hadoop/hadoop-2.10.1/sbin/
 start-dfs.sh
-start-yarn.sh							#启动集群
-jps										#查看<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+start-yarn.sh							<span class="token comment">#启动集群</span>
+jps										<span class="token comment">#查看</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h5 id="访问网址"><a href="#访问网址" class="headerlink" title="访问网址"></a>访问网址</h5><pre class="line-numbers language-none"><code class="language-none">主节点IP:50070							#hdfs
 hdfs dfs -mkdir &#x2F;test
@@ -654,7 +659,7 @@ hdfs dfs -mkdir &#x2F;test
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -668,8 +673,6 @@ hdfs dfs -mkdir &#x2F;test
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -831,7 +834,7 @@ hdfs dfs -mkdir &#x2F;test
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.6k</span>
+                        class="white-color">23.8k</span>
             
             
             

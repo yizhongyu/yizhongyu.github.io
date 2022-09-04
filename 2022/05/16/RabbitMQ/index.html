@@ -295,7 +295,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    693
+                    677
                 </div>
                 
 
@@ -308,9 +308,14 @@
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -355,8 +360,8 @@ rabbitmqctl change_password admin 123456				#更改密码<span aria-hidden="true
 
 <h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><p>hosts与防火墙需要提前设置</p>
 <p>确保各个节点的cookie文件使用的是同一个值(</p>
-<h5 id="主节点执行"><a href="#主节点执行" class="headerlink" title="主节点执行"></a>主节点执行</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">scp -p &#x2F;var&#x2F;lib&#x2F;rabbitmq&#x2F;.erlang.cookie  root@node2:&#x2F;var&#x2F;lib&#x2F;rabbitmq&#x2F;.erlang.cookie
-scp -p &#x2F;var&#x2F;lib&#x2F;rabbitmq&#x2F;.erlang.cookie  root@node3:&#x2F;var&#x2F;lib&#x2F;rabbitmq&#x2F;.erlang.cookie<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h5 id="主节点执行"><a href="#主节点执行" class="headerlink" title="主节点执行"></a>主节点执行</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">scp</span> -p /var/lib/rabbitmq/.erlang.cookie  root@node2:/var/lib/rabbitmq/.erlang.cookie
+<span class="token function">scp</span> -p /var/lib/rabbitmq/.erlang.cookie  root@node3:/var/lib/rabbitmq/.erlang.cookie<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h5 id="杀报错端口进程-从节点执行"><a href="#杀报错端口进程-从节点执行" class="headerlink" title="杀报错端口进程(从节点执行)"></a>杀报错端口进程(从节点执行)</h5><pre class="line-numbers language-none"><code class="language-none">netstat -lnp | grep 25672
 kill -9 xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -380,7 +385,7 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
 <p>&#x2F;usr&#x2F;lib&#x2F;rabbitmq&#x2F;lib&#x2F;rabbitmq_server-3.9.16&#x2F;sbin</p>
 <p>&#x2F;etc&#x2F;rabbitmq&#x2F;rabbitmq.conf</p>
 <p>cp &#x2F;usr&#x2F;share&#x2F;doc&#x2F;rabbitmq-server-3.9.16&#x2F;</p>
-<p>日志文件cat &#x2F;var&#x2F;log&#x2F;rabbitmq&#x2F;<a href="mailto:&#114;&#97;&#x62;&#x62;&#105;&#x74;&#x40;&#x6e;&#x6f;&#100;&#x65;&#48;&#51;&#x2e;&#108;&#111;&#103;">&#114;&#97;&#x62;&#x62;&#105;&#x74;&#x40;&#x6e;&#x6f;&#100;&#x65;&#48;&#51;&#x2e;&#108;&#111;&#103;</a></p>
+<p>日志文件cat &#x2F;var&#x2F;log&#x2F;rabbitmq&#x2F;<a href="mailto:&#x72;&#97;&#x62;&#98;&#x69;&#x74;&#x40;&#110;&#111;&#100;&#101;&#x30;&#51;&#46;&#108;&#111;&#103;">&#x72;&#97;&#x62;&#98;&#x69;&#x74;&#x40;&#110;&#111;&#100;&#101;&#x30;&#51;&#46;&#108;&#111;&#103;</a></p>
 <p>rabbitmq 诊断状态命令：rabbitmq-diagnostics status</p>
 <p>要检查特定节点的位置，包括远程运行的节点，请使用 -n（–node 的缩写）开关：</p>
 <p>rabbitmq-diagnostics status -n [node name]</p>
@@ -616,7 +621,7 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -630,8 +635,6 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -793,7 +796,7 @@ rabbitmqctl start_app		#只启动应用服务<span aria-hidden="true" class="lin
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.6k</span>
+                        class="white-color">23.8k</span>
             
             
             

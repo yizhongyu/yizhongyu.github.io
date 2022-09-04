@@ -294,7 +294,7 @@ PostgreSQL 的 Slogan 是 “世界上最先进的开源关">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    361
+                    359
                 </div>
                 
 
@@ -307,9 +307,14 @@ PostgreSQL 的 Slogan 是 “世界上最先进的开源关">
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -328,10 +333,10 @@ sudo &#x2F;usr&#x2F;pgsql-14&#x2F;bin&#x2F;postgresql-14-setup initdb		#初始�
 sudo systemctl enable postgresql-14
 sudo systemctl start postgresql-14<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">su postgres					#切换到普通用户
-psql						#登录
-ALTER USER postgres WITH PASSWORD &#39;新密码&#39;;	#改密码
-\q							#退出<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">su</span> postgres					<span class="token comment">#切换到普通用户</span>
+psql						<span class="token comment">#登录</span>
+ALTER <span class="token environment constant">USER</span> postgres WITH PASSWORD <span class="token string">'新密码'</span><span class="token punctuation">;</span>	<span class="token comment">#改密码</span>
+<span class="token punctuation">\</span>q							<span class="token comment">#退出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="开防火墙"><a href="#开防火墙" class="headerlink" title="开防火墙"></a>开防火墙</h4><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">firewall-cmd --add-service&#x3D;postgresql				#添加端口
 firewall-cmd --add-service&#x3D;postgresql --permanent	#重启后依然有效
@@ -585,7 +590,7 @@ su - postgres
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -599,8 +604,6 @@ su - postgres
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -762,7 +765,7 @@ su - postgres
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.6k</span>
+                        class="white-color">23.8k</span>
             
             
             

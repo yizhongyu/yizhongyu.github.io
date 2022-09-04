@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="centos7安装摘要, 备忘录">
     <meta name="description" content="CentOS 7 的支持周期到 2024-06-30
-官网下载
-引导安装语言选择：尽量选择 English，English (United States)
-先配置网络
-Network &amp;amp; Hostname：Host name:XXX">
+官网下载 阿里镜像
+win10使用Hyper-V安装flowchart LR
+		subgraph 开启Hyper-V
+		右键win窗口图标 --&gt;应用和功能 --&gt;程序和功能 --&gt;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -292,7 +292,7 @@ Network &amp;amp; Hostname：Host name:XXX">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    575
+                    905
                 </div>
                 
 
@@ -305,15 +305,64 @@ Network &amp;amp; Hostname：Host name:XXX">
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>CentOS 7 的支持周期到 2024-06-30</p>
-<p><a target="_blank" rel="noopener" href="https://wiki.centos.org/Download">官网下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://wiki.centos.org/Download">官网下载</a> <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-DVD-2207-02.iso?spm=a2c6h.25603864.0.0.60196aeaAwYSZQ">阿里镜像</a></p>
+<h3 id="win10使用Hyper-V安装"><a href="#win10使用Hyper-V安装" class="headerlink" title="win10使用Hyper-V安装"></a>win10使用Hyper-V安装</h3><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">flowchart</span> LR
+		<span class="token keyword">subgraph</span> 开启Hyper-V
+		右键win窗口图标 <span class="token arrow operator">--></span>应用和功能 <span class="token arrow operator">--></span>程序和功能 <span class="token arrow operator">--></span>启用或关闭Windows功能 <span class="token arrow operator">--></span>Hyper-V <span class="token arrow operator">--></span>确定
+		<span class="token keyword">end</span>
+		<span class="token keyword">subgraph</span> 打开Hyper-V
+		点击win <span class="token arrow operator">--></span>Windows管理工具 <span class="token arrow operator">--></span>Hyper-V管理器
+		<span class="token keyword">end</span>
+	<span class="token keyword">subgraph</span> 新建虚拟机
+		<span class="token keyword">subgraph</span> 1
+		新建 <span class="token arrow operator">--></span>虚拟机 <span class="token arrow operator">--></span>输入名称 <span class="token arrow operator">--></span>虚拟机存储位置 <span class="token arrow operator">--></span>第一代即可 <span class="token arrow operator">--></span>内存看项目需求
+		<span class="token keyword">end</span>
+		<span class="token keyword">subgraph</span> 2
+		网络选择Default_Switch <span class="token arrow operator">--></span>Default_Switch是内部网络 <span class="token arrow operator">--></span>分配硬盘空间 <span class="token arrow operator">--></span>从可启动的CD/DVD-ROM安装操作系统 <span class="token arrow operator">--></span>选择映像文件 <span class="token arrow operator">--></span>完成
+		<span class="token keyword">end</span>
+	<span class="token keyword">end</span>
+开启Hyper-V <span class="token arrow operator">--></span> 打开Hyper-V <span class="token arrow operator">--></span> 1 <span class="token arrow operator">--></span> 新建虚拟机
+1 <span class="token arrow operator">--></span> 2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="使用VmwareESXI安装"><a href="#使用VmwareESXI安装" class="headerlink" title="使用VmwareESXI安装"></a>使用VmwareESXI安装</h3><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">flowchart</span> LR
+		<span class="token keyword">subgraph</span> 后台
+		登录esxi网页
+		workstation远程连接
+		<span class="token keyword">end</span>
+		<span class="token keyword">subgraph</span> 上传iso文件
+		储存 <span class="token arrow operator">--></span>数据储存浏览器 <span class="token arrow operator">--></span>点击目录 <span class="token arrow operator">--></span>上载 <span class="token arrow operator">--></span>选择ISO文件 <span class="token arrow operator">--></span>打开
+		<span class="token keyword">end</span>
+	<span class="token keyword">subgraph</span> 新建虚拟机
+		<span class="token keyword">subgraph</span> ESXI网页
+		<span class="token keyword">subgraph</span> 网页1
+		虚拟机 <span class="token arrow operator">--></span>创建/注册虚拟机 <span class="token arrow operator">--></span>下一步 <span class="token arrow operator">--></span>输入名称 <span class="token arrow operator">--></span>选择客户机操作系统系列 <span class="token arrow operator">--></span>Linux <span class="token arrow operator">--></span>选择客户机操作系统版本 <span class="token arrow operator">--></span>Centos7
+		<span class="token keyword">end</span>
+		<span class="token keyword">subgraph</span> 网页2
+		下一页X2 <span class="token arrow operator">--></span>CPU核心 <span class="token arrow operator">--></span>内存大小 <span class="token arrow operator">--></span>硬盘空间 <span class="token arrow operator">--></span>CD/DVD驱动器 <span class="token arrow operator">--></span>数据储存ISO文件 <span class="token arrow operator">--></span>选择上传的iso <span class="token arrow operator">--></span>完成
+		<span class="token keyword">end</span>
+		<span class="token keyword">end</span>
+		<span class="token keyword">subgraph</span> VmwareWorkstaion
+		文件 <span class="token arrow operator">--></span>连接服务器 <span class="token arrow operator">--></span>输入服务器IP/用户名/密码 <span class="token arrow operator">--></span>连接 <span class="token arrow operator">--></span>创建新的虚拟机...
+		<span class="token keyword">end</span>
+	<span class="token keyword">end</span>
+登录esxi网页 &amp; workstation远程连接 <span class="token arrow operator">--></span> 上传iso文件 <span class="token arrow operator">--></span> ESXI网页 &amp; VmwareWorkstaion
+网页1 <span class="token arrow operator">--></span> 网页2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h4 id="引导安装"><a href="#引导安装" class="headerlink" title="引导安装"></a>引导安装</h4><p><strong>语言选择</strong>：尽量选择 English，English (United States)</p>
 <p>先配置网络</p>
 <p><strong>Network &amp; Hostname</strong>：Host name:XXXX，点击Apply按钮</p>
@@ -334,26 +383,26 @@ Network &amp;amp; Hostname：Host name:XXX">
 <p>User Creation：新建额外的（管理员账号）账号，可选。</p>
 <h4 id="格式化网卡命名"><a href="#格式化网卡命名" class="headerlink" title="格式化网卡命名"></a>格式化网卡命名</h4><p>即禁用 consistent interface device naming</p>
 <p>(1) 编辑 grub 配置文件</p>
-<pre class="line-numbers language-none"><code class="language-none">sed -i &#39;s&#x2F;rhgb&#x2F;net.ifnames&#x3D;0 biosdevname&#x3D;0 rhgb&#x2F;&#39; &#x2F;etc&#x2F;default&#x2F;grub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">'s/rhgb/net.ifnames=0 biosdevname=0 rhgb/'</span> /etc/default/grub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>(2) 运行如下命令重建 grub.cfg 文件</p>
-<pre class="line-numbers language-none"><code class="language-none"># legacy boot mode:
-grub2-mkconfig -o &#x2F;boot&#x2F;grub2&#x2F;grub.cfg
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># legacy boot mode:</span>
+grub2-mkconfig -o /boot/grub2/grub.cfg
 
-# UEFI boot mode:
-grub2-mkconfig -o &#x2F;boot&#x2F;efi&#x2F;EFI&#x2F;redhat&#x2F;grub.cfg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># UEFI boot mode:</span>
+grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>(3) 重命名网卡配置文件</p>
-<pre class="line-numbers language-none"><code class="language-none">mv &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens160 &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eth0
-sed -i &#39;s&#x2F;ens160&#x2F;eth0&#x2F;g&#39; &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eth0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mv</span> /etc/sysconfig/network-scripts/ifcfg-ens160 /etc/sysconfig/network-scripts/ifcfg-eth0
+<span class="token function">sed</span> -i <span class="token string">'s/ens160/eth0/g'</span> /etc/sysconfig/network-scripts/ifcfg-eth0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>(4) 重启生效</p>
-<pre class="line-numbers language-none"><code class="language-none">shutdown -r now<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">shutdown</span> -r now<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="关闭-SELinux"><a href="#关闭-SELinux" class="headerlink" title="关闭 SELinux"></a>关闭 SELinux</h4><p>SELinux 是 Linux 中最古老的一种 MAC（强制访问控制，Mandatory Access Control）模型，它是美国国家安全局的产品。除了在一些对安全有强制的要求的行业，SELinux 更多的以难以管理和排错而 “闻名”，通常认为其 “弊大于利”，许多应用安装文档中都要求关闭 SELinux。</p>
 <p>第一种方式可以不用重启，第二种方式完成后必须重启系统</p>
 <p>(1)立即生效</p>
-<pre class="line-numbers language-none"><code class="language-none">setenforce 0
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">setenforce <span class="token number">0</span>
 setenforce: SELinux is disabled<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>(2) 重启系统生效</p>
@@ -585,7 +634,7 @@ setenforce: SELinux is disabled<span aria-hidden="true" class="line-numbers-rows
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -599,8 +648,6 @@ setenforce: SELinux is disabled<span aria-hidden="true" class="line-numbers-rows
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -762,7 +809,7 @@ setenforce: SELinux is disabled<span aria-hidden="true" class="line-numbers-rows
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.6k</span>
+                        class="white-color">23.8k</span>
             
             
             

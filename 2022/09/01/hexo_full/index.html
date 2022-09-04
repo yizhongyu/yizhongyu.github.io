@@ -4,9 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Elasticsearch安装, 备忘录">
-    <meta name="description" content="rpm安装上传elasticsearch-6.8.23.rpm&amp;#x2F;elasticsearch-analysis-ik-6.8.23.zip包到服务器
-scp E:\app\Linux\elasticsearch-6.8.23.rpm">
+    <meta name="keywords" content="hexo搭建, 备忘录">
+    <meta name="description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+hexo需要Node.js&amp;#x2F;Git来支持
+Node.js(Node.js 版本需不">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +19,7 @@ scp E:\app\Linux\elasticsearch-6.8.23.rpm">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Elasticsearch安装 | 备忘录</title>
+    <title>hexo搭建 | 备忘录</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -231,7 +232,7 @@ scp E:\app\Linux\elasticsearch-6.8.23.rpm">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Elasticsearch安装</h1>
+                    <h1 class="description center-align post-title">hexo搭建</h1>
                 </div>
             </div>
         </div>
@@ -255,8 +256,12 @@ scp E:\app\Linux\elasticsearch-6.8.23.rpm">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Elasticsearch/">
-                                <span class="chip bg-color">Elasticsearch</span>
+                            <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                                <span class="chip bg-color">博客</span>
+                            </a>
+                        
+                            <a href="/tags/hexo/">
+                                <span class="chip bg-color">hexo</span>
                             </a>
                         
                     </div>
@@ -267,8 +272,8 @@ scp E:\app\Linux\elasticsearch-6.8.23.rpm">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/work/" class="post-category">
-                                work
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                博客
                             </a>
                         
                     </div>
@@ -280,7 +285,7 @@ scp E:\app\Linux\elasticsearch-6.8.23.rpm">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-06-10
+                    2022-09-01
                 </div>
                 
 
@@ -289,7 +294,7 @@ scp E:\app\Linux\elasticsearch-6.8.23.rpm">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    319
+                    571
                 </div>
                 
 
@@ -314,54 +319,74 @@ scp E:\app\Linux\elasticsearch-6.8.23.rpm">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="rpm安装"><a href="#rpm安装" class="headerlink" title="rpm安装"></a>rpm安装</h2><p>上传elasticsearch-6.8.23.rpm&#x2F;elasticsearch-analysis-ik-6.8.23.zip包到服务器</p>
-<pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\elasticsearch-6.8.23.rpm E:\app\Linux\elasticsearch-analysis-ik-6.8.23.zip root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h3 id="hexo需要Node-js-x2F-Git来支持"><a href="#hexo需要Node-js-x2F-Git来支持" class="headerlink" title="hexo需要Node.js&#x2F;Git来支持"></a>hexo需要Node.js&#x2F;Git来支持</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="http://nodejs.org/">Node.js</a>(Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://git-scm.com/">Git</a></p>
+</li>
+</ul>
+<p><strong>上传node.js&#x2F;git源码包到服务器并解压</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">scp</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>zhong<span class="token punctuation">\</span>OneDrive<span class="token punctuation">\</span>blog<span class="token punctuation">\</span>node-v16.17.0-linux-x64.tar.xz root@192.168.200.98:/opt
+<span class="token function">scp</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>zhong<span class="token punctuation">\</span>OneDrive<span class="token punctuation">\</span>blog<span class="token punctuation">\</span>git-2.37.3.tar.gz root@192.168.200.98:/opt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">rpm -ivh &#x2F;opt&#x2F;elasticsearch-6.8.23.rpm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> -xJvf /opt/node-v16.17.0-linux-x64.tar.xz -C /usr/local/
+<span class="token function">mv</span> /usr/local/node-v16.17.0-linux-x64/ /usr/local/node
+<span class="token function">tar</span> -zxvf /opt/git-2.37.3.tar.gz -C /usr/local/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>列出elasticsearch配置文件</p>
-<pre class="line-numbers language-none"><code class="language-none">rpm -qc elasticsearch
-输出：&#x2F;etc&#x2F;elasticsearch&#x2F;elasticsearch.yml
-	 &#x2F;etc&#x2F;elasticsearch&#x2F;jvm.options
-	 &#x2F;etc&#x2F;sysconfig&#x2F;elasticsearch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'export PATH=/usr/local/node/bin:$PATH'</span> <span class="token operator">>></span> /root/.bash_profile
+<span class="token builtin class-name">source</span> /root/.bash_profile			 <span class="token comment">#刷新环境变量</span>
+<span class="token function">node</span> -v <span class="token operator">&amp;</span> <span class="token function">npm</span> -v					<span class="token comment">#验证</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>查看yml中的path路径</p>
-<pre class="line-numbers language-none"><code class="language-none">cat &#x2F;etc&#x2F;elasticsearch&#x2F;elasticsearch.yml |grep path
-输出：path.data: &#x2F;var&#x2F;lib&#x2F;elasticsearch
-	 path.logs: &#x2F;var&#x2F;log&#x2F;elasticsearch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc-c++ perl-ExtUtils-MakeMaker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>给这两个目录elasticsearch权限</p>
-<pre class="line-numbers language-none"><code class="language-none">chown -R elasticsearch.elasticsearch &#x2F;var&#x2F;lib&#x2F;elasticsearch
-chown -R elasticsearch.elasticsearch &#x2F;var&#x2F;log&#x2F;elasticsearch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>编译安装(安装前卸载自带的低版本git)<code>yum remove git</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/local/git-2.37.3/
+./configure --prefix<span class="token operator">=</span>/usr/local/git
+<span class="token function">make</span> <span class="token assign-left variable">profix</span><span class="token operator">=</span>/usr/local/git
+<span class="token function">make</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>修改内存</p>
-<pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;elasticsearch&#x2F;jvm.options
-## -Xms4g
-## -Xmx4g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>配置git环境变量</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'export GIT_HOME=/usr/local/git'</span> <span class="token operator">></span>/etc/profile.d/git.sh
+<span class="token builtin class-name">echo</span> <span class="token string">'export PATH=$PATH:$GIT_HOME/bin'</span> <span class="token operator">>></span> /etc/profile.d/git.sh
+<span class="token builtin class-name">source</span> /etc/profile
+<span class="token function">git</span> --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>添加JAVA_HOME&#x3D;</p>
-<pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;sysconfig&#x2F;elasticsearch
-# Elasticsearch Java path
-JAVA_HOME&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="npm安装Hexo"><a href="#npm安装Hexo" class="headerlink" title="npm安装Hexo"></a>npm安装Hexo</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npm.taobao.org		<span class="token comment">#添加国内镜像源</span>
+<span class="token function">npm</span> i hexo-cli -g
+hexo init blog
+<span class="token builtin class-name">cd</span> blog
+<span class="token function">npm</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>改network.host:</p>
-<pre class="line-numbers language-none"><code class="language-none">vim &#x2F;etc&#x2F;elasticsearch&#x2F;elasticsearch.yml
-network.host: gridknow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo -v			<span class="token comment">#验证</span>
+hexo s			<span class="token comment">#启动</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>重启</p>
-<pre class="line-numbers language-none"><code class="language-none">systemctl restart elasticsearch.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="http://localhost:4000/">访问地址</a>	IP端口4000</p>
+<h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p>在 hexo 工作文件夹的根目录中执行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i hexo-theme-butterfly<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>安装ik分词器</p>
-<pre class="line-numbers language-none"><code class="language-none">unzip &#x2F;opt&#x2F;elasticsearch-analysis-ik-6.8.23.zip -d &#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins&#x2F;ik-6.8.23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>编辑<code>_config.yml</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">theme: butterfly<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="tar-gz安装"><a href="#tar-gz安装" class="headerlink" title="tar.gz安装"></a>tar.gz安装</h2><p>上传源码包到服务器</p>
-<pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\arm\elasticsearch-6.8.23.tar.gz E:\app\Linux\arm\elasticsearch-analysis-ik-6.8.23.zip root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>重载生成博客文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>解压</p>
-<pre class="line-numbers language-none"><code class="language-none">tar -zxvf &#x2F;opt&#x2F;elasticsearch-6.8.23.tar.gz -C &#x2F;etc
-mv &#x2F;etc&#x2F;elasticsearch-6.8.23&#x2F; &#x2F;etc&#x2F;elasticsearch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="butterfly主题专属"><a href="#butterfly主题专属" class="headerlink" title="butterfly主题专属"></a>butterfly主题专属</h4><p>为了减少升级主题后带来的不便,在 hexo 的根目录创建一个文件 _config.butterfly.yml</p>
+<pre class="line-numbers language-none"><code class="language-none">cp node_modules&#x2F;hexo-theme-butterfly&#x2F;_config.yml _config.butterfly.yml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;etc&#x2F;elasticsearch&#x2F;distribution&#x2F;src&#x2F;config&#x2F;elasticsearch.yml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>主题配置文件位置：&#x2F;root&#x2F;blog&#x2F;_config.butterfly.yml</p>
+<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save hexo-deployer-git					   <span class="token comment">#git部署(必选)</span>
+<span class="token function">npm</span> <span class="token function">install</span> --save hexo-admin							  <span class="token comment">#后台(IP端口4000/admin)</span>
+<span class="token function">npm</span> <span class="token function">install</span> hexo-renderer-pug hexo-renderer-stylus --save	<span class="token comment">#pug 以及 stylus 的渲染器</span>
+<span class="token function">npm</span> <span class="token function">install</span> hexo-generator-search --save				   <span class="token comment">#搜索</span>
+<span class="token function">npm</span> i --save hexo-wordcount								  <span class="token comment">#文章字数统计</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="配置调整"><a href="#配置调整" class="headerlink" title="配置调整"></a>配置调整</h3><p>hexo配置文件：&#x2F;root&#x2F;blog&#x2F;_config.yml</p>
+<h3 id="推送到GitHub"><a href="#推送到GitHub" class="headerlink" title="推送到GitHub"></a>推送到GitHub</h3><p>网络不可达时可临时添加代理</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span><span class="token string">'http://192.168.200.29:7890'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>生成静态网页并将本地数据部署到设定的GitHub</p>
+<pre class="line-numbers language-none"><code class="language-none">hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
                 
@@ -389,7 +414,7 @@ mv &#x2F;etc&#x2F;elasticsearch-6.8.23&#x2F; &#x2F;etc&#x2F;elasticsearch<span a
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yizhongyu.github.io/2022/06/10/Elasticsearch/">https://yizhongyu.github.io/2022/06/10/Elasticsearch/</a>
+                    <a href="https://yizhongyu.github.io/2022/09/01/hexo_full/">https://yizhongyu.github.io/2022/09/01/hexo_full/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -427,8 +452,12 @@ mv &#x2F;etc&#x2F;elasticsearch-6.8.23&#x2F; &#x2F;etc&#x2F;elasticsearch<span a
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Elasticsearch/">
-                                    <span class="chip bg-color">Elasticsearch</span>
+                                <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                                    <span class="chip bg-color">博客</span>
+                                </a>
+                            
+                                <a href="/tags/hexo/">
+                                    <span class="chip bg-color">hexo</span>
                                 </a>
                             
                         </div>
@@ -474,17 +503,18 @@ mv &#x2F;etc&#x2F;elasticsearch-6.8.23&#x2F; &#x2F;etc&#x2F;elasticsearch<span a
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/07/21/centos7_kernel/">
+                <a href="/2022/09/01/hexo_full/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="centos内核恢复">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="hexo搭建">
                         
-                        <span class="card-title">centos内核恢复</span>
+                        <span class="card-title">hexo搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -494,26 +524,31 @@ mv &#x2F;etc&#x2F;elasticsearch-6.8.23&#x2F; &#x2F;etc&#x2F;elasticsearch<span a
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/centos/" class="post-category">
-                                    centos
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    博客
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/centos7/">
-                        <span class="chip bg-color">centos7</span>
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
@@ -527,13 +562,13 @@ mv &#x2F;etc&#x2F;elasticsearch-6.8.23&#x2F; &#x2F;etc&#x2F;elasticsearch<span a
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/06/09/MySQL_use/">
+                <a href="/2022/08/31/halo_docker/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="MySQL数据库命令行使用">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="利用docker搭建halo博客">
                         
-                        <span class="card-title">MySQL数据库命令行使用</span>
+                        <span class="card-title">利用docker搭建halo博客</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -544,14 +579,14 @@ mv &#x2F;etc&#x2F;elasticsearch-6.8.23&#x2F; &#x2F;etc&#x2F;elasticsearch<span a
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-31
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/docker/" class="post-category">
+                                    docker
                                 </a>
                             
                             
@@ -561,12 +596,16 @@ mv &#x2F;etc&#x2F;elasticsearch-6.8.23&#x2F; &#x2F;etc&#x2F;elasticsearch<span a
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/centos/">
-                        <span class="chip bg-color">centos</span>
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/halo/">
+                        <span class="chip bg-color">halo</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
                     </a>
                     
                 </div>

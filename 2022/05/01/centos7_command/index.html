@@ -293,7 +293,7 @@ ip route show	">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    2.3k
                 </div>
                 
 
@@ -306,9 +306,14 @@ ip route show	">
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -324,16 +329,16 @@ ip -s l
 ss								#网络信息
 netstat -anp | grep 8080		#查看端口是否已经监听<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="设置固定IP"><a href="#设置固定IP" class="headerlink" title="设置固定IP"></a>设置固定IP</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-[eth0]		#[网卡号]
-BOOTPROTO&#x3D;static									#(none禁止DHCP，static启用静态IP地址，dhcp开启DHCP服务)
-IPV6INIT&#x3D;no											#禁止IPV6
-ONBOOT&#x3D;yes											#开机启动
-IPADDR&#x3D;172.3.4.249									#静态IP地址
-NETMASK&#x3D;255.255.255.0								#子网掩码
-PREFIX&#x3D;24											#掩码长度
-GATEWAY&#x3D;172.3.4.1									#网关
-DNS1&#x3D;218.104.111.114
-DNS2&#x3D;180.76.76.76									#DNS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="设置固定IP"><a href="#设置固定IP" class="headerlink" title="设置固定IP"></a>设置固定IP</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/sysconfig/network-scripts/ifcfg-<span class="token punctuation">[</span>eth0<span class="token punctuation">]</span>		<span class="token comment">#[网卡号]</span>
+<span class="token assign-left variable">BOOTPROTO</span><span class="token operator">=</span>static									<span class="token comment">#(none禁止DHCP，static启用静态IP地址，dhcp开启DHCP服务)</span>
+<span class="token assign-left variable">IPV6INIT</span><span class="token operator">=</span>no											<span class="token comment">#禁止IPV6</span>
+<span class="token assign-left variable">ONBOOT</span><span class="token operator">=</span>yes											<span class="token comment">#开机启动</span>
+<span class="token assign-left variable">IPADDR</span><span class="token operator">=</span><span class="token number">172.3</span>.4.249									<span class="token comment">#静态IP地址</span>
+<span class="token assign-left variable">NETMASK</span><span class="token operator">=</span><span class="token number">255.255</span>.255.0								<span class="token comment">#子网掩码</span>
+<span class="token assign-left variable">PREFIX</span><span class="token operator">=</span><span class="token number">24</span>											<span class="token comment">#掩码长度</span>
+<span class="token assign-left variable">GATEWAY</span><span class="token operator">=</span><span class="token number">172.3</span>.4.1									<span class="token comment">#网关</span>
+<span class="token assign-left variable">DNS1</span><span class="token operator">=</span><span class="token number">218.104</span>.111.114
+<span class="token assign-left variable">DNS2</span><span class="token operator">=</span><span class="token number">180.76</span>.76.76									<span class="token comment">#DNS</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="重启网络服务"><a href="#重启网络服务" class="headerlink" title="重启网络服务"></a>重启网络服务</h4><pre class="line-numbers language-none"><code class="language-none">systemctl restart network.service			#或
 service network restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -359,7 +364,7 @@ echo &quot;123 &gt;&gt;&#x2F;etc&#x2F;hostname	#或者echo输出到末尾
 vim &#x2F;etc&#x2F;hosts				#编辑或者echo
 echo &quot;IP空格hostname&quot; &gt;&gt;&#x2F;etc&#x2F;hosts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="用sed修改selinux状态"><a href="#用sed修改selinux状态" class="headerlink" title="用sed修改selinux状态"></a>用sed修改selinux状态</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sed -i &quot;s&#x2F;SELINUX&#x3D;enforcing&#x2F;SELINUX&#x3D;disabled&#x2F;g&quot; &#x2F;etc&#x2F;selinux&#x2F;config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="用sed修改selinux状态"><a href="#用sed修改selinux状态" class="headerlink" title="用sed修改selinux状态"></a>用sed修改selinux状态</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">"s/SELINUX=enforcing/SELINUX=disabled/g"</span> /etc/selinux/config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="其他常用配置文件"><a href="#其他常用配置文件" class="headerlink" title="其他常用配置文件"></a>其他常用配置文件</h4><ul>
 <li>配置域名服务客户端的控制文件<code>/etc/host.conf</code></li>
@@ -592,15 +597,15 @@ find . |xargs grep -ri &#39;123&#39;		#查找当前目录包含文本123的文�
 <li>修改密码<code>passwd 123</code></li>
 <li>锁定账户<code>passwd -l 123</code></li>
 </ul>
-<h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">df -h						#查看磁盘占用率
-lsblk						#列出磁盘信息
-lsblk -f					#列出文件系统
-du -ha						#查看每个文件占用
-du -hs						#查看当前文件夹大小
-du -hsm &#x2F;*					#检查根目录下每个文件占用的容量
-du -hs &#x2F;usr&#x2F;src&#x2F;			#查看指定目录文件占用
-mount &#x2F;dev&#x2F;123 &#x2F;mnt&#x2F;123		#挂载磁盘(将外部设备123挂载到mut目录下
-umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">df</span> -h						<span class="token comment">#查看磁盘占用率</span>
+lsblk						<span class="token comment">#列出磁盘信息</span>
+lsblk -f					<span class="token comment">#列出文件系统</span>
+<span class="token function">du</span> -ha						<span class="token comment">#查看每个文件占用</span>
+<span class="token function">du</span> -hs						<span class="token comment">#查看当前文件夹大小</span>
+<span class="token function">du</span> -hsm /*					<span class="token comment">#检查根目录下每个文件占用的容量</span>
+<span class="token function">du</span> -hs /usr/src/			<span class="token comment">#查看指定目录文件占用</span>
+<span class="token function">mount</span> /dev/123 /mnt/123		<span class="token comment">#挂载磁盘(将外部设备123挂载到mut目录下</span>
+<span class="token function">umount</span> -f /mnt/123			<span class="token comment">#强制卸载</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -825,7 +830,7 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -839,8 +844,6 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -1002,7 +1005,7 @@ umount -f &#x2F;mnt&#x2F;123			#强制卸载<span aria-hidden="true" class="line
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.6k</span>
+                        class="white-color">23.8k</span>
             
             
             

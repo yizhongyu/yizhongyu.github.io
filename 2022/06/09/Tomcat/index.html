@@ -288,7 +288,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    444
+                    389
                 </div>
                 
 
@@ -301,9 +301,14 @@
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -320,80 +325,80 @@ mv &#x2F;usr&#x2F;local&#x2F;apache-tomcat-8.5.79 &#x2F;usr&#x2F;local&#x2F;tomc
 .&#x2F;startup.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h4 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h4><p><a target="_blank" rel="noopener" href="http://ip:8080/">http://ip:8080</a></p>
-<h4 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim &#x2F;etc&#x2F;init.d&#x2F;tomcat
-#!&#x2F;bin&#x2F;bash  
-# This is the init script for starting up the  
-#  Jakarta Tomcat server  
-#  
-# chkconfig: 345 91 10  
-# description: Starts and stops the Tomcat daemon.  
-#  
+<h4 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/init.d/tomcat
+<span class="token comment">#!/bin/bash  </span>
+<span class="token comment"># This is the init script for starting up the  </span>
+<span class="token comment">#  Jakarta Tomcat server  </span>
+<span class="token comment">#  </span>
+<span class="token comment"># chkconfig: 345 91 10  </span>
+<span class="token comment"># description: Starts and stops the Tomcat daemon.  </span>
+<span class="token comment">#  </span>
 
-# Source function library.  
-. &#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;functions  
+<span class="token comment"># Source function library.  </span>
+<span class="token builtin class-name">.</span> /etc/rc.d/init.d/functions  
 
-# Get config.  
-. &#x2F;etc&#x2F;sysconfig&#x2F;network  
+<span class="token comment"># Get config.  </span>
+<span class="token builtin class-name">.</span> /etc/sysconfig/network  
 
-# Check that networking is up.  
-[ &quot;$&#123;NETWORKING&#125;&quot; &#x3D; &quot;no&quot; ] &amp;&amp; exit 0
+<span class="token comment"># Check that networking is up.  </span>
+<span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$&#123;NETWORKING&#125;</span>"</span> <span class="token operator">=</span> <span class="token string">"no"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">exit</span> <span class="token number">0</span>
 
-export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;default
-tomcat_home&#x3D;&#x2F;usr&#x2F;local&#x2F;tomcat
-startup&#x3D;$tomcat_home&#x2F;bin&#x2F;startup.sh  
-shutdown&#x3D;$tomcat_home&#x2F;bin&#x2F;shutdown.sh  
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span>/usr/java/default
+<span class="token assign-left variable">tomcat_home</span><span class="token operator">=</span>/usr/local/tomcat
+<span class="token assign-left variable">startup</span><span class="token operator">=</span><span class="token variable">$tomcat_home</span>/bin/startup.sh  
+<span class="token assign-left variable">shutdown</span><span class="token operator">=</span><span class="token variable">$tomcat_home</span>/bin/shutdown.sh  
 
-start()&#123;  
-   echo -n &quot;Starting Tomcat service:&quot;  
-   cd $tomcat_home  
-   $startup  
-   echo &quot;tomcat is succeessfully started up&quot;  
-&#125;  
+<span class="token function-name function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
+   <span class="token builtin class-name">echo</span> -n <span class="token string">"Starting Tomcat service:"</span>  
+   <span class="token builtin class-name">cd</span> <span class="token variable">$tomcat_home</span>  
+   <span class="token variable">$startup</span>  
+   <span class="token builtin class-name">echo</span> <span class="token string">"tomcat is succeessfully started up"</span>  
+<span class="token punctuation">&#125;</span>  
 
-stop()&#123;  
-   echo -n &quot;Shutting down tomcat: &quot;  
-   cd $tomcat_home  
-   $shutdown  
-   echo &quot;tomcat is succeessfully shut down.&quot;  
-&#125;  
+<span class="token function-name function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
+   <span class="token builtin class-name">echo</span> -n <span class="token string">"Shutting down tomcat: "</span>  
+   <span class="token builtin class-name">cd</span> <span class="token variable">$tomcat_home</span>  
+   <span class="token variable">$shutdown</span>  
+   <span class="token builtin class-name">echo</span> <span class="token string">"tomcat is succeessfully shut down."</span>  
+<span class="token punctuation">&#125;</span>  
 
-status()&#123;  
-    numproc&#x3D;&#96;ps -ef | grep catalina | grep -v &quot;grep catalina&quot; | wc -l&#96;  
-    if [ $numproc -gt 0 ]; then  
-       echo &quot;Tomcat is running...&quot;  
-    else  
-       echo &quot;Tomcat is stopped...&quot;  
-    fi  
-&#125;  
+<span class="token function-name function">status</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
+    <span class="token assign-left variable">numproc</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> catalina <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token string">"grep catalina"</span> <span class="token operator">|</span> <span class="token function">wc</span> -l<span class="token variable">`</span></span>  
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$numproc</span> -gt <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>  
+       <span class="token builtin class-name">echo</span> <span class="token string">"Tomcat is running..."</span>  
+    <span class="token keyword">else</span>  
+       <span class="token builtin class-name">echo</span> <span class="token string">"Tomcat is stopped..."</span>  
+    <span class="token keyword">fi</span>  
+<span class="token punctuation">&#125;</span>  
 
-restart()&#123;  
+<span class="token function-name function">restart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
    stop  
    start  
-&#125;    
-# See how we were called.  
-case &quot;$1&quot; in  
-start)  
+<span class="token punctuation">&#125;</span>    
+<span class="token comment"># See how we were called.  </span>
+<span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>  
+start<span class="token punctuation">)</span>  
    start  
-   ;;  
-stop)  
+   <span class="token punctuation">;</span><span class="token punctuation">;</span>  
+stop<span class="token punctuation">)</span>  
    stop  
-   ;;  
-status)  
+   <span class="token punctuation">;</span><span class="token punctuation">;</span>  
+status<span class="token punctuation">)</span>  
    status  
-   ;;  
-restart)  
+   <span class="token punctuation">;</span><span class="token punctuation">;</span>  
+restart<span class="token punctuation">)</span>  
    restart  
-   ;;  
-*)  
-   echo $&quot;Usage: $0 &#123;start|stop|status|restart&#125;&quot;  
-   exit 1  
-esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+   <span class="token punctuation">;</span><span class="token punctuation">;</span>  
+*<span class="token punctuation">)</span>  
+   <span class="token builtin class-name">echo</span> $<span class="token string">"Usage: <span class="token variable">$0</span> &#123;start|stop|status|restart&#125;"</span>  
+   <span class="token builtin class-name">exit</span> <span class="token number">1</span>  
+<span class="token keyword">esac</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chmod +x &#x2F;etc&#x2F;init.d&#x2F;tomcat
-chkconfig --add tomcat
-chkconfig tomcat on
-service tomcat start
-service tomcat status...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> +x /etc/init.d/tomcat
+<span class="token function">chkconfig</span> --add tomcat
+<span class="token function">chkconfig</span> tomcat on
+<span class="token function">service</span> tomcat start
+<span class="token function">service</span> tomcat status<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h4><pre class="line-numbers language-none"><code class="language-none">tail -300f &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;logs&#x2F;catalina.out<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -620,7 +625,7 @@ service tomcat status...<span aria-hidden="true" class="line-numbers-rows"><span
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -634,8 +639,6 @@ service tomcat status...<span aria-hidden="true" class="line-numbers-rows"><span
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -797,7 +800,7 @@ service tomcat status...<span aria-hidden="true" class="line-numbers-rows"><span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.6k</span>
+                        class="white-color">23.8k</span>
             
             
             

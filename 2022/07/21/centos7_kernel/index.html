@@ -8,9 +8,10 @@
     <meta name="description" content="恢复教程适用手动划区安装centos7
 最坏的情况rm -rf /*可以尝试恢复
 光驱引导，进入救援模式后开始
-bin目录损坏的情况可选操作cd &amp;#x2F;mnt&amp;#x2F;sysimage
-ln -s usr&amp;#x2F;bin bin
-">
+bin目录损坏的情况可选操作cd /mnt/sysimage
+ln -s usr/bin bin
+
+获取需要修复系统的root环">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -293,7 +294,7 @@ ln -s usr&amp;#x2F;bin bin
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    316
+                    298
                 </div>
                 
 
@@ -306,9 +307,14 @@ ln -s usr&amp;#x2F;bin bin
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -316,21 +322,21 @@ ln -s usr&amp;#x2F;bin bin
                 <p>恢复教程适用手动划区安装centos7</p>
 <p>最坏的情况<code>rm -rf /*</code>可以尝试恢复</p>
 <p>光驱引导，进入救援模式后开始</p>
-<h4 id="bin目录损坏的情况可选操作"><a href="#bin目录损坏的情况可选操作" class="headerlink" title="bin目录损坏的情况可选操作"></a>bin目录损坏的情况可选操作</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cd &#x2F;mnt&#x2F;sysimage
-ln -s usr&#x2F;bin bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="bin目录损坏的情况可选操作"><a href="#bin目录损坏的情况可选操作" class="headerlink" title="bin目录损坏的情况可选操作"></a>bin目录损坏的情况可选操作</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /mnt/sysimage
+<span class="token function">ln</span> -s usr/bin bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="获取需要修复系统的root环境"><a href="#获取需要修复系统的root环境" class="headerlink" title="获取需要修复系统的root环境"></a>获取需要修复系统的root环境</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chroot &#x2F;mnt&#x2F;sysimage<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="获取需要修复系统的root环境"><a href="#获取需要修复系统的root环境" class="headerlink" title="获取需要修复系统的root环境"></a>获取需要修复系统的root环境</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chroot</span> /mnt/sysimage<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="挂载光驱-需要从光驱中安装kernel"><a href="#挂载光驱-需要从光驱中安装kernel" class="headerlink" title="挂载光驱(需要从光驱中安装kernel)"></a>挂载光驱(需要从光驱中安装kernel)</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsblk						#查看光驱盘符
-mkdir &#x2F;123					#创建目录
-mount &#x2F;dev&#x2F;sr0 &#x2F;123			#光驱盘挂载到创建的文件夹
-rpm -ivh &#x2F;123&#x2F;Packages&#x2F;kernel-3.....  --force		#本地强制安装内核<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="挂载光驱-需要从光驱中安装kernel"><a href="#挂载光驱-需要从光驱中安装kernel" class="headerlink" title="挂载光驱(需要从光驱中安装kernel)"></a>挂载光驱(需要从光驱中安装kernel)</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsblk						<span class="token comment">#查看光驱盘符</span>
+<span class="token function">mkdir</span> /123					<span class="token comment">#创建目录</span>
+<span class="token function">mount</span> /dev/sr0 /123			<span class="token comment">#光驱盘挂载到创建的文件夹</span>
+<span class="token function">rpm</span> -ivh /123/Packages/kernel-3<span class="token punctuation">..</span><span class="token punctuation">..</span>.  --force		<span class="token comment">#本地强制安装内核</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="ufei启动需要安装"><a href="#ufei启动需要安装" class="headerlink" title="ufei启动需要安装"></a>ufei启动需要安装</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rpm -ivh grub2-efi-x64-modules-2.02-0.64.el7.centos.noarch.rpm --force<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="ufei启动需要安装"><a href="#ufei启动需要安装" class="headerlink" title="ufei启动需要安装"></a>ufei启动需要安装</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">rpm</span> -ivh grub2-efi-x64-modules-2.02-0.64.el7.centos.noarch.rpm --force<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="接着修复grub2引导"><a href="#接着修复grub2引导" class="headerlink" title="接着修复grub2引导"></a>接着修复grub2引导</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsblk									#多块磁盘需要确认安装的位置
-grub2-install &#x2F;dev&#x2F;sda					#安装到系统盘位置
-grub2-mkconfig &gt; &#x2F;boot&#x2F;grub2&#x2F;grub.cfg 	#生成grub.cfg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="接着修复grub2引导"><a href="#接着修复grub2引导" class="headerlink" title="接着修复grub2引导"></a>接着修复grub2引导</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsblk									<span class="token comment">#多块磁盘需要确认安装的位置</span>
+grub2-install /dev/sda					<span class="token comment">#安装到系统盘位置</span>
+grub2-mkconfig <span class="token operator">></span> /boot/grub2/grub.cfg 	<span class="token comment">#生成grub.cfg</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>重新安装内核前可以删除<code>/mnt/sysimage/boot</code>目录下的文件，&#x2F;boot&#x2F;efi&#x2F;可能会删不掉。没关系，这个空文件夹不影响</p>
 <p><strong>前面提到手动分区，主要是可以恢复手动分区小的文件——运气要好~</strong></p>
@@ -557,7 +563,7 @@ grub2-mkconfig &gt; &#x2F;boot&#x2F;grub2&#x2F;grub.cfg 	#生成grub.cfg<span ar
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -571,8 +577,6 @@ grub2-mkconfig &gt; &#x2F;boot&#x2F;grub2&#x2F;grub.cfg 	#生成grub.cfg<span ar
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -734,7 +738,7 @@ grub2-mkconfig &gt; &#x2F;boot&#x2F;grub2&#x2F;grub.cfg 	#生成grub.cfg<span ar
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.6k</span>
+                        class="white-color">23.8k</span>
             
             
             

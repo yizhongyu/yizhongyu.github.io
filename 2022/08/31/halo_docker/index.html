@@ -299,7 +299,7 @@ sudo">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    820
+                    693
                 </div>
                 
 
@@ -312,75 +312,80 @@ sudo">
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Halo [ˈheɪloʊ]，一款现代化的开源博客&#x2F;CMS系统，值得一试。</p>
 <h3 id="云服务器启动后安装docker套件"><a href="#云服务器启动后安装docker套件" class="headerlink" title="云服务器启动后安装docker套件"></a>云服务器启动后安装docker套件</h3><h4 id="设置存储库"><a href="#设置存储库" class="headerlink" title="设置存储库"></a>设置存储库</h4><p>安装软件包（提供实用程序）并设置存储库。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo yum install -y yum-utils
-sudo yum-config-manager \
-  --add-repo \
-  https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> -y yum-utils
+<span class="token function">sudo</span> yum-config-manager <span class="token punctuation">\</span>
+  --add-repo <span class="token punctuation">\</span>
+  https://download.docker.com/linux/centos/docker-ce.repo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="安装-Docker-引擎"><a href="#安装-Docker-引擎" class="headerlink" title="安装 Docker 引擎"></a>安装 Docker 引擎</h4><p>安装<em>最新版本</em>的 Docker 引擎、容器和 Docker Compose。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> docker-ce docker-ce-cli containerd.io docker-compose-plugin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>启动 Docker。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo systemctl start docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> systemctl start <span class="token function">docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>通过运行映像来验证 Docker 引擎是否已正确安装。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo docker run hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">docker</span> run hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="将-Docker-配置为开机自启"><a href="#将-Docker-配置为开机自启" class="headerlink" title="将 Docker 配置为开机自启"></a>将 Docker 配置为开机自启</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo systemctl enable docker.service
-sudo systemctl enable containerd.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="将-Docker-配置为开机自启"><a href="#将-Docker-配置为开机自启" class="headerlink" title="将 Docker 配置为开机自启"></a>将 Docker 配置为开机自启</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> docker.service
+<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> containerd.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker compose"></a>安装docker compose</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo curl -L https:&#x2F;&#x2F;get.daocloud.io&#x2F;docker&#x2F;compose&#x2F;releases&#x2F;download&#x2F;v2.10.2&#x2F;docker-compose-&#96;uname -s&#96;-&#96;uname -m&#96; &gt; &#x2F;usr&#x2F;local&#x2F;bin&#x2F;docker-compose
-sudo chmod +x &#x2F;usr&#x2F;local&#x2F;bin&#x2F;docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker compose"></a>安装docker compose</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">curl</span> -L https://get.daocloud.io/docker/compose/releases/download/v2.10.2/docker-compose-<span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> -s<span class="token variable">`</span></span>-<span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> -m<span class="token variable">`</span></span> <span class="token operator">></span> /usr/local/bin/docker-compose
+<span class="token function">sudo</span> <span class="token function">chmod</span> +x /usr/local/bin/docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>或者使用GitHub地址</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo curl -L https:&#x2F;&#x2F;github.com&#x2F;docker&#x2F;compose&#x2F;releases&#x2F;download&#x2F;Latest&#x2F;docker-compose-linux-x86_64-$(uname -s)-$(uname -m) -o &#x2F;usr&#x2F;local&#x2F;bin&#x2F;docker-compose
-sudo chmod +x &#x2F;usr&#x2F;local&#x2F;bin&#x2F;docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">curl</span> -L https://github.com/docker/compose/releases/download/Latest/docker-compose-linux-x86_64-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> -s<span class="token variable">)</span></span>-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> -m<span class="token variable">)</span></span> -o /usr/local/bin/docker-compose
+<span class="token function">sudo</span> <span class="token function">chmod</span> +x /usr/local/bin/docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>查看结果</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker-compose -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker-compose</span> -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="利用docker-compose安装halo套件"><a href="#利用docker-compose安装halo套件" class="headerlink" title="利用docker-compose安装halo套件"></a>利用docker-compose安装halo套件</h3><h4 id="创建容器组"><a href="#创建容器组" class="headerlink" title="创建容器组"></a>创建容器组</h4><p>在系统任意位置创建一个文件夹，此文档以 <code>~/halo-app</code> 为例。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mkdir ~&#x2F;halo-app &amp;&amp; cd ~&#x2F;halo-app<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> ~/halo-app <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> ~/halo-app<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vim docker-compose.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> docker-compose.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>仅创建 Halo 实例（使用默认的 H2 数据库）：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">version: &quot;3&quot;
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">version: <span class="token string">"3"</span>
 
 services:
   halo:
-    image: halohub&#x2F;halo:1.5.4
+    image: halohub/halo:1.5.4
     container_name: halo
     restart: on-failure:3
     volumes:
-      - .&#x2F;:&#x2F;root&#x2F;.halo
-      - &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime:ro
+      - ./:/root/.halo
+      - /etc/localtime:/etc/localtime:ro
     ports:
-      - &quot;8090:8090&quot;
+      - <span class="token string">"8090:8090"</span>
     environment:
-      - SERVER_PORT&#x3D;8090
-      - SPRING_DATASOURCE_DRIVER_CLASS_NAME&#x3D;org.h2.Driver
-      - SPRING_DATASOURCE_URL&#x3D;jdbc:h2:file:~&#x2F;.halo&#x2F;db&#x2F;halo
-      - SPRING_DATASOURCE_USERNAME&#x3D;admin
-      - SPRING_DATASOURCE_PASSWORD&#x3D;o#DwN&amp;JSa56
-      - HALO_ADMIN_PATH&#x3D;admin
-      - HALO_CACHE&#x3D;memory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      - <span class="token assign-left variable">SERVER_PORT</span><span class="token operator">=</span><span class="token number">8090</span>
+      - <span class="token assign-left variable">SPRING_DATASOURCE_DRIVER_CLASS_NAME</span><span class="token operator">=</span>org.h2.Driver
+      - <span class="token assign-left variable">SPRING_DATASOURCE_URL</span><span class="token operator">=</span>jdbc:h2:file:~/.halo/db/halo
+      - <span class="token assign-left variable">SPRING_DATASOURCE_USERNAME</span><span class="token operator">=</span>admin
+      - <span class="token assign-left variable">SPRING_DATASOURCE_PASSWORD</span><span class="token operator">=</span>o<span class="token comment">#DwN&amp;JSa56</span>
+      - <span class="token assign-left variable">HALO_ADMIN_PATH</span><span class="token operator">=</span>admin
+      - <span class="token assign-left variable">HALO_CACHE</span><span class="token operator">=</span>memory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>创建 Halo + MySQL + Redis 的实例：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">version: &quot;3&quot;
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">version: <span class="token string">"3"</span>
 
 services:
   halo_server:
-    image: halohub&#x2F;halo:1.5.4
+    image: halohub/halo:1.5.4
     container_name: halo_server
     restart: on-failure:3
     depends_on:
@@ -389,22 +394,22 @@ services:
     networks:
       halo_network:
     volumes:
-      - .&#x2F;:&#x2F;root&#x2F;.halo
-      - &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime:ro
+      - ./:/root/.halo
+      - /etc/localtime:/etc/localtime:ro
     ports:
-      - &quot;8090:8090&quot;
+      - <span class="token string">"8090:8090"</span>
     environment:
-      - SERVER_PORT&#x3D;8090
-      - SPRING_DATASOURCE_DRIVER_CLASS_NAME&#x3D;com.mysql.cj.jdbc.Driver
-      - SPRING_DATASOURCE_URL&#x3D;jdbc:mysql:&#x2F;&#x2F;halo_mysql:3306&#x2F;halodb?characterEncoding&#x3D;utf8&amp;useSSL&#x3D;false&amp;serverTimezone&#x3D;Asia&#x2F;Shanghai&amp;allowPublicKeyRetrieval&#x3D;true
-      - SPRING_DATASOURCE_USERNAME&#x3D;root
-      - SPRING_DATASOURCE_PASSWORD&#x3D;o#DwN&amp;JSa56
-      - HALO_ADMIN_PATH&#x3D;admin
-      - HALO_CACHE&#x3D;redis
-      - SPRING_REDIS_PORT&#x3D;6379
-      - SPRING_REDIS_DATABASE&#x3D;0
-      - SPRING_REDIS_HOST&#x3D;halo_redis
-      - SPRING_REDIS_PASSWORD&#x3D;dm5fD%rvPtq
+      - <span class="token assign-left variable">SERVER_PORT</span><span class="token operator">=</span><span class="token number">8090</span>
+      - <span class="token assign-left variable">SPRING_DATASOURCE_DRIVER_CLASS_NAME</span><span class="token operator">=</span>com.mysql.cj.jdbc.Driver
+      - <span class="token assign-left variable">SPRING_DATASOURCE_URL</span><span class="token operator">=</span>jdbc:mysql://halo_mysql:3306/halodb?characterEncoding<span class="token operator">=</span>utf8<span class="token operator">&amp;</span><span class="token assign-left variable">useSSL</span><span class="token operator">=</span>false<span class="token operator">&amp;</span><span class="token assign-left variable">serverTimezone</span><span class="token operator">=</span>Asia/Shanghai<span class="token operator">&amp;</span><span class="token assign-left variable">allowPublicKeyRetrieval</span><span class="token operator">=</span>true
+      - <span class="token assign-left variable">SPRING_DATASOURCE_USERNAME</span><span class="token operator">=</span>root
+      - <span class="token assign-left variable">SPRING_DATASOURCE_PASSWORD</span><span class="token operator">=</span>o<span class="token comment">#DwN&amp;JSa56</span>
+      - <span class="token assign-left variable">HALO_ADMIN_PATH</span><span class="token operator">=</span>admin
+      - <span class="token assign-left variable">HALO_CACHE</span><span class="token operator">=</span>redis
+      - <span class="token assign-left variable">SPRING_REDIS_PORT</span><span class="token operator">=</span><span class="token number">6379</span>
+      - <span class="token assign-left variable">SPRING_REDIS_DATABASE</span><span class="token operator">=</span><span class="token number">0</span>
+      - <span class="token assign-left variable">SPRING_REDIS_HOST</span><span class="token operator">=</span>halo_redis
+      - <span class="token assign-left variable">SPRING_REDIS_PASSWORD</span><span class="token operator">=</span>dm5fD%rvPtq
 
   halo_mysql:
     image: mysql:8.0.27
@@ -412,20 +417,20 @@ services:
     restart: on-failure:3
     networks:
       halo_network:
-    command: --default-authentication-plugin&#x3D;mysql_native_password
-      --character-set-server&#x3D;utf8mb4
-      --collation-server&#x3D;utf8mb4_general_ci
-      --explicit_defaults_for_timestamp&#x3D;true
+    command: --default-authentication-plugin<span class="token operator">=</span>mysql_native_password
+      --character-set-server<span class="token operator">=</span>utf8mb4
+      --collation-server<span class="token operator">=</span>utf8mb4_general_ci
+      --explicit_defaults_for_timestamp<span class="token operator">=</span>true
     volumes:
-      - &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime:ro
-      - .&#x2F;mysql:&#x2F;var&#x2F;lib&#x2F;mysql
-      - .&#x2F;mysqlBackup:&#x2F;data&#x2F;mysqlBackup
+      - /etc/localtime:/etc/localtime:ro
+      - ./mysql:/var/lib/mysql
+      - ./mysqlBackup:/data/mysqlBackup
     ports:
-      - &quot;3306:3306&quot;
+      - <span class="token string">"3306:3306"</span>
     environment:
-      # 请修改此密码，并对应修改上方 Halo 服务的 SPRING_DATASOURCE_PASSWORD 变量值
-      - MYSQL_ROOT_PASSWORD&#x3D;o#DwN&amp;JSa56
-      - MYSQL_DATABASE&#x3D;halodb
+      <span class="token comment"># 请修改此密码，并对应修改上方 Halo 服务的 SPRING_DATASOURCE_PASSWORD 变量值</span>
+      - <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span>o<span class="token comment">#DwN&amp;JSa56</span>
+      - <span class="token assign-left variable">MYSQL_DATABASE</span><span class="token operator">=</span>halodb
 
   halo_redis:
     image: redis
@@ -434,44 +439,44 @@ services:
     networks:
       halo_network:
     volumes:
-      - .&#x2F;redis&#x2F;data:&#x2F;data
-      - .&#x2F;redis&#x2F;logs:&#x2F;logs
-    # 请修改此密码，并对应修改上方 Halo 服务的 SPRING_REDIS_PASSWORD 变量值
+      - ./redis/data:/data
+      - ./redis/logs:/logs
+    <span class="token comment"># 请修改此密码，并对应修改上方 Halo 服务的 SPRING_REDIS_PASSWORD 变量值</span>
     command: redis-server --requirepass dm5fD%rvPtq
     ports:
-      - &quot;6379:6379&quot;
+      - <span class="token string">"6379:6379"</span>
 networks:
   halo_network:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>启动 Halo 服务</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker-compose up -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker-compose</span> up -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>打开 <code>http://ip:端口号</code> 即可看到安装引导界面。</p>
 <h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>Nginx</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install nginx				#安装
-systemctl enable nginx			#开机自启
-systemctl start nginx			#启动<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> nginx				<span class="token comment">#安装</span>
+systemctl <span class="token builtin class-name">enable</span> nginx			<span class="token comment">#开机自启</span>
+systemctl start nginx			<span class="token comment">#启动</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p><code>vim /etc/nginx/nginx.conf</code>编辑配置文件，将80端口给halo</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">upstream halo &#123;
-  server 127.0.0.1:8090;
-&#125;
-server &#123;
-  listen 80;
-  listen [::]:80;
-  server_name www.yourdomain.com;
-  client_max_body_size 1024m;
-  location &#x2F; &#123;
-    proxy_pass http:&#x2F;&#x2F;halo;
-    proxy_set_header HOST $host;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-  &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">upstream halo <span class="token punctuation">&#123;</span>
+  server <span class="token number">127.0</span>.0.1:8090<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+server <span class="token punctuation">&#123;</span>
+  listen <span class="token number">80</span><span class="token punctuation">;</span>
+  listen <span class="token punctuation">[</span>::<span class="token punctuation">]</span>:80<span class="token punctuation">;</span>
+  server_name www.yourdomain.com<span class="token punctuation">;</span>
+  client_max_body_size 1024m<span class="token punctuation">;</span>
+  location / <span class="token punctuation">&#123;</span>
+    proxy_pass http://halo<span class="token punctuation">;</span>
+    proxy_set_header HOST <span class="token variable">$host</span><span class="token punctuation">;</span>
+    proxy_set_header X-Forwarded-Proto <span class="token variable">$scheme</span><span class="token punctuation">;</span>
+    proxy_set_header X-Real-IP <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
+    proxy_set_header X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nginx -s reload				#重新加载Nginx
-systemctl restart nginx		 #或者重启Nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nginx -s reload				<span class="token comment">#重新加载Nginx</span>
+systemctl restart nginx		 <span class="token comment">#或者重启Nginx</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
                 
@@ -592,18 +597,17 @@ systemctl restart nginx		 #或者重启Nginx<span aria-hidden="true" class="line
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/08/31/halo_docker/">
+                <a href="/2022/09/01/hexo_full/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="利用docker搭建halo博客">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="hexo搭建">
                         
-                        <span class="card-title">利用docker搭建halo博客</span>
+                        <span class="card-title">hexo搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -613,35 +617,30 @@ systemctl restart nginx		 #或者重启Nginx<span aria-hidden="true" class="line
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-31
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/docker/" class="post-category">
-                                    docker
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    博客
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
-                    </a>
-                    
-                    <a href="/tags/halo/">
-                        <span class="chip bg-color">halo</span>
-                    </a>
-                    
                     <a href="/tags/%E5%8D%9A%E5%AE%A2/">
                         <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
@@ -710,7 +709,7 @@ systemctl restart nginx		 #或者重启Nginx<span aria-hidden="true" class="line
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
 
 
 <!-- 代码语言 -->
@@ -724,8 +723,6 @@ systemctl restart nginx		 #或者重启Nginx<span aria-hidden="true" class="line
 
 
 <!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -887,7 +884,7 @@ systemctl restart nginx		 #或者重启Nginx<span aria-hidden="true" class="line
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.6k</span>
+                        class="white-color">23.8k</span>
             
             
             
