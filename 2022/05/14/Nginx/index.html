@@ -7,9 +7,9 @@
     <meta name="keywords" content="Nginx, 备忘录">
     <meta name="description" content="负载均衡中间件 反向代理
 上传Nginx源码包到服务器
-scp E:\app\Linux\nginx-1.21.6.tar.gz root@192.168.200.99:&amp;#x2F;opt
+scp E:\app\Linux\nginx-1.21.6.tar.gz root@192.168.200.99:/opt
 
-解压tar zxvf &amp;#x2F;opt&amp;#x2">
+解压tar zxvf /opt/nginx-1.21.6.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -292,7 +292,7 @@ scp E:\app\Linux\nginx-1.21.6.tar.gz root@192.168.200.99:&amp;#x2F;opt
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    550
+                    558
                 </div>
                 
 
@@ -319,15 +319,16 @@ scp E:\app\Linux\nginx-1.21.6.tar.gz root@192.168.200.99:&amp;#x2F;opt
             <div id="articleContent">
                 <p>负载均衡中间件 反向代理</p>
 <p>上传Nginx源码包到服务器</p>
-<pre class="line-numbers language-none"><code class="language-none">scp E:\app\Linux\nginx-1.21.6.tar.gz root@192.168.200.99:&#x2F;opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">scp</span> E:<span class="token punctuation">\</span>app<span class="token punctuation">\</span>Linux<span class="token punctuation">\</span>nginx-1.21.6.tar.gz root@192.168.200.99:/opt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><pre class="line-numbers language-none"><code class="language-none">tar zxvf &#x2F;opt&#x2F;nginx-1.21.6.tar.gz -C &#x2F;usr&#x2F;local&#x2F;src<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> zxvf /opt/nginx-1.21.6.tar.gz -C /usr/local/src<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><pre class="line-numbers language-none"><code class="language-none">yum -y install pcre-devel libtool openssl openssl-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="安装前置依赖"><a href="#安装前置依赖" class="headerlink" title="安装前置依赖"></a>安装前置依赖</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum -y <span class="token function">install</span> gcc-c++ zlib-devel openssl openssl-devel gd-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;nginx-1.21.6
-.&#x2F;configure
-make &amp;&amp; make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="开始编译安装"><a href="#开始编译安装" class="headerlink" title="开始编译安装"></a>开始编译安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/local/src/nginx-1.21.6
+./configure
+<span class="token function">make</span> <span class="token operator">&amp;&amp;</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token function">ln</span> -s /usr/local/nginx/sbin/nginx /usr/local/sbin/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>​	安装完成后， Nginx的可执⾏⽂件位置位于&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx<br>​	启动NGINX<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx<br>​	停⽌Nginx服务<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s stop	<br>​	重新加载Nginx<br>&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s reload	<br>​	配置⽂件位于&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</p>
 <h3 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/init.d/nginx
@@ -863,7 +864,7 @@ make &amp;&amp; make install<span aria-hidden="true" class="line-numbers-rows"><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">26.6k</span>
+                        class="white-color">28.2k</span>
             
             
             
